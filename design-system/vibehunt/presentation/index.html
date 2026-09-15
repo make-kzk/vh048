@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeHunt — мэтчинг PM и аккаунтов</title>
+  <meta name="theme-color" content="#f7fbfb">
+  <link rel="stylesheet" href="../../../mockups/vibe-hunt/vh-tokens.css">
+  <link rel="stylesheet" href="../../../mockups/vibe-hunt/vh-components.css">
+  <link rel="stylesheet" href="../../../mockups/vibe-hunt/style.css">
+  <link rel="stylesheet" href="../../../mockups/vibe-hunt/landing-develop.css">
+  <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+  <div class="landing-dm pres-root" data-audience="company">
+    <aside class="preview-sidebar preview-sidebar--company pres-slidebar" aria-label="Навигация по слайдам">
+      <div class="preview-sidebar__brand">
+        <span class="preview-sidebar__logo">Vibe<span>Hunt</span></span>
+        <span class="preview-sidebar__badge">Match</span>
+      </div>
+
+      <nav class="preview-sidebar__nav pres-slidebar__nav" role="tablist" aria-label="Слайды">
+        <button type="button" class="preview-nav preview-nav--company preview-nav--active" role="tab" aria-selected="true" data-slide="0">
+          Решение на ощущениях
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="1">
+          Ошибка дороже подбора
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="2">
+          Три причины ухода
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="3">
+          Как платформа закрывает
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="4">
+          Шесть шагов без команды
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="5">
+          Оплата по результату
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="6">
+          Пилот на одной вакансии
+        </button>
+      </nav>
+
+      <div class="pres-slidebar__foot">
+        <div class="pres-slidebar__progress-track">
+          <div class="pres-slidebar__progress-bar" id="pres-bar"></div>
+        </div>
+        <p class="pres-slidebar__progress" id="pres-progress">1 / 7</p>
+        <div class="pres-slidebar__controls">
+          <button type="button" class="vh-btn" id="pres-prev" disabled>← Назад</button>
+          <button type="button" class="vh-btn vh-btn--primary" id="pres-next">Далее →</button>
+        </div>
+        <button type="button" class="vh-btn vh-btn--ghost pres-notes-toggle" id="pres-notes-toggle">Заметки (N)</button>
+      </div>
+    </aside>
+
+    <main class="pres-stage">
+
+      <!-- SLIDE 1 -->
+      <section class="pres-slide pres-slide--scenes active" data-slide-panel="0" aria-label="Решение о найме принимается на ощущениях">
+        <header class="pres-head">
+          <p class="pres-eyebrow">Операционный директор · агентство 30–200 человек</p>
+          <h2 class="pres-title">Решение о найме принимается <em>на ощущениях</em></h2>
+        </header>
+        <div class="pres-body">
+          <article class="pres-card pres-scene">
+            <p class="pres-scene__day">Понедельник</p>
+            <p class="pres-scene__text">47 откликов на PM — половина не про ваш функционал</p>
+          </article>
+          <article class="pres-card pres-scene">
+            <p class="pres-scene__day">Среда</p>
+            <p class="pres-scene__text">Час интервью: в резюме одно, в разговоре другое</p>
+          </article>
+          <article class="pres-card pres-scene">
+            <p class="pres-scene__day">Пятница</p>
+            <p class="pres-scene__text">Shortlist из двоих — оба «нормальные на глаз»</p>
+          </article>
+          <article class="pres-card pres-scene">
+            <p class="pres-scene__day">Каждый день</p>
+            <p class="pres-scene__text">Нет способа проверить мэтч до выхода человека</p>
+          </article>
+          <div class="pres-punch">
+            <p>Выбираете по резюме и впечатлению — не по совместимости с ролью</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2 -->
+      <section class="pres-slide pres-slide--impact" data-slide-panel="1" hidden aria-label="Ошибка найма стоит дороже подбора">
+        <header class="pres-head">
+          <p class="pres-eyebrow pres-eyebrow--violet">Последствия</p>
+          <h2 class="pres-title">Ошибка найма стоит <em>дороже подбора</em></h2>
+        </header>
+        <div class="pres-body">
+          <aside class="pres-calc" aria-label="Расчёт стоимости ошибки">
+            <p class="pres-calc__label">PM ушёл на третий месяц</p>
+            <p class="pres-calc__formula">
+              <em>[ОКЛАД PM]</em> × 3<br>
+              + [ПОДБОР ЗАНОВО]<br>
+              + [ПРОСЕДАВШИЙ ПРОЕКТ]
+            </p>
+            <p class="pres-calc__note">Одна цифра в вашем контексте бьёт сильнее абстрактных рисков</p>
+          </aside>
+          <div>
+            <ul class="pres-impact-list">
+              <li>Текучка на испытательном — [ДОЛЯ УХОДА — подставить]</li>
+              <li>Потери на адаптации и перенайм</li>
+              <li>Риски для данных и интеллектуальной собственности</li>
+              <li>Репутация перед командой и клиентом</li>
+            </ul>
+            <div class="pres-punch" style="margin-top:calc(1.2 * var(--u))">
+              <p>Промах обходится дороже, чем кажется на этапе shortlist</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3 -->
+      <section class="pres-slide pres-slide--factors" data-slide-panel="2" hidden aria-label="Резюме не показывает ни одну из трёх причин">
+        <header class="pres-head">
+          <p class="pres-eyebrow">Среднее звено</p>
+          <h2 class="pres-title">Резюме не показывает, <em>почему люди уходят</em></h2>
+          <p class="pres-lead">PM, аккаунт, тимлид — роли-интерфейсы. Провал виден на 2–3 месяце, не на собеседовании.</p>
+        </header>
+        <div class="pres-body">
+          <article class="pres-card pres-factor">
+            <span class="pres-factor__num">1</span>
+            <h3 class="pres-factor__title">Не справляется с задачами</h3>
+            <p class="pres-factor__text">Функционал роли и цели 90 дней не совпали с человеком</p>
+          </article>
+          <article class="pres-card pres-factor">
+            <span class="pres-factor__num">2</span>
+            <h3 class="pres-factor__title">Ценности не совпали</h3>
+            <p class="pres-factor__text">Культурный код компании и стиль конкретного руководителя</p>
+          </article>
+          <article class="pres-card pres-factor">
+            <span class="pres-factor__num">3</span>
+            <h3 class="pres-factor__title">Нет поддержки на входе</h3>
+            <p class="pres-factor__text">Адаптация без обратной связи — человек уходит молча</p>
+          </article>
+        </div>
+        <p class="pres-foot-note"><strong>Вывод</strong><i aria-hidden="true">·</i><span>Ни один из трёх факторов не виден в PDF-резюме</span></p>
+      </section>
+
+      <!-- SLIDE 4 -->
+      <section class="pres-slide pres-slide--table" data-slide-panel="3" hidden aria-label="Платформа закрывает все три причины">
+        <header class="pres-head">
+          <p class="pres-eyebrow pres-eyebrow--violet">Главный слайд</p>
+          <h2 class="pres-title">Платформа закрывает <em>все три причины</em></h2>
+        </header>
+        <div class="pres-body">
+          <table class="pres-match-table">
+            <thead>
+              <tr>
+                <th scope="col">Причина ухода</th>
+                <th scope="col">Что делает платформа</th>
+                <th scope="col">Что вы получаете</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Не справляется</td>
+                <td>Профессиональный мэтч: компетенции против функционала и целей 90 дней</td>
+                <td>Match-карточка: соответствие, сильные стороны, риски</td>
+              </tr>
+              <tr>
+                <td>Ценности не совпали</td>
+                <td>Личностный мэтч: культурный код компании и профиль руководителя</td>
+                <td>Оценка совместимости с конкретным руководителем</td>
+              </tr>
+              <tr>
+                <td>Нет поддержки</td>
+                <td>Сбор обратной связи весь период адаптации</td>
+                <td>Отчёт руководителю + план адаптации + личный отчёт кандидату</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 -->
+      <section class="pres-slide pres-slide--flow" data-slide-panel="4" hidden aria-label="От отклика до адаптации без часов команды">
+        <header class="pres-head">
+          <p class="pres-eyebrow">Как это работает</p>
+          <h2 class="pres-title">От отклика до адаптации — <em>без часов команды</em></h2>
+        </header>
+        <div class="pres-body">
+          <div class="pres-pipeline" role="list">
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">1</span><p class="pres-pipeline__label">Отклик</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">2</span><p class="pres-pipeline__label">Тест</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">3</span><p class="pres-pipeline__label">Карьерный профиль</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">4</span><p class="pres-pipeline__label">Мэтч с позицией</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">5</span><p class="pres-pipeline__label">Рекомендации</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">6</span><p class="pres-pipeline__label">Сопровождение адаптации</p></div>
+          </div>
+          <p class="pres-flow-note">Команда не участвует в рутине — всё делает система. SaaS, не агентство.</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 6 -->
+      <section class="pres-slide pres-slide--price" data-slide-panel="5" hidden aria-label="Платите по мере результата">
+        <header class="pres-head">
+          <p class="pres-eyebrow pres-eyebrow--violet">Стоимость</p>
+          <h2 class="pres-title">Платите по мере результата, <em>не авансом</em></h2>
+        </header>
+        <div class="pres-body">
+          <div class="pres-price-main">
+            <p class="pres-price-main__total">140 000 ₸ <span>за вакансию</span></p>
+            <ul class="pres-tranches">
+              <li><span>При создании позиции</span><strong>35 000 ₸</strong></li>
+              <li><span>При выходе кандидата</span><strong>35 000 ₸</strong></li>
+              <li><span>После прохождения адаптации</span><strong>70 000 ₸</strong></li>
+            </ul>
+          </div>
+          <div class="pres-compare">
+            <p>Для сравнения: кадровое агентство берёт <strong>1–2 оклада</strong> авансом — [ОКЛАД PM × 1–2 — подставить для вашего сегмента].</p>
+            <p style="margin-top:0.75rem">Вы платите, когда человек прошёл адаптацию, а не когда получили PDF с резюме.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 -->
+      <section class="pres-slide pres-slide--pilot" data-slide-panel="6" hidden aria-label="Пилот на одной вакансии">
+        <header class="pres-head">
+          <p class="pres-eyebrow">Следующий шаг</p>
+          <h2 class="pres-title">Пилот на одной вакансии — <em>[СРОК — подставить]</em></h2>
+        </header>
+        <div class="pres-body">
+          <article class="pres-card pres-pilot-card">
+            <p class="pres-card__label">Что делаем</p>
+            <h3 class="pres-card__title">Одна открытая позиция среднего звена</h3>
+            <ul class="pres-list">
+              <li>PM, аккаунт или тимлид — та, что болит сейчас</li>
+              <li>Полный цикл: профиль → мэтч → адаптация</li>
+              <li>Срок пилота: [СРОК — подставить, напр. 4 недели]</li>
+            </ul>
+          </article>
+          <article class="pres-card pres-pilot-card">
+            <p class="pres-card__label">Что нужно от вас</p>
+            <h3 class="pres-card__title">Профиль позиции и доступ к кандидатам</h3>
+            <ul class="pres-list">
+              <li>Функционал, цели 90 дней, культурный код</li>
+              <li>Профиль руководителя и команды</li>
+              <li>Отклики или база на текущую вакансию</li>
+            </ul>
+          </article>
+          <article class="pres-card pres-pilot-card pres-pilot-card--cta">
+            <p class="pres-card__label">Критерии результата</p>
+            <h3 class="pres-card__title">Смотрим на цифры, не на ощущения</h3>
+            <ul class="pres-list">
+              <li>[КОНВЕРСИЯ В SHORTLIST — подставить]</li>
+              <li>[ПРОХОЖДЕНИЕ ИСПЫТАТЕЛЬНОГО — подставить]</li>
+              <li>[ЧАСЫ КОМАНДЫ НА ВАКАНСИЮ — подставить]</li>
+            </ul>
+            <div class="pres-actions pres-actions--pilot">
+              <a class="vh-hunt-btn vh-hunt-btn--primary" href="mailto:[EMAIL — подставить]">
+                запустить пилот <span class="vh-hunt-btn__arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+          <article class="pres-card pres-pilot-card">
+            <p class="pres-card__label">После пилота</p>
+            <h3 class="pres-card__title">Решение на данных</h3>
+            <p class="pres-card__text">Сверяем match-карточки с вашим финальным выбором и итогом адаптации. Масштабируем или останавливаемся — без долгих контрактов.</p>
+          </article>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Hidden speaker notes (injected into panel) -->
+  <template id="notes-source">
+    <div data-notes="0">
+      <h3>Говорит спикер</h3>
+      <p>Вы сами собеседуете PM и аккаунтов — и сами потом разгребаете, если промахнулись. Это не абстрактная «проблема HR», это ваш понедельник и пятница.</p>
+      <p>На этом слайде не продаём продукт — фиксируем, что решение принимается вслепую.</p>
+      <p class="visual">Визуал: календарь недели с четырьмя карточками-сценами и красным акцентом на пятнице. Показывает рутину, а не диаграмму.</p>
+    </div>
+    <div data-notes="1">
+      <h3>Говорит спикер</h3>
+      <p>PM на третьем месяце — это не «ну, не сложилось». Это три оклада, плюс вы снова в поиске, плюс клиентский проект встал.</p>
+      <p>Подставьте их оклад в формулу — цифра должна быть их, не наша.</p>
+      <p class="visual">Визуал: тёмная карточка с формулой слева (как калькулятор), список рисков справа. Одна цифра — якорь.</p>
+    </div>
+    <div data-notes="2">
+      <h3>Говорит спикер</h3>
+      <p>Среднее звено ломается не из-за hard skills на бумаге — а потому что человек не тянет договорённости, не совпал с вашим COO или остался один на входе.</p>
+      <p>Резюме этому не противоречит — оно просто молчит.</p>
+      <p class="visual">Визуал: три равные колонки с цифрами 1–2–3. Минимум текста, максимум контраст.</p>
+    </div>
+    <div data-notes="3">
+      <h3>Говорит спикер</h3>
+      <p>Каждая строка таблицы — ответ на «и что мне с этим делать». Не «AI-аналитика», а match-карточка в руках и отчёт руководителю с конкретными рекомендациями.</p>
+      <p>Мы не кадровое агентство — мы даём систему, которая сопоставляет профиль с позицией.</p>
+      <p class="visual">Визуал: таблица на весь слайд, третья колонка выделена оранжевым — «артефакты на руках».</p>
+    </div>
+    <div data-notes="4">
+      <h3>Говорит спикер</h3>
+      <p>Шесть шагов — одна линия. Ваши рекрутеры не заполняют таблицы: отклик ушёл в тест, профиль собрался, мэтч посчитался.</p>
+      <p>Человеко-часы команды на вакансию — ноль на рутине.</p>
+      <p class="visual">Визуал: горизонтальный pipeline со стрелками, подпись mono внизу про SaaS.</p>
+    </div>
+    <div data-notes="5">
+      <h3>Говорит спикер</h3>
+      <p>140 тысяч — три транша. Половина — только после адаптации. Агентство возьмёт оклад до того, как человек докажет, что он ваш.</p>
+      <p>Не продаём часы рекрутера — продаём результат по этапам.</p>
+      <p class="visual">Визуал: крупная сумма, три строки траншей, блок сравнения с агентством оранжевым фоном.</p>
+    </div>
+    <div data-notes="6">
+      <h3>Говорит спикер</h3>
+      <p>Конкретика: одна вакансия, ваш PM или аккаунт, срок пилота. Вы даёте профиль позиции — мы показываем мэтч до оффера.</p>
+      <p>Критерии — только те цифры, которые вы согласуете заранее. Без обещаний замены кандидата.</p>
+      <p class="visual">Визуал: сетка 2×2 карточки, CTA «запустить пилот» на фиолетовом акценте.</p>
+      <h3>Данные для подстановки</h3>
+      <p>Оклад PM в сегменте · стоимость повторного подбора · потери просевшего проекта · доля ухода на испытательном · конверсия в shortlist · прохождение испытательного · часы команды на вакансию · срок пилота · email для CTA · цитаты из интервью с ЛПР</p>
+      <h3>Три возражения</h3>
+      <p><strong>«У нас уже есть HR / агентство»</strong> — Мы не заменяем людей и не продаём часы. Система считает мэтch там, где HR тратит вечер на таблицу. Агентство приведёт резюме — мы покажем, кто реально совпадёт с вашим руководителем.</p>
+      <p><strong>«Кандидаты не будут проходить тест»</strong> — Тест ~25 минут, кандидат получает личный отчёт. Это не экзамен, а профиль, который он забирает с собой.</p>
+      <p><strong>«AI не поймёт нашу специфику»</strong> — Профиль позиции и культурный код задаёте вы. Платформа сопоставляет, а не придумывает требования. Пилот на одной вакансии — проверка на ваших данных.</p>
+    </div>
+  </template>
+
+  <aside class="pres-notes-panel" id="pres-notes" aria-hidden="true" aria-label="Заметки спикера">
+    <div class="pres-notes-panel__head">
+      <h2>Заметки спикера</h2>
+      <button type="button" class="vh-btn vh-btn--ghost" id="pres-notes-close" style="font-size:0.75rem;padding:0.35rem 0.6rem">✕</button>
+    </div>
+    <div class="pres-notes-panel__body" id="pres-notes-body"></div>
+  </aside>
+
+  <script>
+    (function () {
+      var src = document.getElementById('notes-source');
+      if (src) {
+        var holder = document.createElement('div');
+        holder.hidden = true;
+        holder.innerHTML = src.innerHTML;
+        document.body.appendChild(holder);
+      }
+    })();
+  </script>
+  <script src="presentation.js"></script>
+</body>
+</html>

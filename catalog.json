@@ -8,6 +8,13 @@
       "tags": ["design-system", "vibehunt", "production"]
     },
     {
+      "slug": "vibehunt-match-deck",
+      "title": "VibeHunt — презентация мэтчинга (7 слайдов)",
+      "summary": "B2B deck для операционного директора: PM/аккаунты, мэтч, цена 140 000 ₸, пилот. VibeHunt DS + заметки спикера (N).",
+      "path": "design-system/vibehunt/presentation/index.html",
+      "tags": ["presentation", "b2b", "vibehunt", "sales"]
+    },
+    {
       "slug": "alt-design-system",
       "title": "Альтернативная дизайн-система",
       "summary": "Альтернативная DS для презентаций: цвета, типографика, шаблоны слайдов из PDF Marketing & Reputation Day.",

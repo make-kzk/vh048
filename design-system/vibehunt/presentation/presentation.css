@@ -1,0 +1,450 @@
+@import url("../../../local/presentation/hrd-sales/presentation.css");
+
+/* Middle-management hiring deck — layout extensions */
+
+.landing-dm .pres-slide--scenes .pres-body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(1.2 * var(--u));
+  align-content: start;
+}
+
+.landing-dm .pres-scene {
+  border-left: 3px solid var(--vh-color-primary);
+  padding-left: calc(1 * var(--u));
+}
+
+.landing-dm .pres-scene__day {
+  margin: 0 0 calc(0.35 * var(--u));
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: calc(0.72 * var(--u));
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pres-violet);
+}
+
+.landing-dm .pres-scene__text {
+  margin: 0;
+  font-size: calc(1.05 * var(--u));
+  line-height: 1.4;
+  color: var(--dm-ink);
+}
+
+.landing-dm .pres-punch {
+  grid-column: 1 / -1;
+  margin-top: calc(0.5 * var(--u));
+  padding: calc(1.2 * var(--u)) calc(1.4 * var(--u));
+  border-radius: calc(1 * var(--u));
+  background: var(--vh-color-primary-l);
+  border: 1px solid rgba(242, 101, 34, 0.2);
+}
+
+.landing-dm .pres-punch p {
+  margin: 0;
+  font-family: Geologica, Inter, sans-serif;
+  font-size: calc(1.35 * var(--u));
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--vh-color-primary-deep);
+}
+
+/* Slide 2 — consequences */
+.landing-dm .pres-slide--impact .pres-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: calc(1.6 * var(--u));
+  align-items: stretch;
+}
+
+.landing-dm .pres-calc {
+  background: var(--vh-panel-hero);
+  border: 1px solid var(--vh-panel-hero-line);
+  border-radius: calc(1.2 * var(--u));
+  padding: calc(1.6 * var(--u));
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: calc(1 * var(--u));
+}
+
+.landing-dm .pres-calc__label {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: calc(0.72 * var(--u));
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--vh-hero-sub);
+}
+
+.landing-dm .pres-calc__formula {
+  margin: 0;
+  font-family: Geologica, Inter, sans-serif;
+  font-size: calc(1.5 * var(--u));
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.landing-dm .pres-calc__formula em {
+  font-style: normal;
+  color: var(--vh-color-primary);
+}
+
+.landing-dm .pres-calc__note {
+  margin: 0;
+  font-size: calc(0.82 * var(--u));
+  line-height: 1.45;
+  color: var(--vh-hero-sub);
+}
+
+.landing-dm .pres-impact-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.55 * var(--u));
+}
+
+.landing-dm .pres-impact-list li {
+  font-size: calc(0.92 * var(--u));
+  line-height: 1.35;
+  color: var(--dm-muted);
+  padding-left: calc(1 * var(--u));
+  position: relative;
+}
+
+.landing-dm .pres-impact-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--vh-color-primary);
+  font-weight: 700;
+}
+
+/* Slide 3 — factors */
+.landing-dm .pres-slide--factors .pres-body {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: calc(1.2 * var(--u));
+}
+
+.landing-dm .pres-factor {
+  text-align: center;
+  padding: calc(1.4 * var(--u)) calc(1 * var(--u));
+}
+
+.landing-dm .pres-factor__num {
+  display: block;
+  font-family: Geologica, Inter, sans-serif;
+  font-size: calc(2.2 * var(--u));
+  font-weight: 800;
+  color: var(--pres-violet);
+  line-height: 1;
+  margin-bottom: calc(0.6 * var(--u));
+}
+
+.landing-dm .pres-factor__title {
+  margin: 0 0 calc(0.5 * var(--u));
+  font-size: calc(1.1 * var(--u));
+  font-weight: 700;
+  color: var(--dm-ink);
+}
+
+.landing-dm .pres-factor__text {
+  margin: 0;
+  font-size: calc(0.88 * var(--u));
+  line-height: 1.4;
+  color: var(--dm-muted);
+}
+
+/* Slide 4 — match table */
+.landing-dm .pres-slide--table .pres-body {
+  min-height: 0;
+  overflow: auto;
+}
+
+.landing-dm .pres-match-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: calc(0.88 * var(--u));
+  line-height: 1.35;
+}
+
+.landing-dm .pres-match-table th,
+.landing-dm .pres-match-table td {
+  padding: calc(0.85 * var(--u)) calc(1 * var(--u));
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--dm-border);
+}
+
+.landing-dm .pres-match-table thead th {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: calc(0.68 * var(--u));
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pres-violet);
+  background: var(--vh-color-secondary-l);
+  border-bottom: 2px solid rgba(107, 78, 255, 0.25);
+}
+
+.landing-dm .pres-match-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.landing-dm .pres-match-table tbody td:first-child {
+  font-weight: 600;
+  color: var(--dm-ink);
+  width: 22%;
+}
+
+.landing-dm .pres-match-table tbody td:nth-child(2) {
+  color: var(--dm-muted);
+  width: 42%;
+}
+
+.landing-dm .pres-match-table tbody td:nth-child(3) {
+  color: var(--vh-color-primary-deep);
+  font-weight: 500;
+  width: 36%;
+}
+
+/* Slide 5 — pipeline */
+.landing-dm .pres-slide--flow .pres-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: calc(1.5 * var(--u));
+}
+
+.landing-dm .pres-pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.landing-dm .pres-pipeline__step {
+  flex: 1;
+  min-width: calc(7 * var(--u));
+  position: relative;
+  padding: calc(1 * var(--u)) calc(0.75 * var(--u));
+  text-align: center;
+}
+
+.landing-dm .pres-pipeline__step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: calc(-0.35 * var(--u));
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: calc(1 * var(--u));
+  color: var(--dm-muted);
+  z-index: 1;
+}
+
+.landing-dm .pres-pipeline__num {
+  display: block;
+  width: calc(1.8 * var(--u));
+  height: calc(1.8 * var(--u));
+  margin: 0 auto calc(0.5 * var(--u));
+  border-radius: 50%;
+  background: var(--vh-color-secondary-l);
+  color: var(--pres-violet);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: calc(0.75 * var(--u));
+  font-weight: 700;
+  line-height: calc(1.8 * var(--u));
+}
+
+.landing-dm .pres-pipeline__label {
+  margin: 0;
+  font-size: calc(0.82 * var(--u));
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--dm-ink);
+}
+
+.landing-dm .pres-flow-note {
+  margin: 0;
+  text-align: center;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: calc(0.78 * var(--u));
+  letter-spacing: 0.04em;
+  color: var(--dm-muted);
+}
+
+/* Slide 6 — pricing */
+.landing-dm .pres-slide--price .pres-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: calc(1.6 * var(--u));
+  align-items: start;
+}
+
+.landing-dm .pres-price-main {
+  background: linear-gradient(145deg, #fff 0%, #f8fafc 100%);
+  border: 1px solid var(--dm-border);
+  border-radius: calc(1.2 * var(--u));
+  padding: calc(1.6 * var(--u));
+}
+
+.landing-dm .pres-price-main__total {
+  margin: 0 0 calc(1 * var(--u));
+  font-family: Geologica, Inter, sans-serif;
+  font-size: calc(2.8 * var(--u));
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--dm-ink);
+}
+
+.landing-dm .pres-price-main__total span {
+  font-size: calc(1 * var(--u));
+  font-weight: 600;
+  color: var(--dm-muted);
+}
+
+.landing-dm .pres-tranches {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.65 * var(--u));
+}
+
+.landing-dm .pres-tranches li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: calc(1 * var(--u));
+  padding: calc(0.65 * var(--u)) 0;
+  border-top: 1px solid var(--dm-border);
+  font-size: calc(0.92 * var(--u));
+  color: var(--dm-muted);
+}
+
+.landing-dm .pres-tranches strong {
+  font-family: Geologica, Inter, sans-serif;
+  font-size: calc(1.05 * var(--u));
+  color: var(--pres-violet);
+}
+
+.landing-dm .pres-compare {
+  padding: calc(1.2 * var(--u));
+  border-radius: calc(1 * var(--u));
+  background: var(--vh-color-primary-l);
+  border: 1px solid rgba(242, 101, 34, 0.15);
+}
+
+.landing-dm .pres-compare p {
+  margin: 0;
+  font-size: calc(0.92 * var(--u));
+  line-height: 1.45;
+  color: var(--vh-color-primary-deep);
+}
+
+/* Slide 7 — pilot */
+.landing-dm .pres-slide--pilot .pres-body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(1.2 * var(--u));
+}
+
+.landing-dm .pres-pilot-card {
+  height: 100%;
+}
+
+.landing-dm .pres-pilot-card--cta {
+  background:
+    radial-gradient(280px 200px at 100% 0%, rgba(107, 78, 255, 0.15), transparent 70%),
+    #fff;
+  border-color: rgba(107, 78, 255, 0.25);
+}
+
+.landing-dm .pres-actions--pilot {
+  margin-top: calc(1 * var(--u));
+}
+
+/* Presenter notes panel */
+.pres-notes-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: min(22rem, 90vw);
+  background: #fff;
+  border-left: 1px solid var(--dm-border, #e4e7ec);
+  box-shadow: -8px 0 32px rgba(16, 24, 40, 0.12);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+
+.pres-notes-panel.open {
+  transform: translateX(0);
+}
+
+.pres-notes-panel__head {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--dm-border, #e4e7ec);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pres-notes-panel__head h2 {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.pres-notes-panel__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #475467;
+}
+
+.pres-notes-panel__body h3 {
+  margin: 1rem 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b4eff;
+}
+
+.pres-notes-panel__body h3:first-child {
+  margin-top: 0;
+}
+
+.pres-notes-panel__body p {
+  margin: 0 0 0.5rem;
+}
+
+.pres-notes-panel__body .visual {
+  font-style: italic;
+  color: #98a2b3;
+  font-size: 0.75rem;
+}
+
+.pres-notes-toggle {
+  width: 100%;
+  margin-top: 0.35rem;
+  font-size: 0.6875rem;
+  padding: 0.4rem;
+}
+
+.landing-dm .pres-slidebar__nav button.preview-nav {
+  font-size: 0.6875rem;
+}
