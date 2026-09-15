@@ -7,7 +7,8 @@
 **https://make-kzk.github.io/vh48/**
 
 - [Каталог мокапов](https://make-kzk.github.io/vh48/)
-- [**MRD Design System**](https://make-kzk.github.io/vh48/design-system/) — презентации Marketing & Reputation Day
+- [**VibeHunt — дизайн-система**](https://make-kzk.github.io/vh48/design-system/vibehunt/) — токены и компоненты из мокапа
+- [**Альтернативная дизайн-система**](https://make-kzk.github.io/vh48/design-system/) — презентации Marketing & Reputation Day
 - [**VibeHunt mockup**](https://make-kzk.github.io/vh48/mockups/vibe-hunt/index.html) — из VibeHunt88/web
 - [Demo flow](https://make-kzk.github.io/vh48/mockups/demo/index.html) — упрощённый пример на vh48-роутере
 

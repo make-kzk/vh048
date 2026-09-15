@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeHunt — дизайн-система</title>
+  <meta name="description" content="Дизайн-система VibeHunt: токены, типографика и компоненты из click-through мокапа.">
+  <meta name="theme-color" content="#fafafa">
+  <link rel="stylesheet" href="../../mockups/vibe-hunt/vh-tokens.css">
+  <link rel="stylesheet" href="../../mockups/vibe-hunt/vh-components.css">
+  <link rel="stylesheet" href="../../mockups/vibe-hunt/landing-develop.css">
+  <link rel="stylesheet" href="vh-ds-page.css">
+</head>
+<body class="vh-ds">
+  <header class="vh-ds-topbar">
+    <div class="vh-ds-topbar__brand">
+      Vibe<span>Hunt</span> DS
+    </div>
+    <nav aria-label="Разделы">
+      <a href="#colors">Цвета</a>
+      <a href="#type">Типографика</a>
+      <a href="#components">Компоненты</a>
+      <a href="#landing">Landing</a>
+      <a href="#tokens">Токены</a>
+      <a href="../index.html">Alt DS</a>
+    </nav>
+    <button type="button" class="vh-ds-theme-btn" id="theme-toggle" aria-pressed="false">Dark theme</button>
+  </header>
+
+  <section class="vh-ds-hero">
+    <div class="vh-ds-hero__inner">
+      <p class="vh-ds-hero__eyebrow">vh48 · production mockup</p>
+      <h1 class="vh-ds-hero__title">дизайн-система <em>VibeHunt</em></h1>
+      <p class="vh-ds-hero__lead">
+        Токены и компоненты, извлечённые из
+        <a href="../../mockups/vibe-hunt/index.html">click-through мокапа</a>:
+        orange + violet бренд, Geologica/Onest, landing Develop.Me-style,
+        audience toggle и product sidebar.
+      </p>
+      <div class="vh-ds-hero__actions">
+        <a class="vh-btn vh-btn--primary" href="../../mockups/vibe-hunt/index.html">Открыть мокап →</a>
+        <a class="vh-btn vh-btn--outline-secondary" href="../index.html">Альтернативная DS</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="vh-ds-main">
+
+    <section class="vh-ds-section" id="colors">
+      <header class="vh-ds-section__head">
+        <h2>Цвета</h2>
+        <p>Brand, neutral, semantic и landing-override токены</p>
+      </header>
+
+      <h3 style="font-size:var(--vh-text-sm);font-weight:600;margin:0 0 0.75rem;color:var(--vh-color-muted)">Brand</h3>
+      <div class="vh-ds-grid vh-ds-grid--colors" style="margin-bottom:1.5rem">
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#f26522"></div><div class="vh-dswatch__meta"><strong>Primary</strong><code>--vh-color-primary</code></div></div>
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#d94f0a"></div><div class="vh-dswatch__meta"><strong>Primary hover</strong><code>--vh-color-primary-h</code></div></div>
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#fef0e8"></div><div class="vh-dswatch__meta"><strong>Primary tint</strong><code>--vh-color-primary-l</code></div></div>
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#b8450b"></div><div class="vh-dswatch__meta"><strong>Primary deep</strong><code>--vh-color-primary-deep</code></div></div>
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#6b4eff"></div><div class="vh-dswatch__meta"><strong>Secondary</strong><code>--vh-color-secondary</code></div></div>
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#5036e0"></div><div class="vh-dswatch__meta"><strong>Secondary hover</strong><code>--vh-color-secondary-h</code></div></div>
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#f0edff"></div><div class="vh-dswatch__meta"><strong>Secondary tint</strong><code>--vh-color-secondary-l</code></div></div>
+      </div>
+
+      <h3 style="font-size:var(--vh-text-sm);font-weight:600;margin:0 0 0.75rem;color:var(--vh-color-muted)">Landing (.landing-dm)</h3>
+      <div class="vh-ds-grid vh-ds-grid--colors" style="margin-bottom:1.5rem">
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#f7fbfb"></div><div class="vh-dswatch__meta"><strong>Page bg</strong><code>--dm-bg</code></div></div>
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#7ec8c4"></div><div class="vh-dswatch__meta"><strong>Teal accent</strong><code>--dm-teal</code></div></div>
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#101828"></div><div class="vh-dswatch__meta"><strong>Ink</strong><code>--dm-ink</code></div></div>
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#667085"></div><div class="vh-dswatch__meta"><strong>Muted</strong><code>--dm-muted</code></div></div>
+      </div>
+
+      <h3 style="font-size:var(--vh-text-sm);font-weight:600;margin:0 0 0.75rem;color:var(--vh-color-muted)">Vibe poles (ABCD)</h3>
+      <div class="vh-ds-grid vh-ds-grid--poles">
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#f26522"></div><div class="vh-dswatch__meta"><strong>A3</strong><code>--vh-pole-a3</code></div></div>
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#e8a020"></div><div class="vh-dswatch__meta"><strong>B3</strong><code>--vh-pole-b3</code></div></div>
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#6b4eff"></div><div class="vh-dswatch__meta"><strong>C3</strong><code>--vh-pole-c3</code></div></div>
+        <div class="vh-dswatch"><div class="vh-dswatch__color" style="background:#3f8fe8"></div><div class="vh-dswatch__meta"><strong>D3</strong><code>--vh-pole-d3</code></div></div>
+      </div>
+    </section>
+
+    <section class="vh-ds-section" id="type">
+      <header class="vh-ds-section__head">
+        <h2>Типографика</h2>
+        <p>Geologica (display) · Onest/Inter (body) · JetBrains Mono (data)</p>
+      </header>
+      <div class="vh-ds-panel">
+        <div class="vh-ds-type-row">
+          <div class="vh-ds-type-row__meta">display<br>--vh-text-5xl</div>
+          <div class="vh-ds-type-row__sample" style="font-family:var(--vh-font-display);font-size:var(--vh-text-5xl);font-weight:800;line-height:1.1;letter-spacing:-0.03em">создание успешной карьеры</div>
+        </div>
+        <div class="vh-ds-type-row">
+          <div class="vh-ds-type-row__meta">heading<br>--vh-text-2xl</div>
+          <div class="vh-ds-type-row__sample" style="font-family:var(--vh-font-display);font-size:var(--vh-text-2xl);font-weight:700">Карьерный Вайб</div>
+        </div>
+        <div class="vh-ds-type-row">
+          <div class="vh-ds-type-row__meta">body<br>--vh-text-base</div>
+          <div class="vh-ds-type-row__sample" style="font-size:var(--vh-text-base);line-height:var(--vh-lh-base);color:var(--vh-color-slate)">Сотрудники, чьи сильные стороны совпадают с требованиями роли, показывают на 21–36% более высокую производительность.</div>
+        </div>
+        <div class="vh-ds-type-row">
+          <div class="vh-ds-type-row__meta">mono<br>eyebrow</div>
+          <div class="vh-ds-type-row__sample" style="font-family:var(--vh-font-mono);font-size:var(--vh-text-xs);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--vh-color-muted)">Harvard Business Review · 2024</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vh-ds-section" id="components">
+      <header class="vh-ds-section__head">
+        <h2>Компоненты</h2>
+        <p>Базовые UI-примитивы из vh-components.css</p>
+      </header>
+
+      <div class="vh-ds-panel" style="margin-bottom:1rem">
+        <p style="font-size:var(--vh-text-sm);font-weight:600;margin:0 0 1rem;color:var(--vh-color-muted)">Buttons (.vh-btn)</p>
+        <div class="vh-ds-comp-row">
+          <button type="button" class="vh-btn vh-btn--primary">Primary</button>
+          <button type="button" class="vh-btn vh-btn--secondary">Secondary</button>
+          <button type="button" class="vh-btn vh-btn--outline-primary">Outline primary</button>
+          <button type="button" class="vh-btn vh-btn--outline-secondary">Outline secondary</button>
+          <button type="button" class="vh-btn vh-btn--ghost">Ghost</button>
+          <button type="button" class="vh-btn vh-btn--primary vh-btn--lg">Large CTA</button>
+        </div>
+      </div>
+
+      <div class="vh-ds-panel" style="margin-bottom:1rem">
+        <p style="font-size:var(--vh-text-sm);font-weight:600;margin:0 0 1rem;color:var(--vh-color-muted)">Logo (.vh-logo)</p>
+        <button type="button" class="vh-logo" style="font-size:1.5rem">Vibe<span>Hunt</span></button>
+      </div>
+
+      <div class="vh-ds-panel vh-ds-panel--dark">
+        <p style="font-size:var(--vh-text-sm);font-weight:600;margin:0 0 1rem;color:var(--vh-hero-sub)">Hero panel (dark surfaces)</p>
+        <p style="font-family:var(--vh-font-display);font-size:var(--vh-text-2xl);font-weight:800;margin:0 0 0.5rem">A3W · Карьерный код</p>
+        <p style="color:var(--vh-hero-sub);font-size:var(--vh-text-sm);margin:0">--vh-panel-hero · --vh-hero-text · pole accents on dark</p>
+      </div>
+    </section>
+
+    <section class="vh-ds-section" id="landing">
+      <header class="vh-ds-section__head">
+        <h2>Landing patterns</h2>
+        <p>Develop.Me-inspired блоки из landing-develop.css</p>
+      </header>
+
+      <div class="vh-ds-preview-frame" style="margin-bottom:1.5rem">
+        <div class="landing-dm" data-audience="employee" id="audience-demo">
+          <div class="vh-ds-mini-hero">
+            <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center;margin-bottom:1.25rem">
+              <div class="audience-toggle audience-toggle--hero" role="tablist" aria-label="Аудитория">
+                <span class="audience-toggle__thumb" aria-hidden="true"></span>
+                <button type="button" class="audience-toggle__option" data-aud-switch="employee" role="tab" aria-selected="true">Для сотрудников</button>
+                <button type="button" class="audience-toggle__option" data-aud-switch="company" role="tab" aria-selected="false">Для компаний</button>
+              </div>
+            </div>
+            <button type="button" class="vh-hunt-btn vh-hunt-btn--hero vh-hunt-btn--primary">
+              Начать охоту <span class="vh-hunt-btn__arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
+        <p class="vh-ds-preview-label">Audience toggle + Hunt CTA — orange (employee) / violet (company)</p>
+      </div>
+
+      <div class="vh-ds-preview-frame">
+        <div class="landing-dm" style="display:flex;padding:1rem;gap:0">
+          <aside class="preview-sidebar vh-ds-mini-sidebar" aria-label="Sidebar preview">
+            <div class="preview-sidebar__brand">
+              <span class="preview-sidebar__logo">Vibe<span>Hunt</span></span>
+            </div>
+            <nav class="preview-sidebar__nav">
+              <span class="preview-nav preview-nav--active">
+                <svg class="preview-nav__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.5l2.2 4.5 5 .7-3.6 3.5.9 5.1L10 14l-4.5 2.3.9-5.1-3.6-3.5 5-.7L10 2.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                Карьерный Вайб
+              </span>
+              <span class="preview-nav">
+                <svg class="preview-nav__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="6.5" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M7 6.5V5a3 3 0 0 1 6 0v1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                Вакансии
+              </span>
+            </nav>
+            <div class="preview-sidebar__user">
+              <span class="preview-sidebar__avatar" aria-hidden="true">А</span>
+              <span class="preview-sidebar__user-info">
+                <span class="preview-sidebar__name">Алия К.</span>
+                <span class="preview-sidebar__email">aliya@vibe.test</span>
+              </span>
+            </div>
+          </aside>
+        </div>
+        <p class="vh-ds-preview-label">Product sidebar (.preview-sidebar) — employee cabinet chrome</p>
+      </div>
+
+      <div style="margin-top:1.5rem;display:grid;gap:0.75rem">
+        <div class="vh-ds-rule"><strong>Audience-aware CTA</strong>Employee → orange primary; Company → violet secondary. Переключается через <code>data-audience</code> на <code>.landing-dm</code>.</div>
+        <div class="vh-ds-rule"><strong>Bounce micro-interaction</strong>Все <code>button</code> получают spring-bounce через <code>.vh-bounce-play</code> (см. vh-components.css).</div>
+        <div class="vh-ds-rule"><strong>Dual theme</strong><code>:root[data-theme="dark"]</code> переопределяет semantic tokens; компоненты читают одни и те же имена.</div>
+      </div>
+    </section>
+
+    <section class="vh-ds-section" id="tokens">
+      <header class="vh-ds-section__head">
+        <h2>CSS-токены</h2>
+        <p>Single source of truth — mockups/vibe-hunt/vh-tokens.css</p>
+      </header>
+      <pre class="vh-ds-token-block"><span class="c">/* mockups/vibe-hunt/vh-tokens.css */</span>
+<span class="p">--vh-color-primary</span>: <span class="v">#f26522</span>;
+<span class="p">--vh-color-secondary</span>: <span class="v">#6b4eff</span>;
+<span class="p">--vh-font-display</span>: <span class="v">"Geologica Variable", "Geologica", …</span>;
+<span class="p">--vh-font-family</span>: <span class="v">"Onest Variable", "Onest", …</span>;
+<span class="p">--vh-radius-md</span>: <span class="v">10px</span>;
+<span class="p">--vh-space-4</span>: <span class="v">16px</span>;
+<span class="p">--vh-panel-hero</span>: <span class="v">#17171c</span>; <span class="c">/* dark vibe surfaces */</span></pre>
+      <p style="margin-top:1rem;font-size:var(--vh-text-sm);color:var(--vh-color-muted)">
+        Подключение: <code>vh-tokens.css</code> → <code>vh-components.css</code> → <code>landing-develop.css</code> (для landing).
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="vh-ds-footer">
+    <a href="../../index.html">← vh48 catalog</a>
+    · <a href="../index.html">Альтернативная DS</a>
+    · <a href="../../mockups/vibe-hunt/index.html">VibeHunt mockup</a>
+    · 2026
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      btn.addEventListener('click', function () {
+        var dark = root.getAttribute('data-theme') === 'dark';
+        root.setAttribute('data-theme', dark ? 'light' : 'dark');
+        btn.textContent = dark ? 'Dark theme' : 'Light theme';
+        btn.setAttribute('aria-pressed', dark ? 'false' : 'true');
+      });
+
+      var demo = document.getElementById('audience-demo');
+      demo.querySelectorAll('[data-aud-switch]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var aud = el.getAttribute('data-aud-switch');
+          demo.setAttribute('data-audience', aud);
+          demo.querySelectorAll('[data-aud-switch]').forEach(function (b) {
+            b.setAttribute('aria-selected', b.getAttribute('data-aud-switch') === aud ? 'true' : 'false');
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

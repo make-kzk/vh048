@@ -1,0 +1,298 @@
+/* VibeHunt design system — documentation page layout only */
+
+html { scroll-behavior: smooth; }
+
+.vh-ds {
+  min-height: 100dvh;
+  background: var(--vh-bg-page);
+  color: var(--vh-color-ink);
+}
+
+.vh-ds-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: color-mix(in srgb, var(--vh-bg-page) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--vh-border-color);
+}
+
+.vh-ds-topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--vh-font-display);
+  font-weight: var(--vh-fw-extrabold);
+  font-size: 0.9375rem;
+  letter-spacing: -0.02em;
+}
+
+.vh-ds-topbar__brand span { color: var(--vh-color-primary); }
+
+.vh-ds-topbar nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.vh-ds-topbar a {
+  font-size: 0.8125rem;
+  font-weight: var(--vh-fw-medium);
+  color: var(--vh-color-muted);
+  text-decoration: none;
+}
+
+.vh-ds-topbar a:hover { color: var(--vh-color-ink); }
+
+.vh-ds-hero {
+  padding: clamp(3rem, 8vw, 5.5rem) 1.5rem;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(126, 200, 196, 0.22), transparent 55%),
+    radial-gradient(ellipse 60% 50% at 90% 20%, rgba(107, 78, 255, 0.1), transparent 50%),
+    var(--vh-bg-page);
+  border-bottom: 1px solid var(--vh-border-color);
+}
+
+.vh-ds-hero__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.vh-ds-hero__eyebrow {
+  font-family: var(--vh-font-mono);
+  font-size: var(--vh-text-xs);
+  font-weight: var(--vh-fw-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vh-color-muted);
+  margin: 0 0 0.75rem;
+}
+
+.vh-ds-hero__title {
+  font-family: var(--vh-font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: var(--vh-fw-extrabold);
+  line-height: var(--vh-lh-tight);
+  letter-spacing: -0.03em;
+  margin: 0 0 1rem;
+  max-width: 18ch;
+}
+
+.vh-ds-hero__title em {
+  font-style: normal;
+  color: var(--vh-color-primary);
+}
+
+.vh-ds-hero__lead {
+  max-width: 42rem;
+  font-size: var(--vh-text-lg);
+  color: var(--vh-color-slate);
+  margin: 0 0 1.5rem;
+  line-height: var(--vh-lh-relaxed);
+}
+
+.vh-ds-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.vh-ds-main {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.vh-ds-section {
+  margin-bottom: 3.5rem;
+}
+
+.vh-ds-section__head {
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--vh-color-primary);
+}
+
+.vh-ds-section__head h2 {
+  margin: 0;
+  font-family: var(--vh-font-display);
+  font-size: var(--vh-text-2xl);
+  font-weight: var(--vh-fw-bold);
+  letter-spacing: -0.02em;
+}
+
+.vh-ds-section__head p {
+  margin: 0.35rem 0 0;
+  color: var(--vh-color-muted);
+  font-size: var(--vh-text-sm);
+}
+
+.vh-ds-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.vh-dswatch {
+  border-radius: var(--vh-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--vh-border-color);
+  background: var(--vh-bg-surface);
+}
+
+.vh-dswatch__color { height: 4rem; }
+
+.vh-dswatch__meta {
+  padding: 0.75rem 1rem;
+  font-size: var(--vh-text-sm);
+}
+
+.vh-dswatch__meta strong {
+  display: block;
+  font-weight: var(--vh-fw-semibold);
+}
+
+.vh-dswatch__meta code {
+  font-family: var(--vh-font-mono);
+  font-size: 0.6875rem;
+  color: var(--vh-color-muted);
+}
+
+.vh-ds-panel {
+  background: var(--vh-bg-surface);
+  border: 1px solid var(--vh-border-color);
+  border-radius: var(--vh-radius-lg);
+  padding: 1.25rem;
+}
+
+.vh-ds-panel--dark {
+  background: var(--vh-panel-hero);
+  border-color: var(--vh-panel-hero-line);
+  color: var(--vh-hero-text);
+}
+
+.vh-ds-type-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--vh-border-color);
+}
+
+.vh-ds-type-row:last-child { border-bottom: none; }
+
+.vh-ds-type-row__meta {
+  flex: 0 0 9rem;
+  font-family: var(--vh-font-mono);
+  font-size: 0.6875rem;
+  color: var(--vh-color-muted);
+}
+
+.vh-ds-type-row__sample { flex: 1; min-width: 0; }
+
+.vh-ds-comp-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.vh-ds-token-block {
+  background: var(--vh-gray-900);
+  color: #e4e4ea;
+  border-radius: var(--vh-radius-md);
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  font-family: var(--vh-font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.vh-ds-token-block .c { color: #6a9955; }
+.vh-ds-token-block .p { color: #9cdcfe; }
+.vh-ds-token-block .v { color: #ce9178; }
+
+.vh-ds-preview-frame {
+  border-radius: var(--vh-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--vh-border-color);
+  background: #f7fbfb;
+}
+
+.vh-ds-preview-frame .landing-dm {
+  min-height: auto;
+}
+
+.vh-ds-preview-label {
+  padding: 0.625rem 1rem;
+  font-size: var(--vh-text-xs);
+  font-weight: var(--vh-fw-semibold);
+  color: var(--vh-color-muted);
+  border-top: 1px solid var(--vh-border-color);
+  background: var(--vh-bg-surface);
+}
+
+.vh-ds-rule {
+  padding: 1rem 1.25rem;
+  background: var(--vh-bg-surface);
+  border-left: 4px solid var(--vh-color-primary);
+  border-radius: 0 var(--vh-radius-sm) var(--vh-radius-sm) 0;
+  font-size: var(--vh-text-sm);
+  border-top: 1px solid var(--vh-border-color);
+  border-right: 1px solid var(--vh-border-color);
+  border-bottom: 1px solid var(--vh-border-color);
+}
+
+.vh-ds-rule strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.vh-ds-footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: var(--vh-text-xs);
+  color: var(--vh-color-muted);
+  border-top: 1px solid var(--vh-border-color);
+}
+
+.vh-ds-footer a {
+  color: var(--vh-color-primary-deep);
+  text-decoration: none;
+}
+
+.vh-ds-theme-btn {
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: var(--vh-fw-semibold);
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--vh-radius-sm);
+  border: 1px solid var(--vh-border-color);
+  background: var(--vh-bg-surface);
+  color: var(--vh-color-ink);
+  cursor: pointer;
+}
+
+.vh-ds-mini-sidebar {
+  width: 14rem;
+  flex-shrink: 0;
+}
+
+.vh-ds-mini-hero {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .vh-ds-grid--colors { grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); }
+  .vh-ds-grid--poles { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 639px) {
+  .vh-ds-topbar nav { display: none; }
+}

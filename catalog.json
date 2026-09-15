@@ -1,9 +1,16 @@
 {
   "mockups": [
     {
-      "slug": "mrd-design-system",
-      "title": "MRD Design System",
-      "summary": "Дизайн-система презентаций Marketing & Reputation Day: цвета, типографика, шаблоны слайдов из спикерских PDF.",
+      "slug": "vibehunt-design-system",
+      "title": "VibeHunt — дизайн-система",
+      "summary": "Production DS из click-through мокапа: orange/violet бренд, Geologica/Onest, landing, sidebar, dark theme.",
+      "path": "design-system/vibehunt/index.html",
+      "tags": ["design-system", "vibehunt", "production"]
+    },
+    {
+      "slug": "alt-design-system",
+      "title": "Альтернативная дизайн-система",
+      "summary": "Альтернативная DS для презентаций: цвета, типографика, шаблоны слайдов из PDF Marketing & Reputation Day.",
       "path": "design-system/index.html",
       "tags": ["design-system", "mrd", "presentations"]
     },
