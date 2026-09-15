@@ -1,0 +1,89 @@
+/* =====================================================
+   MRD — Marketing & Reputation Day
+   Design tokens extracted from speaker decks:
+   · Данияр Косназаров (MRD template)
+   · Нафиса Караханова (MRD template + hand-drawn accents)
+   · Мухамед Багдатулы (HeadHunter co-brand variant)
+   ===================================================== */
+
+:root {
+  /* ── Brand red (PDF text color #ee0815 / #e00815) ── */
+  --mrd-red: #ee0815;
+  --mrd-red-deep: #e00815;
+  --mrd-red-soft: rgba(238, 8, 21, 0.08);
+
+  /* ── Neutrals ── */
+  --mrd-white: #ffffff;
+  --mrd-ink: #0f0f0f;
+  --mrd-gray-900: #1a1a1a;
+  --mrd-gray-700: #333333;
+  --mrd-gray-500: #808080;
+  --mrd-gray-400: #aeaeae;
+  --mrd-gray-300: #d8d8d8;
+  --mrd-gray-200: #ececec;
+
+  /* ── HeadHunter co-brand (Багдатулы deck) ── */
+  --mrd-hh-cream: #fff8f0;
+  --mrd-hh-red: #ff0002;
+  --mrd-hh-ink: #231f20;
+  --mrd-hh-muted: #5b5b5b;
+
+  /* ── Typography ──
+     Source decks: Helvetica Neue (Bold / Regular / Italic / Light).
+     Web stack uses Inter — closest free substitute with Cyrillic. */
+  --mrd-font:
+    "Inter", "Helvetica Neue", Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+  --mrd-font-display: var(--mrd-font);
+
+  --mrd-text-xs: 0.6875rem; /* 11px — footer */
+  --mrd-text-sm: 0.8125rem; /* 13px — caption */
+  --mrd-text-base: 1rem; /* 16px — body */
+  --mrd-text-lg: 1.25rem; /* 20px — subhead */
+  --mrd-text-xl: 1.5rem; /* 24px */
+  --mrd-text-2xl: 2rem; /* 32px */
+  --mrd-text-3xl: 2.75rem; /* 44px — section title */
+  --mrd-text-4xl: 3.5rem; /* 56px — stat */
+  --mrd-text-5xl: clamp(2.5rem, 6vw, 4.5rem); /* cover title */
+  --mrd-text-6xl: clamp(3rem, 8vw, 5.5rem); /* hero stat */
+
+  --mrd-lh-tight: 1.1;
+  --mrd-lh-snug: 1.25;
+  --mrd-lh-base: 1.45;
+  --mrd-lh-relaxed: 1.6;
+
+  --mrd-fw-light: 300;
+  --mrd-fw-regular: 400;
+  --mrd-fw-medium: 500;
+  --mrd-fw-semibold: 600;
+  --mrd-fw-bold: 700;
+  --mrd-fw-black: 900;
+
+  /* ── Spacing ── */
+  --mrd-space-1: 4px;
+  --mrd-space-2: 8px;
+  --mrd-space-3: 12px;
+  --mrd-space-4: 16px;
+  --mrd-space-5: 20px;
+  --mrd-space-6: 24px;
+  --mrd-space-8: 32px;
+  --mrd-space-10: 40px;
+  --mrd-space-12: 48px;
+  --mrd-space-16: 64px;
+  --mrd-space-20: 80px;
+
+  /* ── Layout ── */
+  --mrd-slide-ratio: 16 / 9;
+  --mrd-slide-max: 960px;
+  --mrd-stripe-width: 6px;
+  --mrd-radius-sm: 4px;
+  --mrd-radius-md: 12px;
+  --mrd-radius-lg: 20px;
+  --mrd-radius-photo: 16px;
+
+  /* ── Motion ── */
+  --mrd-duration: 200ms;
+  --mrd-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Shadows (minimal — decks are flat) ── */
+  --mrd-shadow-photo: 0 8px 32px rgba(0, 0, 0, 0.18);
+}

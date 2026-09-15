@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeHunt Business — презентация для HRD</title>
+  <meta name="theme-color" content="#f7fbfb">
+  <link rel="stylesheet" href="../../../mockups/vibe-hunt/vh-tokens.css">
+  <link rel="stylesheet" href="../../../mockups/vibe-hunt/vh-components.css">
+  <link rel="stylesheet" href="../../../mockups/vibe-hunt/style.css">
+  <link rel="stylesheet" href="../../../mockups/vibe-hunt/landing-develop.css">
+  <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+  <div class="landing-dm pres-root" data-audience="company">
+    <aside class="preview-sidebar preview-sidebar--company pres-slidebar" aria-label="Навигация по слайдам">
+      <div class="preview-sidebar__brand">
+        <span class="preview-sidebar__logo">Vibe<span>Hunt</span></span>
+        <span class="preview-sidebar__badge">Business</span>
+      </div>
+
+      <nav class="preview-sidebar__nav pres-slidebar__nav" role="tablist" aria-label="Слайды презентации">
+        <button type="button" class="preview-nav preview-nav--company preview-nav--active" role="tab" aria-selected="true" data-slide="0">
+          Успешная команда
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="1">
+          Что стоит найм вслепую
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="2">
+          Что делает платформа
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="3">
+          Кабинет HR
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="4">
+          Результат и пилот
+        </button>
+      </nav>
+
+      <div class="pres-slidebar__foot">
+        <p class="pres-slidebar__progress" id="pres-progress">1 / 5</p>
+        <div class="pres-slidebar__controls">
+          <button type="button" class="vh-btn" id="pres-prev" disabled>← Назад</button>
+          <button type="button" class="vh-btn vh-btn--primary" id="pres-next">Далее →</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="pres-stage">
+
+      <!-- 1 — Оффер -->
+      <section class="pres-slide pres-slide--intro active" data-slide-panel="0" aria-label="Успешная команда">
+        <header class="pres-head">
+          <p class="pres-eyebrow">VibeHunt Business · презентация для HR-директора</p>
+        </header>
+
+        <div class="pres-body">
+          <div class="pres-intro__copy">
+            <div>
+              <h1 class="pres-title pres-title--hero">
+                <em class="pres-logo"><span>Vibe</span><span>Hunt</span></em> — платформа для
+                создания <em>успешной команды</em>
+              </h1>
+              <p class="pres-lead">
+                Профиль роли, culture fit и карта навыков в одном кабинете HR.
+                Вы нанимаете и растите людей по данным, а не по впечатлению с финального интервью.
+              </p>
+            </div>
+
+            <div class="pres-kpis">
+              <div class="pres-kpi">
+                <strong>58%</strong>
+                <span>сокращают время первичного скрининга</span>
+              </div>
+              <div class="pres-kpi">
+                <strong>83%</strong>
+                <span>точнее оценивают culture fit до финала</span>
+              </div>
+              <div class="pres-kpi">
+                <strong>46%</strong>
+                <span>снижают текучесть на испытательном сроке</span>
+              </div>
+            </div>
+
+            <p class="pres-source">
+              Сотрудники, чьи сильные стороны совпадают с требованиями роли, показывают на 21–36%
+              более высокую производительность. <strong>Harvard Business Review</strong>
+            </p>
+
+            <div class="pres-actions">
+              <a class="vh-hunt-btn vh-hunt-btn--primary" href="../../../mockups/vibe-hunt/index.html">
+                смотреть продукт <span class="vh-hunt-btn__arrow" aria-hidden="true">→</span>
+              </a>
+              <span class="pres-trust">
+                <span>Бесплатный старт · ~25 минут</span>
+                <i aria-hidden="true"></i>
+                <span>Более 50 факторов профиля</span>
+              </span>
+            </div>
+          </div>
+
+          <aside class="pres-match" aria-label="Пример совпадения кандидата с профилем роли">
+            <div class="pres-match__top">
+              <span class="pres-match__eyebrow">Senior Product Manager</span>
+              <span class="pres-match__badge">FinTech · 12 кандидатов</span>
+            </div>
+
+            <div class="pres-match__score">
+              <strong>87%</strong>
+              <span>совпадение с профилем роли<br>и ценностями команды</span>
+            </div>
+
+            <ul class="pres-match__rows">
+              <li>
+                <span class="pres-match__avatar" aria-hidden="true">Д</span>
+                <span class="pres-match__person">
+                  <strong>Дмитрий К.</strong>
+                  <span>Координатор · Мотиватор</span>
+                </span>
+                <em class="pres-match__pct">87%</em>
+              </li>
+              <li>
+                <span class="pres-match__avatar" aria-hidden="true">И</span>
+                <span class="pres-match__person">
+                  <strong>Игорь М.</strong>
+                  <span>Генератор идей</span>
+                </span>
+                <em class="pres-match__pct">81%</em>
+              </li>
+              <li>
+                <span class="pres-match__avatar" aria-hidden="true">А</span>
+                <span class="pres-match__person">
+                  <strong>Анна С.</strong>
+                  <span>Координатор</span>
+                </span>
+                <em class="pres-match__pct">76%</em>
+              </li>
+            </ul>
+
+            <div class="pres-match__chips" aria-hidden="true">
+              <span>лидерство</span>
+              <span>смыслы</span>
+              <span>автономность</span>
+              <span>Product Lead</span>
+              <span>Analyst</span>
+            </div>
+
+            <p class="pres-match__foot">
+              Функциональные роли, навыки и culture fit сверяются с профилем позиции до первого звонка.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- 2 — Проблема -->
+      <section class="pres-slide pres-slide--pain" data-slide-panel="1" hidden aria-label="Что стоит найм вслепую">
+        <header class="pres-head">
+          <p class="pres-eyebrow">Проблема</p>
+          <div class="pres-head__row">
+            <h2 class="pres-title">Резюме не показывает, <em>как человек работает</em></h2>
+            <p class="pres-lead">
+              Мотивация, ценности и функциональная роль всплывают уже после оффера — когда цена
+              ошибки максимальна.
+            </p>
+          </div>
+        </header>
+
+        <div class="pres-body">
+          <div class="pres-pain__grid">
+            <article class="pres-card pres-pain">
+              <div class="pres-pain__head">
+                <span class="pres-pain__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10" stroke-linecap="round"/></svg>
+                </span>
+                <h3 class="pres-card__title">Скрининг вручную</h3>
+              </div>
+              <p class="pres-card__text">
+                Рекрутер сверяет профили в таблицах: навыки, стек, опыт. По резюме нельзя понять
+                драйверы и совместимость с командой.
+              </p>
+              <p class="pres-pain__quote">«Бесконечные таблицы и ручная сверка профилей»</p>
+            </article>
+
+            <article class="pres-card pres-pain">
+              <div class="pres-pain__head">
+                <span class="pres-pain__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 3l9 16H3l9-16z" stroke-linejoin="round"/><path d="M12 9v5M12 16.5v.5" stroke-linecap="round"/></svg>
+                </span>
+                <h3 class="pres-card__title">Решение на финале — субъективное</h3>
+              </div>
+              <p class="pres-card__text">
+                У HR и нанимающего менеджера нет общего языка: цель позиции, KPI и ценности не
+                зафиксированы, финал сводится к «понравился / не понравился».
+              </p>
+              <p class="pres-pain__quote">«Субъективные догадки на финале»</p>
+            </article>
+
+            <article class="pres-card pres-pain">
+              <div class="pres-pain__head">
+                <span class="pres-pain__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M16 17l4-4-4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 13H9" stroke-linecap="round"/><path d="M12 4H5v18h7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <h3 class="pres-card__title">Уход после оффера</h3>
+              </div>
+              <p class="pres-card__text">
+                Ожидания по роли и культуре не совпали, адаптация идёт без KPI на первые 90 дней —
+                и воронку приходится проходить заново.
+              </p>
+              <p class="pres-pain__quote">«Удержание падает сразу после оффера»</p>
+            </article>
+
+            <article class="pres-card pres-pain">
+              <div class="pres-pain__head">
+                <span class="pres-pain__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M6.7 7.3l3.6 3M17.3 7.3l-3.6 3M6.7 16.7l3.6-3M17.3 16.7l-3.6-3" stroke-linecap="round"/></svg>
+                </span>
+                <h3 class="pres-card__title">Слепая зона внутри компании</h3>
+              </div>
+              <p class="pres-card__text">
+                Нет карты навыков и карьерных треков: компания ищет на рынке то, что уже есть
+                внутри, а сильные специалисты уходят за ростом.
+              </p>
+              <p class="pres-pain__quote">«Растим извне то, что уже есть внутри»</p>
+            </article>
+          </div>
+
+          <aside class="pres-cost" aria-label="Цена ошибки найма">
+            <div>
+              <p class="pres-cost__label">Цена вопроса</p>
+              <p class="pres-cost__value">Ошибка найма = <em>3–6 окладов</em></p>
+            </div>
+            <p class="pres-cost__text">
+              Подбор, адаптация, недоделанные задачи и повторный поиск. Для руководящей роли счёт
+              идёт кварталами продукта, а не деньгами.
+            </p>
+            <ul class="pres-cost__rows">
+              <li><strong>2–4</strong> недели уходит на ручной скрининг одной позиции</li>
+              <li><strong>50+</strong> факторов профиля не видно ни в резюме, ни на интервью</li>
+              <li><strong>7</strong> открытых ролей в средней команде — и столько же профилей вручную</li>
+            </ul>
+            <p class="pres-cost__note">Оценки рынка подбора; уточняются на пилоте по вашим данным.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- 3 — Решение -->
+      <section class="pres-slide pres-slide--solution" data-slide-panel="2" hidden aria-label="Что делает платформа">
+        <header class="pres-head">
+          <p class="pres-eyebrow pres-eyebrow--violet">Решение</p>
+          <div class="pres-head__row">
+            <h2 class="pres-title">VibeHunt берёт на себя <em>сложную работу</em></h2>
+            <p class="pres-lead">
+              Платформа анализирует более 50 факторов и собирает профессиональный профиль, по
+              которому команда растёт осознанно.
+            </p>
+          </div>
+        </header>
+
+        <div class="pres-body">
+          <article class="pres-card pres-solution">
+            <p class="pres-card__label">Точность</p>
+            <h3 class="pres-card__title">Совпадение с позицией</h3>
+            <ul class="pres-list">
+              <li>цели позиции и KPI адаптации</li>
+              <li>функциональные роли в команде</li>
+              <li>culture fit по ценностям</li>
+            </ul>
+          </article>
+
+          <article class="pres-card pres-solution">
+            <p class="pres-card__label">Скорость</p>
+            <h3 class="pres-card__title">Ускорение подбора</h3>
+            <ul class="pres-list">
+              <li>дополнительные источники кандидатов</li>
+              <li>автоматизация подготовки встреч</li>
+              <li>резюмирование информации по кандидату</li>
+            </ul>
+          </article>
+
+          <article class="pres-card pres-solution">
+            <p class="pres-card__label">Удобство</p>
+            <h3 class="pres-card__title">Единый кабинет HR</h3>
+            <ul class="pres-list">
+              <li>вся информация в одном окне</li>
+              <li>рекомендации по результатам интервью</li>
+              <li>рекомендации по подготовке офферов</li>
+            </ul>
+          </article>
+
+          <article class="pres-card pres-solution pres-solution--orange">
+            <p class="pres-card__label">Профиль</p>
+            <h3 class="pres-card__title">Открытый диалог с компанией</h3>
+            <ul class="pres-list">
+              <li>какой функционал наиболее приоритетный</li>
+              <li>что даёт максимальную мотивацию</li>
+              <li>как обеспечить лучшую адаптацию</li>
+            </ul>
+          </article>
+
+          <article class="pres-card pres-solution pres-solution--orange">
+            <p class="pres-card__label">Автоматизация</p>
+            <h3 class="pres-card__title">Подготовка и согласования</h3>
+            <ul class="pres-list">
+              <li>назначение встреч без переписки</li>
+              <li>план интервью под конкретную беседу</li>
+              <li>запись и транскрибация звонков</li>
+            </ul>
+          </article>
+
+          <article class="pres-card pres-solution pres-solution--orange">
+            <p class="pres-card__label">Кадровый резерв</p>
+            <h3 class="pres-card__title">Рост внутри компании</h3>
+            <ul class="pres-list">
+              <li>карта навыков команды: текущий и требуемый</li>
+              <li>резерв при появлении актуальных вакансий</li>
+              <li>планы развития и внутренняя мобильность</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="pres-foot-note">
+          <strong>50+ факторов профиля</strong>
+          <i aria-hidden="true">·</i>
+          <span>рекрутинг, адаптация, управление талантами и карта команды — в одном кабинете</span>
+        </p>
+      </section>
+
+      <!-- 4 — Продукт -->
+      <section class="pres-slide pres-slide--product" data-slide-panel="3" hidden aria-label="Кабинет HR">
+        <header class="pres-head">
+          <p class="pres-eyebrow pres-eyebrow--violet">Как это выглядит в работе</p>
+          <div class="pres-head__row">
+            <h2 class="pres-title">Кандидаты приходят <em>уже сверенными</em> с профилем роли</h2>
+          </div>
+        </header>
+
+        <div class="pres-body">
+          <ol class="pres-steps">
+            <li>
+              <strong>Профиль роли</strong>
+              <span>Цель позиции, KPI адаптации, функциональные роли, навыки и culture fit
+                фиксируются один раз — вместе с нанимающим менеджером.</span>
+            </li>
+            <li>
+              <strong>Кандидаты с совпадением</strong>
+              <span>Таблица показывает роли, навыки и ценности каждого отклика. Карточка объясняет,
+                что совпало, чего не хватает и что усиливает профиль.</span>
+            </li>
+            <li>
+              <strong>Встречи и оффер</strong>
+              <span>Календарь, план интервью и транскрибация — в один клик. Решение по офферу
+                опирается на данные, а не на впечатление.</span>
+            </li>
+          </ol>
+
+          <div class="pres-fit" data-fit>
+            <div class="pres-fit__inner" style="--fit-w: 60rem;">
+              <div class="how-dm__preview how-dm__preview--company">
+                <div class="how-dm__panel how-dm__panel--active">
+                  <div class="how-dm__shot how-dm__shot--laptop">
+                    <div class="how-dm__laptop" aria-label="Кандидаты с совпадением по ценностям">
+                      <div class="how-dm__laptop-bar" aria-hidden="true">
+                        <span class="how-dm__laptop-dot"></span>
+                        <span class="how-dm__laptop-dot"></span>
+                        <span class="how-dm__laptop-dot"></span>
+                      </div>
+                      <div class="how-dm__laptop-screen">
+                        <div class="how-dm__laptop-app">
+                          <aside class="preview-sidebar preview-sidebar--company how-dm__laptop-sidebar" aria-label="Навигация кабинета компании">
+                            <div class="preview-sidebar__brand">
+                              <span class="preview-sidebar__logo">Vibe<span>Hunt</span></span>
+                              <span class="preview-sidebar__badge">Business</span>
+                            </div>
+                            <nav class="preview-sidebar__nav" aria-hidden="true">
+                              <span class="preview-nav">
+                                <svg class="preview-nav__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 8.5h14M8.5 8.5V17" stroke="currentColor" stroke-width="1.5"/></svg>
+                                Кабинет
+                              </span>
+                              <span class="preview-nav preview-nav--active preview-nav--company">
+                                <svg class="preview-nav__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="6.5" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M7 6.5V5a3 3 0 0 1 6 0v1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                                Рекрутинг
+                              </span>
+                              <span class="preview-nav">
+                                <svg class="preview-nav__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 14.5V8.5l6-3.5 6 3.5v6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 14.5v-3h4v3" stroke="currentColor" stroke-width="1.5"/></svg>
+                                Адаптация
+                              </span>
+                              <span class="preview-nav">
+                                <svg class="preview-nav__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="4" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/><circle cx="4" cy="14" r="1.5" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="14" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                                Карта команды
+                              </span>
+                            </nav>
+                            <div class="preview-sidebar__user">
+                              <span class="preview-sidebar__avatar preview-sidebar__avatar--company" aria-hidden="true">М</span>
+                              <span class="preview-sidebar__user-info">
+                                <span class="preview-sidebar__name">Марина С.</span>
+                                <span class="preview-sidebar__email">hr@acme.test</span>
+                              </span>
+                            </div>
+                          </aside>
+
+                          <div class="preview-role preview-role--candidates" aria-label="Кандидаты позиции">
+                            <div class="preview-role__head">
+                              <div>
+                                <div class="preview-role__eyebrow">Рекрутинг · FinTech</div>
+                                <h3 class="preview-role__title">Senior Product Manager</h3>
+                              </div>
+                              <span class="preview-role__status">12 кандидатов</span>
+                            </div>
+                            <div class="preview-role__tabs" aria-hidden="true">
+                              <span class="preview-role__tab">Общее</span>
+                              <span class="preview-role__tab">Профиль роли</span>
+                              <span class="preview-role__tab preview-role__tab--active">Кандидаты</span>
+                              <span class="preview-role__tab">Встречи</span>
+                            </div>
+                            <div class="preview-candidates">
+                              <div class="preview-candidates__stages" aria-hidden="true">
+                                <span class="preview-candidates__stage-tab preview-candidates__stage-tab--active">Отклики</span>
+                                <span class="preview-candidates__stage-tab">I этап</span>
+                                <span class="preview-candidates__stage-tab">II этап</span>
+                                <span class="preview-candidates__stage-tab">Оффер</span>
+                              </div>
+                              <div class="preview-candidates__table-wrap">
+                                <table class="preview-candidates__table">
+                                  <caption class="preview-candidates__sr">Кандидаты позиции Senior Product Manager</caption>
+                                  <thead>
+                                    <tr>
+                                      <th scope="col"><span class="preview-candidates__sr">№</span></th>
+                                      <th scope="col"><span class="preview-candidates__sr">Фото</span></th>
+                                      <th scope="col">Имя</th>
+                                      <th scope="col">Функц. роли</th>
+                                      <th scope="col">Навыки</th>
+                                      <th scope="col">Culture fit</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr class="preview-candidates__row preview-candidates__row--active">
+                                      <td><span class="preview-candidates__num">1</span></td>
+                                      <td><span class="preview-candidates__avatar" aria-hidden="true">Д</span></td>
+                                      <td>
+                                        <span class="preview-candidates__name">Дмитрий</span>
+                                        <span class="preview-candidates__initials">К.</span>
+                                      </td>
+                                      <td>
+                                        <div class="preview-candidates__cell-tags">
+                                          <span>Координатор</span>
+                                          <span>Мотиватор</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="preview-candidates__cell-tags preview-candidates__cell-tags--skills">
+                                          <span>Product Lead</span>
+                                          <span>Analyst</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="preview-candidates__cell-tags preview-candidates__cell-tags--violet">
+                                          <span>лидерство</span>
+                                          <span>смыслы</span>
+                                          <span>автономность</span>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr class="preview-candidates__row">
+                                      <td><span class="preview-candidates__num">2</span></td>
+                                      <td><span class="preview-candidates__avatar preview-candidates__avatar--muted" aria-hidden="true">И</span></td>
+                                      <td>
+                                        <span class="preview-candidates__name">Игорь</span>
+                                        <span class="preview-candidates__initials">М.</span>
+                                      </td>
+                                      <td>
+                                        <div class="preview-candidates__cell-tags">
+                                          <span>Генератор идей</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="preview-candidates__cell-tags preview-candidates__cell-tags--skills">
+                                          <span>UX Research</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="preview-candidates__cell-tags preview-candidates__cell-tags--violet">
+                                          <span>лидерство</span>
+                                          <span>стратегия</span>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr class="preview-candidates__row">
+                                      <td><span class="preview-candidates__num">3</span></td>
+                                      <td><span class="preview-candidates__avatar preview-candidates__avatar--muted" aria-hidden="true">А</span></td>
+                                      <td>
+                                        <span class="preview-candidates__name">Анна</span>
+                                        <span class="preview-candidates__initials">С.</span>
+                                      </td>
+                                      <td>
+                                        <div class="preview-candidates__cell-tags">
+                                          <span>Координатор</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="preview-candidates__cell-tags preview-candidates__cell-tags--skills">
+                                          <span>Product Lead</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="preview-candidates__cell-tags preview-candidates__cell-tags--violet">
+                                          <span>смыслы</span>
+                                          <span>автономность</span>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+
+                                <div class="preview-candidates__popup" aria-label="Карточка кандидата">
+                                  <div class="preview-candidates__popup-head">
+                                    <div class="preview-candidates__popup-person">
+                                      <span class="preview-candidates__popup-avatar" aria-hidden="true">Д</span>
+                                      <div>
+                                        <strong>Дмитрий К.</strong>
+                                        <span>Senior PM · FinTech</span>
+                                      </div>
+                                    </div>
+                                    <span class="preview-candidates__popup-hunt" aria-hidden="true">охотиться <span aria-hidden="true">→</span></span>
+                                  </div>
+                                  <section class="preview-candidates__popup-section">
+                                    <h4 class="preview-candidates__popup-label">Функциональные роли</h4>
+                                    <div class="preview-candidates__popup-tags">
+                                      <span class="preview-candidates__tag preview-candidates__tag--match">Координатор</span>
+                                      <span class="preview-candidates__tag preview-candidates__tag--match">Мотиватор</span>
+                                      <span class="preview-candidates__tag preview-candidates__tag--miss">Генератор идей</span>
+                                    </div>
+                                  </section>
+                                  <section class="preview-candidates__popup-section">
+                                    <h4 class="preview-candidates__popup-label">Навыки</h4>
+                                    <div class="preview-candidates__popup-tags">
+                                      <span class="preview-candidates__tag preview-candidates__tag--match">Product Lead</span>
+                                      <span class="preview-candidates__tag preview-candidates__tag--match">Analyst</span>
+                                      <span class="preview-candidates__tag preview-candidates__tag--miss">UX Research</span>
+                                      <span class="preview-candidates__tag preview-candidates__tag--extra">Strategy</span>
+                                    </div>
+                                  </section>
+                                  <section class="preview-candidates__popup-section">
+                                    <h4 class="preview-candidates__popup-label">Culture fit</h4>
+                                    <div class="preview-candidates__popup-tags">
+                                      <span class="preview-candidates__tag preview-candidates__tag--match">лидерство</span>
+                                      <span class="preview-candidates__tag preview-candidates__tag--match">смыслы</span>
+                                      <span class="preview-candidates__tag preview-candidates__tag--match">автономность</span>
+                                    </div>
+                                  </section>
+                                  <section class="preview-candidates__popup-section preview-candidates__popup-section--summary">
+                                    <h4 class="preview-candidates__popup-label">Общая интерпретация соответствия</h4>
+                                    <p class="preview-candidates__popup-text">Полное совпадение по culture fit. Закрыты ключевые роли и навыки профиля позиции; не хватает «Генератор идей» и «UX Research». Дополнительный навык «Strategy» усиливает профиль. Рекомендуется уточнить на интервью.</p>
+                                  </section>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 — Результат и пилот -->
+      <section class="pres-slide pres-slide--result" data-slide-panel="4" hidden aria-label="Результат и пилот">
+        <header class="pres-head">
+          <p class="pres-eyebrow pres-eyebrow--violet">Результат</p>
+          <div class="pres-head__row">
+            <h2 class="pres-title">Что меняется у HR-команды</h2>
+            <p class="pres-lead">Статистика эффективности платформы по компаниям-участникам.</p>
+          </div>
+        </header>
+
+        <div class="pres-body">
+          <div class="pres-stats">
+            <div class="pres-stat">
+              <strong>58%</strong>
+              <span>сокращают время первичного скрининга кандидатов</span>
+            </div>
+            <div class="pres-stat">
+              <strong>83%</strong>
+              <span>точнее оценивают culture fit до финального интервью</span>
+            </div>
+            <div class="pres-stat">
+              <strong>2,4×</strong>
+              <span>быстрее готовятся к интервью с кандидатом</span>
+            </div>
+            <div class="pres-stat">
+              <strong>46%</strong>
+              <span>снижают текучесть на испытательном сроке</span>
+            </div>
+          </div>
+
+          <section class="pres-pilot" aria-label="Пилот">
+            <div>
+              <p class="pres-pilot__week">Пилот · 4 недели · 1 команда</p>
+              <h2 class="pres-pilot__title">Сделайте следующий шаг к своей команде</h2>
+              <p class="pres-pilot__text">
+                Берём одну команду и 1–2 открытые позиции. Через месяц у вас на руках отчёт: воронка,
+                качество совпадений и риски по каждому кандидату.
+              </p>
+              <div class="pres-pilot__actions">
+                <a class="vh-hunt-btn vh-hunt-btn--primary cta-dm__btn" href="../../../mockups/vibe-hunt/index.html">
+                  запустить пилот <span class="vh-hunt-btn__arrow" aria-hidden="true">→</span>
+                </a>
+                <span class="pres-pilot__meta">Бесплатно для сотрудников · ~25 минут на профиль</span>
+              </div>
+            </div>
+
+            <ul class="pres-pilot__list">
+              <li>Профиль роли, KPI адаптации и culture fit — за одну встречу</li>
+              <li>Скрининг и сверка всех откликов по 50+ факторам</li>
+              <li>Автоматические встречи, план интервью и транскрибация</li>
+              <li>Карта навыков команды и кандидаты из внутреннего резерва</li>
+              <li>Отчёт HRD: воронка, качество совпадений, риски ухода</li>
+            </ul>
+          </section>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="presentation.js"></script>
+</body>
+</html>

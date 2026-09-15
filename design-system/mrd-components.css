@@ -1,0 +1,354 @@
+/* MRD — slide & UI components */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ── Slide shell ── */
+.mrd-slide {
+  position: relative;
+  aspect-ratio: var(--mrd-slide-ratio);
+  width: 100%;
+  max-width: var(--mrd-slide-max);
+  overflow: hidden;
+  font-family: var(--mrd-font);
+  line-height: var(--mrd-lh-base);
+}
+
+.mrd-slide--cover {
+  background: var(--mrd-red);
+  color: var(--mrd-white);
+  display: grid;
+  grid-template-columns: 1fr min(38%, 280px);
+  grid-template-rows: auto 1fr auto;
+  gap: var(--mrd-space-4);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.mrd-slide--content {
+  background: var(--mrd-white);
+  color: var(--mrd-ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-left: var(--mrd-stripe-width) solid var(--mrd-red);
+}
+
+.mrd-slide--content-left {
+  align-items: flex-start;
+  text-align: left;
+  padding-left: clamp(2rem, 5vw, 4rem);
+}
+
+.mrd-slide--hh {
+  background: var(--mrd-hh-cream);
+  color: var(--mrd-hh-ink);
+  border-left: none;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+/* ── Cover elements ── */
+.mrd-cover__eyebrow {
+  grid-column: 1;
+  font-size: var(--mrd-text-xs);
+  font-weight: var(--mrd-fw-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.95;
+}
+
+.mrd-cover__title {
+  grid-column: 1;
+  align-self: center;
+  font-size: var(--mrd-text-5xl);
+  font-weight: var(--mrd-fw-bold);
+  line-height: var(--mrd-lh-tight);
+  text-transform: lowercase;
+  max-width: 14ch;
+}
+
+.mrd-cover__title em {
+  font-style: italic;
+  font-weight: var(--mrd-fw-regular);
+}
+
+.mrd-cover__photo {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: start;
+  justify-self: end;
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--mrd-radius-photo);
+  filter: grayscale(100%);
+  box-shadow: var(--mrd-shadow-photo);
+}
+
+.mrd-cover__photo-wrap {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1 / 3;
+  justify-self: end;
+}
+
+.mrd-cover__arc {
+  position: absolute;
+  top: -0.5rem;
+  left: -0.75rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 2px solid var(--mrd-white);
+  border-right: none;
+  border-bottom: none;
+  border-radius: 100% 0 0 0;
+  opacity: 0.9;
+}
+
+.mrd-cover__speaker {
+  grid-column: 2;
+  grid-row: 3;
+  text-align: right;
+  font-size: var(--mrd-text-sm);
+  line-height: var(--mrd-lh-snug);
+}
+
+.mrd-cover__speaker strong {
+  display: block;
+  font-size: var(--mrd-text-lg);
+  font-weight: var(--mrd-fw-bold);
+  margin-bottom: 0.25rem;
+}
+
+.mrd-cover__logo {
+  grid-column: 1;
+  grid-row: 3;
+  align-self: end;
+  width: clamp(5rem, 18vw, 9rem);
+  height: auto;
+  opacity: 0.95;
+}
+
+/* ── Footer ── */
+.mrd-footer {
+  position: absolute;
+  right: clamp(1rem, 2.5vw, 1.75rem);
+  bottom: clamp(0.75rem, 2vw, 1.25rem);
+  font-size: var(--mrd-text-xs);
+  font-weight: var(--mrd-fw-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mrd-gray-400);
+}
+
+.mrd-slide--cover .mrd-footer {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── Section title (centered red) ── */
+.mrd-section-title {
+  font-size: var(--mrd-text-3xl);
+  font-weight: var(--mrd-fw-bold);
+  color: var(--mrd-red);
+  text-transform: lowercase;
+  text-align: center;
+  line-height: var(--mrd-lh-snug);
+  max-width: 18ch;
+}
+
+/* ── Stat block ── */
+.mrd-stat {
+  text-align: center;
+}
+
+.mrd-stat__value {
+  display: block;
+  font-size: var(--mrd-text-6xl);
+  font-weight: var(--mrd-fw-bold);
+  color: var(--mrd-red);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.mrd-stat__label {
+  display: block;
+  margin-top: var(--mrd-space-3);
+  font-size: var(--mrd-text-lg);
+  font-weight: var(--mrd-fw-regular);
+  color: var(--mrd-ink);
+}
+
+.mrd-stat__source {
+  display: block;
+  margin-top: var(--mrd-space-2);
+  font-size: var(--mrd-text-sm);
+  color: var(--mrd-gray-700);
+}
+
+/* ── Content headline ── */
+.mrd-headline {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: var(--mrd-fw-black);
+  line-height: var(--mrd-lh-tight);
+  text-transform: lowercase;
+  max-width: 16ch;
+}
+
+/* ── KPI grid (Krisha / HH style) ── */
+.mrd-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  width: 100%;
+  border-top: 1px solid var(--mrd-gray-300);
+}
+
+.mrd-kpi-grid--2x2 {
+  grid-template-columns: repeat(2, 1fr);
+  border-top: none;
+}
+
+.mrd-kpi {
+  padding: var(--mrd-space-6) var(--mrd-space-4);
+  border-left: 1px solid var(--mrd-gray-300);
+  text-align: center;
+}
+
+.mrd-kpi:first-child,
+.mrd-kpi-grid--2x2 .mrd-kpi:nth-child(odd) {
+  border-left: none;
+}
+
+.mrd-kpi__eyebrow {
+  font-size: var(--mrd-text-sm);
+  color: var(--mrd-hh-muted);
+  margin-bottom: var(--mrd-space-2);
+}
+
+.mrd-kpi__value {
+  font-size: var(--mrd-text-4xl);
+  font-weight: var(--mrd-fw-bold);
+  color: var(--mrd-hh-red);
+  line-height: 1;
+}
+
+.mrd-kpi__label {
+  font-size: var(--mrd-text-sm);
+  color: var(--mrd-hh-ink);
+  margin-top: var(--mrd-space-2);
+}
+
+/* Hand-drawn KPI variant (Нафиса deck) */
+.mrd-kpi--sketch .mrd-kpi__value {
+  font-weight: var(--mrd-fw-black);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ── TOC (HeadHunter contents slide) ── */
+.mrd-toc {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) 1.4fr;
+  gap: var(--mrd-space-8);
+  width: 100%;
+  align-items: center;
+}
+
+.mrd-toc__title {
+  font-size: var(--mrd-text-3xl);
+  font-weight: var(--mrd-fw-bold);
+  margin-bottom: var(--mrd-space-6);
+}
+
+.mrd-toc__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--mrd-space-3);
+}
+
+.mrd-toc__item {
+  display: flex;
+  gap: var(--mrd-space-4);
+  align-items: baseline;
+  font-size: var(--mrd-text-base);
+}
+
+.mrd-toc__num {
+  font-weight: var(--mrd-fw-bold);
+  color: var(--mrd-hh-red);
+  min-width: 1.75rem;
+}
+
+/* ── Doodle accents ── */
+.mrd-doodle {
+  flex-shrink: 0;
+}
+
+.mrd-doodle--starburst {
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+.mrd-doodle--scribble {
+  width: 3rem;
+  height: 1.5rem;
+}
+
+.mrd-headline-row {
+  display: flex;
+  align-items: center;
+  gap: var(--mrd-space-4);
+}
+
+/* ── HH logo chip ── */
+.mrd-hh-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--mrd-hh-red);
+  color: var(--mrd-white);
+  font-size: 0.875rem;
+  font-weight: var(--mrd-fw-bold);
+  letter-spacing: -0.04em;
+}
+
+/* ── Swatches (design system page) ── */
+.mrd-swatch {
+  border-radius: var(--mrd-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--mrd-gray-200);
+}
+
+.mrd-swatch__color {
+  height: 4.5rem;
+}
+
+.mrd-swatch__meta {
+  padding: var(--mrd-space-3) var(--mrd-space-4);
+  background: var(--mrd-white);
+  font-size: var(--mrd-text-sm);
+}
+
+.mrd-swatch__meta strong {
+  display: block;
+  font-weight: var(--mrd-fw-semibold);
+}
+
+.mrd-swatch__meta code {
+  font-size: 0.75rem;
+  color: var(--mrd-gray-500);
+}

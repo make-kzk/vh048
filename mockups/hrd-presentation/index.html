@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeHunt Business — Презентация для HRD | Предиктивный найм и удержание команд</title>
+  <meta name="description" content="5-слайдовая продающая презентация VibeHunt Business для директоров по персоналу (HRD/CPO). Снижение текучести на испытательном сроке на 46%, экономия 58% времени скрининга.">
+  <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+
+  <!-- Ambient Lighting Effects -->
+  <div class="ambient-glow ambient-glow--1" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow--2" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow--3" aria-hidden="true"></div>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+  <div class="deck-root">
+
+    <!-- Top Navigation Header -->
+    <header class="deck-header">
+      <div class="brand-group">
+        <a href="../vibe-hunt/index.html" class="vh-logo" title="Открыть прототип VibeHunt">
+          <span class="vh-logo__vibe">Vibe</span><span class="vh-logo__hunt">Hunt</span>
+        </a>
+        <span class="vh-logo__tag">Business</span>
+        <div class="header-deck-title">
+          <span>/</span> Pitch Deck для HRD
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="header-badge">
+          <span class="status-dot"></span>
+          Платформа предиктивного найма
+        </div>
+        <button type="button" class="btn-header-cta" onclick="openDemoModal()">
+          Запустить пилот 14 дней →
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Viewport: 5 Fullscreen Slides (100vh) -->
+    <main class="slides-viewport">
+
+      <!-- ==========================================
+           SLIDE 1: HERO & CORE VALUE PROPOSITION
+           ========================================== -->
+      <section class="slide active" data-slide-index="0" id="slide-1">
+        <div class="slide-content">
+          <div class="slide-1-grid">
+            
+            <div class="hero-left">
+              <div class="slide-eyebrow">B2B решение для HRD и C-Level</div>
+              <h1 class="slide-title">
+                Найм без догадок.<br>
+                Совпадение команды <span class="highlight-orange">по ДНК и культуре</span>
+              </h1>
+              <p class="slide-subtitle">
+                Платформа предиктивной оценки кандидатов на базе 50+ психометрических факторов. Устраняем главную причину увольнений на испытательном сроке — несовпадение по ценностям и стилю работы.
+              </p>
+
+              <div class="hero-stats-row">
+                <div class="hero-stat-card">
+                  <div class="hero-stat-num">−58%</div>
+                  <div class="hero-stat-label">времени первичного скрининга кандидатов</div>
+                </div>
+                <div class="hero-stat-card">
+                  <div class="hero-stat-num accent-mint">83%</div>
+                  <div class="hero-stat-label">точность оценки culture-fit до очного интервью</div>
+                </div>
+                <div class="hero-stat-card">
+                  <div class="hero-stat-num accent-violet">−46%</div>
+                  <div class="hero-stat-label">снижение текучести на испытательном сроке</div>
+                </div>
+                <div class="hero-stat-card">
+                  <div class="hero-stat-num">2.4×</div>
+                  <div class="hero-stat-label">быстрее подготовка нанимающих менеджеров</div>
+                </div>
+              </div>
+
+              <div class="hero-cta-group">
+                <button type="button" class="btn-primary-hero" onclick="openDemoModal()">
+                  Запустить бесплатный пилот →
+                </button>
+                <button type="button" class="btn-secondary-hero" data-goto-slide="1">
+                  Смотреть презентацию (Space / ↓)
+                </button>
+              </div>
+            </div>
+
+            <!-- Slide 1 Right: Live Candidate & Fit Card Preview -->
+            <div class="hero-right">
+              <div class="hero-preview-box">
+                <div class="preview-badge-row">
+                  <span class="preview-badge-status">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" fill="#2da44e"/></svg>
+                    Высокая совместимость
+                  </span>
+                  <div class="candidate-match-score">
+                    <span class="score-number">94%</span>
+                    <span class="score-text">Culture Fit</span>
+                  </div>
+                </div>
+
+                <div class="candidate-card-header">
+                  <div class="candidate-avatar">АК</div>
+                  <div class="candidate-info">
+                    <h4>Алия К.</h4>
+                    <p>Кандидат на позицию Lead PM · Команда FinTech</p>
+                  </div>
+                </div>
+
+                <div class="radar-preview-container">
+                  <!-- SVG Radar Preview -->
+                  <svg class="radar-svg" viewBox="0 0 120 120" fill="none">
+                    <polygon points="60,10 110,60 60,110 10,60" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+                    <polygon points="60,26 94,60 60,94 26,60" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                    <polygon points="60,42 78,60 60,78 42,60" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                    <line x1="60" y1="10" x2="60" y2="110" stroke="rgba(255,255,255,0.1)"/>
+                    <line x1="10" y1="60" x2="110" y2="60" stroke="rgba(255,255,255,0.1)"/>
+                    <!-- Shape -->
+                    <polygon points="60,14 104,60 60,92 38,60" fill="rgba(242,101,34,0.22)" stroke="#f26522" stroke-width="2"/>
+                    <circle cx="60" cy="14" r="3" fill="#f26522"/>
+                    <circle cx="104" cy="60" r="3" fill="#f26522"/>
+                    <circle cx="60" cy="92" r="3" fill="#f26522"/>
+                    <circle cx="38" cy="60" r="3" fill="#f26522"/>
+                    <!-- Labels -->
+                    <text x="60" y="8" text-anchor="middle" fill="#9c9ca8" font-size="7" font-family="JetBrains Mono">A (92%)</text>
+                    <text x="114" y="63" fill="#9c9ca8" font-size="7" font-family="JetBrains Mono">B</text>
+                    <text x="60" y="118" text-anchor="middle" fill="#9c9ca8" font-size="7" font-family="JetBrains Mono">C</text>
+                    <text x="3" y="63" fill="#9c9ca8" font-size="7" font-family="JetBrains Mono">D</text>
+                  </svg>
+
+                  <div class="radar-analysis-text">
+                    <strong>Архетип: Харизматичный авторитет (A3W)</strong>
+                    Высокая выраженность полюса автономности и инициативы. Идеально усиливает текущий дефицит лидерства в продуктовом юните.
+                  </div>
+                </div>
+
+                <div class="candidate-pills-row">
+                  <span class="tag-pill tag-pill--accent">Суперсила: Влияние</span>
+                  <span class="tag-pill tag-pill--violet">Ценность: Смыслы</span>
+                  <span class="tag-pill">Низкий риск выгорания</span>
+                  <span class="tag-pill">Готов к быстрым решениям</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 2: PAIN POINTS & ROOT CAUSES
+           ========================================== -->
+      <section class="slide" data-slide-index="1" id="slide-2">
+        <div class="slide-content">
+          <div class="slide-eyebrow">Боль рынка и скрытые издержки</div>
+          <h2 class="slide-title">
+            Хард-скиллы нанимают. <span class="highlight-orange">Культура и ценности увольняют</span>
+          </h2>
+          <p class="slide-subtitle">
+            89% неудачных наймов происходят не из-за нехватки технических компетенций, а из-за расхождения стилей работы, ценностей и микроклимата в команде.
+          </p>
+
+          <div class="pains-grid">
+            <!-- Pain Card 1 -->
+            <article class="pain-card">
+              <div class="pain-card-header">
+                <div class="pain-icon-circle">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <h3>Резюме скрывают личность</h3>
+              </div>
+              <div class="pain-contrast-box">
+                <div class="pain-contrast-label">Традиционный найм</div>
+                <div class="pain-contrast-text">
+                  Кандидат идеально проходит техническое интервью, но в команде конфликтует, требует микроменеджмента и выгорает за 90 дней.
+                </div>
+              </div>
+              <div class="solution-contrast-box">
+                <div class="solution-contrast-label">Решение VibeHunt</div>
+                <div class="solution-contrast-text">
+                  50+ психометрических факторов: реальный профиль автономности, стиль коммуникации, темп и ценностный компас кандидата.
+                </div>
+              </div>
+            </article>
+
+            <!-- Pain Card 2 -->
+            <article class="pain-card">
+              <div class="pain-card-header">
+                <div class="pain-icon-circle">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <h3>Субъективность нанимающих</h3>
+              </div>
+              <div class="pain-contrast-box">
+                <div class="pain-contrast-label">Традиционный найм</div>
+                <div class="pain-contrast-text">
+                  Оценка строится на «интуиции тимлида»: «он показался мне нормальным парнем». Вопросы на интервью хаотичны и не проверяют риски.
+                </div>
+              </div>
+              <div class="solution-contrast-box">
+                <div class="solution-contrast-label">Решение VibeHunt</div>
+                <div class="solution-contrast-text">
+                  Алгоритмический Culture-Fit скоринг и готовый персонализированный AI-бриф для интервью с подсветкой скрытых зон риска.
+                </div>
+              </div>
+            </article>
+
+            <!-- Pain Card 3 -->
+            <article class="pain-card">
+              <div class="pain-card-header">
+                <div class="pain-icon-circle">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3>Слепая внутренняя мобильность</h3>
+              </div>
+              <div class="pain-contrast-box">
+                <div class="pain-contrast-label">Традиционный найм</div>
+                <div class="pain-contrast-text">
+                  Сильные сотрудники уходят к конкурентам из-за отсутствия прозрачного трека, пока HR нанимает дорогих специалистов извне.
+                </div>
+              </div>
+              <div class="solution-contrast-box">
+                <div class="solution-contrast-label">Решение VibeHunt</div>
+                <div class="solution-contrast-text">
+                  Живая Карта Команды (Team Map): радар потенциала, мониторинг риска ухода ключевых людей и закрытие 30%+ вакансий изнутри.
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Bottom Warning Banner -->
+          <div class="cost-banner">
+            <div class="cost-banner-left">
+              <span class="cost-alert-badge">Цена ошибки</span>
+              <p>
+                Один неудачный найм обходится компании в <strong>3–6 месячных окладов</strong> сотрудника, потерю до <strong>80 часов</strong> времени тимлидов и демотивацию всей команды.
+              </p>
+            </div>
+            <div class="cost-banner-metric">
+              Экономия до 3.5 млн ₸ на позиции
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 3: PRODUCT ENGINE (INTERACTIVE TABS)
+           ========================================== -->
+      <section class="slide" data-slide-index="2" id="slide-3">
+        <div class="slide-content">
+          <div class="slide-eyebrow">Архитектура продукта</div>
+          <h2 class="slide-title">
+            Интеллект VibeHunt: <span class="highlight-violet">от кандидата до карты всей компании</span>
+          </h2>
+
+          <div class="product-engine-wrap">
+            <!-- Navigation Switcher Tabs -->
+            <div class="engine-tabs" role="tablist">
+              <button type="button" class="engine-tab-btn active" data-engine-tab="radar" role="tab">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+                1. Карьерный Код и Радар ценностей
+              </button>
+              <button type="button" class="engine-tab-btn" data-engine-tab="brief" role="tab">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                2. AI-Рекрутинг и Бриф интервью
+              </button>
+              <button type="button" class="engine-tab-btn" data-engine-tab="teammap" role="tab">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                3. Интерактивная Карта Команды (Team Map)
+              </button>
+            </div>
+
+            <!-- Panel 1: Psychometrics Radar -->
+            <div class="engine-panel panel-radar-layout active" data-panel="radar">
+              <div class="radar-left-content">
+                <h3>Карьерный Код специалиста</h3>
+                <p>
+                  Быстрое 25-минутное психометрическое профилирование раскладывает личность на 4 базовых поведенческих полюса (ABCD) и 5 базовых ценностных векторов.
+                </p>
+                <div class="poles-mini-list">
+                  <div class="pole-item">
+                    <span class="pole-badge pole-badge--a">A</span>
+                    <div><strong>Автономность</strong> — независимость в принятии решений vs опора на процессы</div>
+                  </div>
+                  <div class="pole-item">
+                    <span class="pole-badge pole-badge--b">B</span>
+                    <div><strong>Коммуникация</strong> — экстраверсия и влияние vs глубокое уединение</div>
+                  </div>
+                  <div class="pole-item">
+                    <span class="pole-badge pole-badge--c">C</span>
+                    <div><strong>Динамика</strong> — любовь к неопределенности vs потребность в стабильности</div>
+                  </div>
+                  <div class="pole-item">
+                    <span class="pole-badge pole-badge--d">D</span>
+                    <div><strong>Системность</strong> — методичность и структура vs гибкая импровизация</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="radar-diagram-box">
+                <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
+                  <!-- Diamond Grid -->
+                  <polygon points="110,20 195,110 110,200 25,110" stroke="rgba(255,255,255,0.12)" stroke-width="1.2"/>
+                  <polygon points="110,42 173,110 110,178 47,110" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                  <polygon points="110,65 152,110 110,155 68,110" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                  <polygon points="110,88 131,110 110,132 89,110" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                  <line x1="110" y1="20" x2="110" y2="200" stroke="rgba(255,255,255,0.15)"/>
+                  <line x1="25" y1="110" x2="195" y2="110" stroke="rgba(255,255,255,0.15)"/>
+
+                  <!-- Data Silhouette -->
+                  <polygon points="110,28 188,110 110,165 52,110" fill="rgba(242,101,34,0.18)" stroke="#f26522" stroke-width="2.5" stroke-linejoin="round"/>
+                  <circle cx="110" cy="28" r="4.5" fill="#f26522"/>
+                  <circle cx="188" cy="110" r="4.5" fill="#f26522"/>
+                  <circle cx="110" cy="165" r="4.5" fill="#f26522"/>
+                  <circle cx="52" cy="110" r="4.5" fill="#f26522"/>
+
+                  <!-- Axis Labels -->
+                  <text x="110" y="14" text-anchor="middle" fill="#f26522" font-family="JetBrains Mono" font-weight="700" font-size="11">A: Автономия</text>
+                  <text x="202" y="114" fill="#e8a020" font-family="JetBrains Mono" font-weight="700" font-size="11">B: Связи</text>
+                  <text x="110" y="214" text-anchor="middle" fill="#8e78ff" font-family="JetBrains Mono" font-weight="700" font-size="11">C: Баланс</text>
+                  <text x="16" y="114" text-anchor="end" fill="#58a6ff" font-family="JetBrains Mono" font-weight="700" font-size="11">D: Системность</text>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Panel 2: Interview Brief -->
+            <div class="engine-panel panel-brief-layout" data-panel="brief">
+              <div class="brief-candidate-meta">
+                <div class="brief-meta-row">
+                  <span>Кандидат:</span>
+                  <strong>Дмитрий К. (Score: 91%)</strong>
+                </div>
+                <div class="brief-meta-row">
+                  <span>Роль:</span>
+                  <strong>Senior Fullstack / Tech Lead</strong>
+                </div>
+                <div class="brief-meta-row">
+                  <span>Риск зоны:</span>
+                  <strong style="color:#f47067;">Трение при микроконтроле</strong>
+                </div>
+                <div class="brief-meta-row">
+                  <span>Драйвер:</span>
+                  <strong style="color:#4cc366;">Высокая автономия и влияние</strong>
+                </div>
+                <p style="font-size:12px;color:var(--vh-text-muted);margin-top:10px;line-height:1.4;">
+                  AI сопоставил кандидата с профилем роли и сгенерировал 3 точечных вопроса для нанимающего менеджера, исключающих формальные ответы.
+                </p>
+              </div>
+
+              <div class="questions-container">
+                <div class="q-card">
+                  <div class="q-tag">Проверка автономии (Полюс A)</div>
+                  <div class="q-text">«Опишите ситуацию, когда ТЗ было неполным, а стейкхолдеры были недоступны. Какое решение приняли?»</div>
+                  <div class="q-goal">Цель: проверить способность брать ответственность без эскалации наверх.</div>
+                </div>
+                <div class="q-card">
+                  <div class="q-tag">Проверка командной химии (Полюс B)</div>
+                  <div class="q-text">«Как вы поступите, если коллега по команде срывает коммит, влияющий на ваш релиз?»</div>
+                  <div class="q-goal">Цель: оценить зрелость коммуникации и предотвратить конфликтные паттерны.</div>
+                </div>
+                <div class="q-card">
+                  <div class="q-tag">Ценности и удержание (Смыслы)</div>
+                  <div class="q-text">«Какой проект за последний год вызвал наибольшую гордость и почему именно он?»</div>
+                  <div class="q-goal">Цель: выявить совпадение с миссией продукта и предотвратить выгорание.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3: Team Map (Interactive Team Map) -->
+            <div class="engine-panel panel-team-layout" data-panel="teammap">
+              <div class="teammap-kpis-deck">
+                <div class="tm-kpi-card">
+                  <span class="tm-kpi-val">38</span>
+                  <span class="tm-kpi-lbl">Сотрудников</span>
+                </div>
+                <div class="tm-kpi-card">
+                  <span class="tm-kpi-val green">7</span>
+                  <span class="tm-kpi-lbl">Открытых ролей</span>
+                </div>
+                <div class="tm-kpi-card">
+                  <span class="tm-kpi-val orange">26</span>
+                  <span class="tm-kpi-lbl">К развитию</span>
+                </div>
+                <div class="tm-kpi-card">
+                  <span class="tm-kpi-val green">82%</span>
+                  <span class="tm-kpi-lbl">Покрытие навыков</span>
+                </div>
+                <div class="tm-kpi-card">
+                  <span class="tm-kpi-val amber">3</span>
+                  <span class="tm-kpi-lbl">Риск ухода (churn)</span>
+                </div>
+                <div class="tm-kpi-card">
+                  <span class="tm-kpi-val green">+36</span>
+                  <span class="tm-kpi-lbl">Командный eNPS</span>
+                </div>
+              </div>
+
+              <div class="teammap-details-grid">
+                <div class="skills-progress-list">
+                  <div class="skill-row">
+                    <span class="skill-name">Product Discovery</span>
+                    <div class="skill-track"><div class="skill-fill-current" style="width:78%"></div></div>
+                    <span class="skill-percent">78%</span>
+                  </div>
+                  <div class="skill-row">
+                    <span class="skill-name">System Architecture</span>
+                    <div class="skill-track"><div class="skill-fill-current" style="width:88%"></div></div>
+                    <span class="skill-percent">88%</span>
+                  </div>
+                  <div class="skill-row">
+                    <span class="skill-name">Data Analytics</span>
+                    <div class="skill-track"><div class="skill-fill-current" style="width:64%"></div></div>
+                    <span class="skill-percent">64%</span>
+                  </div>
+                  <div class="skill-row">
+                    <span class="skill-name">FinTech Domain</span>
+                    <div class="skill-track"><div class="skill-fill-current" style="width:84%"></div></div>
+                    <span class="skill-percent">84%</span>
+                  </div>
+                </div>
+
+                <div class="internal-mobility-box">
+                  <strong style="font-size:13px;color:#ffffff;display:block;margin-bottom:6px;">Внутренняя ротация (Talent Mobility)</strong>
+                  <div class="mobility-person">
+                    <div class="candidate-avatar" style="width:28px;height:28px;font-size:11px;">ДК</div>
+                    <div style="font-size:12px;"><strong>Дмитрий К.</strong> (PM) → <span style="color:var(--vh-orange);">Lead PM</span></div>
+                    <span class="mobility-badge">Готов к росту</span>
+                  </div>
+                  <div class="mobility-person">
+                    <div class="candidate-avatar" style="width:28px;height:28px;font-size:11px;background:var(--vh-violet);">АС</div>
+                    <div style="font-size:12px;"><strong>Анна С.</strong> (Аналитик) → <span style="color:#a695ff;">Senior Analyst</span></div>
+                    <span class="mobility-badge" style="color:#58a6ff;background:rgba(88,166,255,0.16);">Развивается</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 4: ROI & FINANCIAL CALCULATOR
+           ========================================== -->
+      <section class="slide" data-slide-index="3" id="slide-4">
+        <div class="slide-content">
+          <div class="slide-eyebrow">Бизнес-эффект и экономика для HRD</div>
+          <h2 class="slide-title">
+            Окупаемость с первого <span class="highlight-orange">предотвращенного увольнения</span>
+          </h2>
+          <p class="slide-subtitle">
+            Прозрачные цифры для защиты бюджета перед CEO и CFO: экономия сотен часов рекрутеров и защита фонда оплаты труда от ошибок подбора.
+          </p>
+
+          <div class="roi-grid">
+            <!-- Left: Interactive ROI Calculator -->
+            <div class="roi-calc-card">
+              <div class="calc-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+                Калькулятор окупаемости для вашей компании
+              </div>
+
+              <div class="calc-control-group">
+                <div class="calc-label-row">
+                  <span class="calc-label">Текущий штат сотрудников:</span>
+                  <span class="calc-value-display" id="teamSizeDisplay">100 чел.</span>
+                </div>
+                <input type="range" class="calc-slider" id="teamSizeSlider" min="20" max="500" step="10" value="100">
+              </div>
+
+              <div class="calc-control-group">
+                <div class="calc-label-row">
+                  <span class="calc-label">Количество наймов в год:</span>
+                  <span class="calc-value-display" id="hiresYearDisplay">25 позиций</span>
+                </div>
+                <input type="range" class="calc-slider" id="hiresYearSlider" min="5" max="100" step="5" value="25">
+              </div>
+
+              <!-- Output Box -->
+              <div class="calc-results-box">
+                <div class="calc-result-item">
+                  <h5>Экономия часов HR & Лидеров</h5>
+                  <div class="calc-result-number" id="calcSavedHours">~350 ч.</div>
+                </div>
+                <div class="calc-result-item">
+                  <h5>Сохраненный бюджет ФОТ</h5>
+                  <div class="calc-result-number highlight" id="calcSavedMoney">~4.5 млн ₸</div>
+                </div>
+                <div class="calc-result-item">
+                  <h5>Предотвращено увольнений</h5>
+                  <div class="calc-result-number" id="calcChurnReduced">2 сотрудника</div>
+                </div>
+                <div class="calc-result-item">
+                  <h5>Срок окупаемости VibeHunt</h5>
+                  <div class="calc-result-number highlight" id="calcPaybackDays">&lt; 30 дней</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: 4 Pillars of Value -->
+            <div class="roi-pillars-list">
+              <div class="roi-pillar-card">
+                <div class="roi-pillar-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <div class="roi-pillar-body">
+                  <h4>0 расходов на повторный поиск</h4>
+                  <p>Каждый ушедший на испытательном сроке сотрудник сжигает 3–6 окладов. Снижение текучести на 46% окупает платформу моментально.</p>
+                </div>
+              </div>
+
+              <div class="roi-pillar-card">
+                <div class="roi-pillar-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="roi-pillar-body">
+                  <h4>14 часов экономии на вакансию</h4>
+                  <p>Автоматический психометрический скрининг и готовый AI-бриф отсекают нерелевантные интервью еще до календаря тимлида.</p>
+                </div>
+              </div>
+
+              <div class="roi-pillar-card">
+                <div class="roi-pillar-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                </div>
+                <div class="roi-pillar-body">
+                  <h4>+21–36% к продуктивности команды</h4>
+                  <p>По исследованию Harvard Business Review, сотрудники, совпадающие по стилю и сильным сторонам с ролью, работают на треть эффективнее.</p>
+                </div>
+              </div>
+
+              <div class="roi-pillar-card">
+                <div class="roi-pillar-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                </div>
+                <div class="roi-pillar-body">
+                  <h4>Отказ от дорогого кадрового аутсорса</h4>
+                  <p>Карта команды находит внутренних звезд под новые вызовы без комиссии агентствам (до 20% от годового дохода).</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 5: FAST PILOT & FINAL CTA
+           ========================================== -->
+      <section class="slide" data-slide-index="4" id="slide-5">
+        <div class="slide-content">
+          <div class="slide-eyebrow">Быстрый старт без рисков</div>
+          <h2 class="slide-title">
+            Запустите пилот на одной команде <span class="highlight-orange">уже на этой неделе</span>
+          </h2>
+          <p class="slide-subtitle">
+            14 дней бесплатного тестирования на реальной команде без необходимости менять вашу текущую ATS или процессы.
+          </p>
+
+          <div class="pilot-grid">
+            <!-- Left: Timeline Steps & Integrations -->
+            <div class="pilot-left">
+              <div class="timeline-steps">
+                
+                <div class="timeline-step-card">
+                  <div class="step-num-circle">1</div>
+                  <div class="step-body">
+                    <div class="step-timing">Дни 1–3 · Экспресс-аудит</div>
+                    <div class="step-title">Диагностика пилотной команды</div>
+                    <div class="step-desc">
+                      10–20 сотрудников проходят 25-минутный тест. Вы получаете интерактивную Карту Команды с выявлением скрытых конфликтов и рисков выгорания.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline-step-card">
+                  <div class="step-num-circle">2</div>
+                  <div class="step-body">
+                    <div class="step-timing">Дни 4–7 · Цифровой профиль</div>
+                    <div class="step-title">Профилирование 2 ключевых вакансий</div>
+                    <div class="step-desc">
+                      Формируем эталонный профиль идеального кандидата под стиль руководителя и культуру команды. Настраиваем отправку кандидатам в 1 клик.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline-step-card">
+                  <div class="step-num-circle">3</div>
+                  <div class="step-body">
+                    <div class="step-timing">Дни 8–14 · Предиктивный найм</div>
+                    <div class="step-title">Скрининг и собеседования с AI-брифом</div>
+                    <div class="step-desc">
+                      Ранжирование реальных кандидатов по Culture-Fit скорингу. Тимлиды проводят интервью по готовым вопросам и видят разницу в качестве отбора.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Integrations row -->
+              <div class="integrations-bar">
+                <span class="integrations-label">Бесшовная интеграция с ATS:</span>
+                <div class="integrations-tags">
+                  <span class="int-chip">Huntflow</span>
+                  <span class="int-chip">Talantix</span>
+                  <span class="int-chip">E-Staff</span>
+                  <span class="int-chip">Notion</span>
+                  <span class="int-chip">Telegram Bot</span>
+                  <span class="int-chip">REST API</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Action Form Card -->
+            <div class="pilot-right">
+              <div class="pilot-form-card">
+                <h3 class="pilot-card-title">Заявка на 14-дневный пилот</h3>
+                <p class="pilot-card-sub">
+                  Протестируйте платформу на одной команде бесплатно. Мы поможем с онбордингом и предоставим отчёт.
+                </p>
+
+                <form class="pilot-form" id="pilotForm">
+                  <div class="form-field">
+                    <label class="form-label">Ваше имя и должность</label>
+                    <input type="text" class="form-input" placeholder="Например: Марина, HRD" required>
+                  </div>
+                  <div class="form-field">
+                    <label class="form-label">Компания и размер команды</label>
+                    <input type="text" class="form-input" placeholder="Например: Kaspi, 120 чел." required>
+                  </div>
+                  <div class="form-field">
+                    <label class="form-label">Телефон или Telegram</label>
+                    <input type="text" class="form-input" placeholder="@username или +7..." required>
+                  </div>
+
+                  <button type="submit" class="form-submit-btn">
+                    Запустить бесплатный пилот →
+                  </button>
+                </form>
+
+                <div class="pilot-guarantee-note">
+                  🔒 Без передачи данных третьим лицам · Доступ открывается сразу
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ==========================================
+         INTERACTIVE SLIDEBAR (DOCK CONTROLLER)
+         ========================================== -->
+    <footer class="slidebar-dock" aria-label="Навигационный слайдбар">
+      
+      <!-- Left: Navigation Arrows & Counter -->
+      <div class="slidebar-left-controls">
+        <button type="button" class="slidebar-nav-btn" data-deck-prev title="Предыдущий слайд (← / PageUp)" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button type="button" class="slidebar-nav-btn" data-deck-next title="Следующий слайд (→ / Space)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="slide-counter">
+          <span class="current-num">01</span> / 05
+        </div>
+      </div>
+
+      <!-- Center: 5 Interactive Segment Tabs + Scrubber Track -->
+      <div class="slidebar-center">
+        <div class="slidebar-segments">
+          <button type="button" class="slide-segment-tab active" data-slide-target="0">
+            <span class="seg-num">01</span>
+            <span class="seg-name">Оффер для HRD</span>
+          </button>
+          <button type="button" class="slide-segment-tab" data-slide-target="1">
+            <span class="seg-num">02</span>
+            <span class="seg-name">Боли и Реальность</span>
+          </button>
+          <button type="button" class="slide-segment-tab" data-slide-target="2">
+            <span class="seg-num">03</span>
+            <span class="seg-name">Интеллект платформы</span>
+          </button>
+          <button type="button" class="slide-segment-tab" data-slide-target="3">
+            <span class="seg-num">04</span>
+            <span class="seg-name">ROI и Калькулятор</span>
+          </button>
+          <button type="button" class="slide-segment-tab" data-slide-target="4">
+            <span class="seg-num">05</span>
+            <span class="seg-name">Пилот 14 дней</span>
+          </button>
+        </div>
+
+        <!-- Continuous Scrubber Bar -->
+        <div class="scrubber-track-wrap" title="Нажмите для перехода к слайду">
+          <div class="scrubber-fill-bar" style="width: 20%;"></div>
+          <div class="scrubber-thumb" style="left: 20%;"></div>
+        </div>
+      </div>
+
+      <!-- Right: Keyboard Hints & Fullscreen Toggle -->
+      <div class="slidebar-right-controls">
+        <div class="keyboard-hint">
+          <span class="key-badge">Space</span>
+          <span class="key-badge">←</span>
+          <span class="key-badge">→</span>
+          навигация
+        </div>
+        <button type="button" class="btn-fullscreen" data-deck-fullscreen title="Полноэкранный режим (F)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        </button>
+      </div>
+
+    </footer>
+
+  </div>
+
+  <!-- Quick Demo Modal -->
+  <div class="deck-modal-backdrop" id="demoModal" role="dialog" aria-modal="true">
+    <div class="deck-modal">
+      <button type="button" class="modal-close-btn" onclick="closeModal()" aria-label="Закрыть">✕</button>
+      <h3 style="font-size:20px;font-weight:800;margin-bottom:8px;">Запросить закрытое демо</h3>
+      <p style="font-size:13px;color:var(--vh-text-muted);margin-bottom:20px;line-height:1.45;">
+        Покажем работу платформы на примере вашей команды, рассчитаем индивидуальный ROI и предоставим доступ к пилоту.
+      </p>
+      <form id="modalForm" style="display:flex;flex-direction:column;gap:12px;">
+        <div class="form-field">
+          <label class="form-label">Имя и компания</label>
+          <input type="text" class="form-input" placeholder="Александр, Head of Talent" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Рабочий Email или Telegram</label>
+          <input type="text" class="form-input" placeholder="hrd@company.com или @telegram" required>
+        </div>
+        <button type="submit" class="form-submit-btn" style="margin-top:10px;">
+          Получить персональный демо-доступ →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notice" id="toastNotice">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2da44e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>Заявка отправлена!</span>
+  </div>
+
+  <script src="presentation.js"></script>
+</body>
+</html>

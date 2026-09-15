@@ -4,3 +4,5 @@
 *.pem
 *.key
 credentials.json
+.tmp-pdf-analysis/
+.venv-pdf/

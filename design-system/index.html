@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRD Design System — Marketing & Reputation Day</title>
+  <meta name="description" content="Дизайн-система презентаций Marketing & Reputation Day: токены, типографика, слайды и компоненты.">
+  <meta name="theme-color" content="#ee0815">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="mrd-tokens.css">
+  <link rel="stylesheet" href="mrd-components.css">
+  <style>
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--mrd-font);
+      background: #f5f5f5;
+      color: var(--mrd-ink);
+      line-height: var(--mrd-lh-base);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .ds-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--mrd-red);
+      color: var(--mrd-white);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .ds-topbar__brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .ds-topbar__brand svg { width: 2rem; height: auto; }
+
+    .ds-topbar nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+    }
+
+    .ds-topbar a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.8125rem;
+      font-weight: 500;
+    }
+
+    .ds-topbar a:hover { color: #fff; }
+
+    .ds-hero {
+      background: var(--mrd-red);
+      color: var(--mrd-white);
+      padding: clamp(3rem, 8vw, 6rem) 1.5rem;
+      border-left: var(--mrd-stripe-width) solid rgba(0, 0, 0, 0.15);
+    }
+
+    .ds-hero__inner {
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+
+    .ds-hero__eyebrow {
+      font-size: var(--mrd-text-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+
+    .ds-hero__title {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: lowercase;
+      max-width: 20ch;
+      margin: 0 0 1rem;
+    }
+
+    .ds-hero__lead {
+      max-width: 42rem;
+      font-size: 1.0625rem;
+      opacity: 0.92;
+      margin: 0;
+    }
+
+    .ds-main {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .ds-section {
+      margin-bottom: 4rem;
+    }
+
+    .ds-section__head {
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--mrd-red);
+    }
+
+    .ds-section__head h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: lowercase;
+    }
+
+    .ds-section__head p {
+      margin: 0.35rem 0 0;
+      color: var(--mrd-gray-500);
+      font-size: 0.9375rem;
+    }
+
+    .ds-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .ds-grid--colors {
+      grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    }
+
+    .ds-grid--slides {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .ds-slide-card {
+      background: var(--mrd-white);
+      border-radius: var(--mrd-radius-md);
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .ds-slide-card__label {
+      padding: 0.75rem 1rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border-top: 1px solid var(--mrd-gray-200);
+      color: var(--mrd-gray-700);
+    }
+
+    .ds-slide-card__preview {
+      padding: 1rem;
+      background: #ececec;
+      display: flex;
+      justify-content: center;
+    }
+
+    .ds-type-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--mrd-gray-200);
+    }
+
+    .ds-type-row:last-child { border-bottom: none; }
+
+    .ds-type-row__meta {
+      flex: 0 0 8rem;
+      font-size: 0.75rem;
+      color: var(--mrd-gray-500);
+      font-family: ui-monospace, monospace;
+    }
+
+    .ds-type-row__sample { flex: 1; min-width: 0; }
+
+    .ds-token-block {
+      background: var(--mrd-ink);
+      color: #e8e8e8;
+      border-radius: var(--mrd-radius-md);
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .ds-token-block .comment { color: #6a9955; }
+    .ds-token-block .prop { color: #9cdcfe; }
+    .ds-token-block .val { color: #ce9178; }
+
+    .ds-sources {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .ds-source {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--mrd-white);
+      border-radius: var(--mrd-radius-md);
+      border: 1px solid var(--mrd-gray-200);
+    }
+
+    .ds-source strong { font-weight: 700; }
+
+    .ds-source span {
+      font-size: 0.875rem;
+      color: var(--mrd-gray-500);
+    }
+
+    .ds-rules {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .ds-rule {
+      padding: 1rem 1.25rem;
+      background: var(--mrd-white);
+      border-left: 4px solid var(--mrd-red);
+      border-radius: 0 var(--mrd-radius-sm) var(--mrd-radius-sm) 0;
+      font-size: 0.9375rem;
+    }
+
+    .ds-rule strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: 700;
+    }
+
+    .ds-footer-page {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: var(--mrd-text-xs);
+      color: var(--mrd-gray-400);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .ds-footer-page a {
+      color: var(--mrd-red);
+      text-decoration: none;
+    }
+
+    @media (max-width: 640px) {
+      .ds-topbar nav { display: none; }
+      .mrd-cover__photo-wrap,
+      .mrd-cover__photo { display: none; }
+      .mrd-slide--cover { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="ds-topbar">
+    <div class="ds-topbar__brand">
+      <svg viewBox="0 0 80 48" fill="none" aria-hidden="true">
+        <path d="M8 40 C8 20 12 8 24 8 C32 8 36 16 36 24 C36 32 32 40 24 40 L8 40 Z" fill="white"/>
+        <path d="M44 40 L44 8 L52 8 L52 24 L64 8 L74 8 L60 26 L76 40 L64 40 L52 28 L52 40 Z" fill="white"/>
+      </svg>
+      MRD Design System
+    </div>
+    <nav aria-label="Разделы">
+      <a href="#colors">Цвета</a>
+      <a href="#type">Типографика</a>
+      <a href="#slides">Слайды</a>
+      <a href="#components">Компоненты</a>
+      <a href="#tokens">Токены</a>
+    </nav>
+  </header>
+
+  <section class="ds-hero">
+    <div class="ds-hero__inner">
+      <p class="ds-hero__eyebrow">Marketing & Reputation Day</p>
+      <h1 class="ds-hero__title">дизайн-система презентаций</h1>
+      <p class="ds-hero__lead">
+        Единый визуальный язык собран из трёх спикерских деков: Данияр Косназаров, Нафиса Караханова
+        и Мухамед Багдатулы (HeadHunter). Красный фон, Helvetica Neue, красная полоса слева,
+        lowercase-заголовки и минималистичная типографика.
+      </p>
+    </div>
+  </section>
+
+  <main class="ds-main">
+
+    <section class="ds-section" id="colors">
+      <header class="ds-section__head">
+        <h2>цвета</h2>
+        <p>Основная палитра MRD + вариант co-brand HeadHunter</p>
+      </header>
+      <div class="ds-grid ds-grid--colors">
+        <div class="mrd-swatch">
+          <div class="mrd-swatch__color" style="background:#ee0815"></div>
+          <div class="mrd-swatch__meta"><strong>MRD Red</strong><code>--mrd-red · #ee0815</code></div>
+        </div>
+        <div class="mrd-swatch">
+          <div class="mrd-swatch__color" style="background:#0f0f0f"></div>
+          <div class="mrd-swatch__meta"><strong>Ink</strong><code>--mrd-ink · #0f0f0f</code></div>
+        </div>
+        <div class="mrd-swatch">
+          <div class="mrd-swatch__color" style="background:#ffffff;border-bottom:1px solid #ececec"></div>
+          <div class="mrd-swatch__meta"><strong>White</strong><code>--mrd-white · #ffffff</code></div>
+        </div>
+        <div class="mrd-swatch">
+          <div class="mrd-swatch__color" style="background:#aeaeae"></div>
+          <div class="mrd-swatch__meta"><strong>Gray 400</strong><code>--mrd-gray-400 · #aeaeae</code></div>
+        </div>
+        <div class="mrd-swatch">
+          <div class="mrd-swatch__color" style="background:#d8d8d8"></div>
+          <div class="mrd-swatch__meta"><strong>Gray 300</strong><code>--mrd-gray-300 · #d8d8d8</code></div>
+        </div>
+        <div class="mrd-swatch">
+          <div class="mrd-swatch__color" style="background:#fff8f0"></div>
+          <div class="mrd-swatch__meta"><strong>HH Cream</strong><code>--mrd-hh-cream · #fff8f0</code></div>
+        </div>
+        <div class="mrd-swatch">
+          <div class="mrd-swatch__color" style="background:#ff0002"></div>
+          <div class="mrd-swatch__meta"><strong>HH Red</strong><code>--mrd-hh-red · #ff0002</code></div>
+        </div>
+        <div class="mrd-swatch">
+          <div class="mrd-swatch__color" style="background:#231f20"></div>
+          <div class="mrd-swatch__meta"><strong>HH Ink</strong><code>--mrd-hh-ink · #231f20</code></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="type">
+      <header class="ds-section__head">
+        <h2>типографика</h2>
+        <p>Helvetica Neue Bold / Regular / Italic — в вебе Inter как замена с кириллицей</p>
+      </header>
+      <div style="background:#fff;border-radius:12px;padding:0 1.25rem">
+        <div class="ds-type-row">
+          <div class="ds-type-row__meta">cover<br>--mrd-text-5xl</div>
+          <div class="ds-type-row__sample" style="font-size:var(--mrd-text-5xl);font-weight:700;line-height:1.1;text-transform:lowercase">кризис идентичности: маркетинг в смутные времена</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-row__meta">section<br>--mrd-text-3xl</div>
+          <div class="ds-type-row__sample" style="font-size:var(--mrd-text-3xl);font-weight:700;color:var(--mrd-red);text-transform:lowercase">начнем с цифр…</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-row__meta">stat<br>--mrd-text-6xl</div>
+          <div class="ds-type-row__sample" style="font-size:var(--mrd-text-6xl);font-weight:700;color:var(--mrd-red);line-height:1">55,4%</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-row__meta">headline<br>black 900</div>
+          <div class="ds-type-row__sample" style="font-size:2rem;font-weight:900;line-height:1.1;text-transform:lowercase">все признаки маркетинга в рецессию</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-row__meta">footer<br>--mrd-text-xs</div>
+          <div class="ds-type-row__sample" style="font-size:var(--mrd-text-xs);font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--mrd-gray-400)">Marketing & Reputation Day / 2</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="slides">
+      <header class="ds-section__head">
+        <h2>шаблоны слайдов</h2>
+        <p>Четыре базовых паттерна из спикерских презентаций</p>
+      </header>
+      <div class="ds-grid ds-grid--slides">
+
+        <article class="ds-slide-card">
+          <div class="ds-slide-card__preview">
+            <div class="mrd-slide mrd-slide--cover">
+              <p class="mrd-cover__eyebrow">Marketing & Reputation Day</p>
+              <h2 class="mrd-cover__title">кризис идентичности: маркетинг в <em>смутные времена</em></h2>
+              <div class="mrd-cover__photo-wrap">
+                <span class="mrd-cover__arc" aria-hidden="true"></span>
+                <img class="mrd-cover__photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=533&fit=crop&crop=face" alt="" width="220" height="293">
+              </div>
+              <svg class="mrd-cover__logo" viewBox="0 0 120 72" fill="none" aria-label="MR">
+                <path d="M4 68 C4 28 14 4 38 4 C54 4 62 24 62 44 C62 58 54 68 38 68 Z" fill="white"/>
+                <path d="M72 68 V4 H88 V36 L108 4 H120 L98 40 L122 68 H106 L88 48 V68 Z" fill="white"/>
+              </svg>
+              <div class="mrd-cover__speaker">
+                <strong>Данияр Косназаров</strong>
+                Marketing Lab, Narxoz Business School<br>
+                Ex-CMO KPMG & Qazaq Republic
+              </div>
+            </div>
+          </div>
+          <p class="ds-slide-card__label">01 · Cover — красный фон, фото спикера (B&amp;W), логотип MR, lowercase title</p>
+        </article>
+
+        <article class="ds-slide-card">
+          <div class="ds-slide-card__preview">
+            <div class="mrd-slide mrd-slide--content">
+              <h2 class="mrd-section-title">начнем с цифр…</h2>
+              <p class="mrd-footer">Marketing & Reputation Day / 2</p>
+            </div>
+          </div>
+          <p class="ds-slide-card__label">02 · Section divider — белый фон, красная полоса слева, центрированный заголовок</p>
+        </article>
+
+        <article class="ds-slide-card">
+          <div class="ds-slide-card__preview">
+            <div class="mrd-slide mrd-slide--content">
+              <div class="mrd-stat">
+                <span class="mrd-stat__value">55,4%</span>
+                <span class="mrd-stat__label">удельный вес расходов на еду</span>
+                <span class="mrd-stat__source">(Бюро нацстатистики 2024)</span>
+              </div>
+              <p class="mrd-footer">Marketing & Reputation Day / 3</p>
+            </div>
+          </div>
+          <p class="ds-slide-card__label">03 · Stat — крупная красная цифра по центру, подпись и источник</p>
+        </article>
+
+        <article class="ds-slide-card">
+          <div class="ds-slide-card__preview">
+            <div class="mrd-slide mrd-slide--content mrd-slide--content-left">
+              <div class="mrd-headline-row">
+                <svg class="mrd-doodle mrd-doodle--starburst" viewBox="0 0 64 64" aria-hidden="true">
+                  <path d="M32 4 L36 24 L56 20 L40 32 L56 44 L36 40 L32 60 L28 40 L8 44 L24 32 L8 20 L28 24 Z" fill="#ee0815" opacity="0.9"/>
+                </svg>
+                <h2 class="mrd-headline">все признаки маркетинга в рецессию</h2>
+              </div>
+              <p class="mrd-footer">Marketing & Reputation Day / 11</p>
+            </div>
+          </div>
+          <p class="ds-slide-card__label">04 · Statement — левое выравнивание, doodle-акцент, black 900 lowercase</p>
+        </article>
+
+        <article class="ds-slide-card">
+          <div class="ds-slide-card__preview">
+            <div class="mrd-slide mrd-slide--hh">
+              <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.5rem">
+                <span class="mrd-hh-logo">hh</span>
+                <div>
+                  <p style="font-weight:700;color:var(--mrd-hh-red);font-size:1.125rem;margin:0 0 0.5rem">HeadHunter — ведущая платформа по поиску работы</p>
+                  <p style="font-size:0.875rem;margin:0;color:var(--mrd-hh-muted)">Казахстан, Узбекистан, Кыргызстан</p>
+                </div>
+              </div>
+              <div class="mrd-kpi-grid">
+                <div class="mrd-kpi">
+                  <p class="mrd-kpi__eyebrow">Свыше</p>
+                  <p class="mrd-kpi__value">127 тыс</p>
+                  <p class="mrd-kpi__label">клиентов</p>
+                </div>
+                <div class="mrd-kpi">
+                  <p class="mrd-kpi__eyebrow">&nbsp;</p>
+                  <p class="mrd-kpi__value">6,7 млн</p>
+                  <p class="mrd-kpi__label">резюме</p>
+                </div>
+                <div class="mrd-kpi">
+                  <p class="mrd-kpi__eyebrow">Свыше</p>
+                  <p class="mrd-kpi__value">45 тыс</p>
+                  <p class="mrd-kpi__label">вакансий в день</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="ds-slide-card__label">05 · HH Stats — кремовый фон, KPI-сетка с разделителями (Багдатулы)</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="ds-section" id="components">
+      <header class="ds-section__head">
+        <h2>компоненты</h2>
+        <p>Переиспользуемые блоки и правила</p>
+      </header>
+
+      <div class="ds-rules">
+        <div class="ds-rule">
+          <strong>Красная полоса слева</strong>
+          Все контентные слайды MRD имеют вертикальный accent <code>6px #ee0815</code> по левому краю.
+        </div>
+        <div class="ds-rule">
+          <strong>Lowercase заголовки</strong>
+          Заголовки секций и обложки — строчными буквами, Bold. Исключение: KPI-цифры в hand-drawn стиле (uppercase).
+        </div>
+        <div class="ds-rule">
+          <strong>Footer</strong>
+          <code>MARKETING & REPUTATION DAY / {n}</code> — правый нижний угол, uppercase, Gray 400, 11px.
+        </div>
+        <div class="ds-rule">
+          <strong>Фото спикера</strong>
+          Портрет 3:4, border-radius 16px, grayscale 100%, белая дуга-акцент над углом.
+        </div>
+        <div class="ds-rule">
+          <strong>Hand-drawn accents</strong>
+          В деках Нафисы — красные scribble, сердечки, underline. SVG или PNG overlay, не inline в тексте.
+        </div>
+      </div>
+
+      <div style="margin-top:2rem;background:#fff;border-radius:12px;padding:1.25rem">
+        <h3 style="margin:0 0 1rem;font-size:1rem;font-weight:700;text-transform:lowercase">kpi grid 2×2 (Krisha style)</h3>
+        <div class="mrd-kpi-grid mrd-kpi-grid--2x2">
+          <div class="mrd-kpi mrd-kpi--sketch">
+            <p class="mrd-kpi__value">5,5 млн</p>
+            <p class="mrd-kpi__label">аудитория в месяц</p>
+          </div>
+          <div class="mrd-kpi mrd-kpi--sketch">
+            <p class="mrd-kpi__value">550 тыс.</p>
+            <p class="mrd-kpi__label">объявлений ежемесячно</p>
+          </div>
+          <div class="mrd-kpi mrd-kpi--sketch">
+            <p class="mrd-kpi__value">500 000</p>
+            <p class="mrd-kpi__label">казахстанцев в день</p>
+          </div>
+          <div class="mrd-kpi mrd-kpi--sketch">
+            <p class="mrd-kpi__value">№1</p>
+            <p class="mrd-kpi__label">платформа по недвижимости</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section" id="tokens">
+      <header class="ds-section__head">
+        <h2>css-токены</h2>
+        <p>Подключите <code>mrd-tokens.css</code> + <code>mrd-components.css</code></p>
+      </header>
+      <pre class="ds-token-block"><span class="comment">/* design-system/mrd-tokens.css */</span>
+<span class="prop">--mrd-red</span>: <span class="val">#ee0815</span>;
+<span class="prop">--mrd-ink</span>: <span class="val">#0f0f0f</span>;
+<span class="prop">--mrd-font</span>: <span class="val">"Inter", "Helvetica Neue", sans-serif</span>;
+<span class="prop">--mrd-stripe-width</span>: <span class="val">6px</span>;
+<span class="prop">--mrd-text-5xl</span>: <span class="val">clamp(2.5rem, 6vw, 4.5rem)</span>;
+<span class="prop">--mrd-hh-cream</span>: <span class="val">#fff8f0</span>; <span class="comment">/* HeadHunter variant */</span></pre>
+    </section>
+
+    <section class="ds-section" id="sources">
+      <header class="ds-section__head">
+        <h2>источники</h2>
+        <p>Три PDF-дека, из которых извлечена система</p>
+      </header>
+      <div class="ds-sources">
+        <div class="ds-source">
+          <div><strong>Данияр Косназаров</strong><br><span>«кризис идентичности: маркетинг в смутные времена» · 20 слайдов · MRD template</span></div>
+        </div>
+        <div class="ds-source">
+          <div><strong>Нафиса Караханова</strong><br><span>«Построение коммьюнити для B2B аудитории» · 40 слайдов · MRD + hand-drawn</span></div>
+        </div>
+        <div class="ds-source">
+          <div><strong>Мухамед Багдатулы</strong><br><span>«Работодатель мечты: HR-бренд» · 20 слайдов · HeadHunter co-brand</span></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="ds-footer-page">
+    <a href="../index.html">← vh48 catalog</a>
+    · Marketing & Reputation Day Design System · 2026
+  </footer>
+</body>
+</html>

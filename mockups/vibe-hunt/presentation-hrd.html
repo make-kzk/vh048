@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeHunt — для вашей команды</title>
+  <meta name="theme-color" content="#f7fbfb">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+  <style>
+    /* ── Design Tokens (from VibeHunt) ── */
+    :root {
+      --vh-primary: #f26522;
+      --vh-primary-h: #d94f0a;
+      --vh-primary-l: #fef0e8;
+      --vh-secondary: #6b4eff;
+      --vh-secondary-l: #f0edff;
+      --vh-ink: #101828;
+      --vh-muted: #667085;
+      --vh-border: #e4e7ec;
+      --vh-bg: #f7fbfb;
+      --vh-surface: #ffffff;
+      --vh-teal: #7ec8c4;
+      --vh-teal-soft: rgba(171, 224, 223, 0.35);
+      --vh-indigo-soft: rgba(107, 78, 255, 0.12);
+      --vh-hero-bg: #17171c;
+      --vh-hero-line: rgba(255, 255, 255, 0.08);
+      --vh-font: Inter, Onest, -apple-system, sans-serif;
+      --vh-display: Geologica, Inter, sans-serif;
+      --vh-mono: 'JetBrains Mono', monospace;
+      --vh-radius: 16px;
+      --vh-radius-xl: 24px;
+      --vh-shadow: 0 22px 45px -8px rgba(16, 24, 40, 0.14);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--vh-font);
+      color: var(--vh-ink);
+      background: var(--vh-bg);
+      overflow: hidden;
+      height: 100dvh;
+      width: 100vw;
+    }
+
+    /* ── Slider Container ── */
+    .slider {
+      display: flex;
+      width: 500vw;
+      height: 100dvh;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100dvh;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 3rem;
+    }
+
+    .slide__inner {
+      max-width: 1100px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Navigation Bar ── */
+    .nav-bar {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--vh-border);
+      border-radius: 999px;
+      padding: 6px 8px;
+      box-shadow: 0 8px 32px rgba(16, 24, 40, 0.12);
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: var(--vh-border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+    .nav-dot.active {
+      width: 32px;
+      border-radius: 999px;
+      background: var(--vh-primary);
+    }
+    .nav-dot:hover:not(.active) { background: #c0c0c0; }
+
+    .nav-arrow {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--vh-ink);
+      transition: background 0.2s;
+    }
+    .nav-arrow:hover { background: var(--vh-primary-l); }
+    .nav-arrow svg { width: 18px; height: 18px; }
+
+    /* ── Slide Counter ── */
+    .slide-counter {
+      position: fixed;
+      top: 1.5rem;
+      right: 2rem;
+      z-index: 100;
+      font-family: var(--vh-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--vh-muted);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--vh-border);
+    }
+    .slide-counter .current { color: var(--vh-primary); }
+
+    /* ── Logo ── */
+    .logo {
+      position: fixed;
+      top: 1.5rem;
+      left: 2rem;
+      z-index: 100;
+      font-family: var(--vh-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--vh-border);
+    }
+    .logo .vibe { color: var(--vh-secondary); }
+    .logo .hunt { color: var(--vh-primary); }
+
+    /* ── Decorative Blobs ── */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(8rem);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Typography ── */
+    .eyebrow {
+      font-family: var(--vh-mono);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--vh-primary);
+      margin-bottom: 1rem;
+    }
+
+    .slide-title {
+      font-family: var(--vh-display);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: var(--vh-ink);
+      margin-bottom: 1.5rem;
+      text-wrap: balance;
+    }
+    .slide-title strong {
+      font-weight: 700;
+    }
+    .slide-title .accent { color: var(--vh-primary); }
+    .slide-title .accent-v { color: var(--vh-secondary); }
+
+    .slide-subtitle {
+      font-size: 1.125rem;
+      color: var(--vh-muted);
+      line-height: 1.7;
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Cards Grid ── */
+    .cards {
+      display: grid;
+      gap: 1rem;
+    }
+    .cards--3 { grid-template-columns: repeat(3, 1fr); }
+    .cards--2 { grid-template-columns: repeat(2, 1fr); }
+    .cards--4 { grid-template-columns: repeat(4, 1fr); }
+
+    .card {
+      background: var(--vh-surface);
+      border: 1px solid var(--vh-border);
+      border-radius: var(--vh-radius-xl);
+      padding: 2rem 1.75rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--vh-shadow);
+    }
+
+    .card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.5rem;
+    }
+    .card__icon--orange { background: var(--vh-primary-l); }
+    .card__icon--violet { background: var(--vh-secondary-l); }
+    .card__icon--teal { background: rgba(126, 200, 196, 0.2); }
+
+    .card h3 {
+      font-family: var(--vh-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.875rem;
+      color: var(--vh-muted);
+      line-height: 1.65;
+    }
+    .card ul {
+      list-style: none;
+      margin-top: 0.75rem;
+    }
+    .card ul li {
+      font-size: 0.8125rem;
+      color: var(--vh-muted);
+      line-height: 1.6;
+      padding-left: 1.25rem;
+      position: relative;
+      margin-bottom: 0.375rem;
+    }
+    .card ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--vh-primary);
+    }
+
+    /* ── Stat Blocks ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .stat {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--vh-surface);
+      border: 1px solid var(--vh-border);
+      border-radius: var(--vh-radius-xl);
+    }
+    .stat__value {
+      font-family: var(--vh-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stat__value span { color: var(--vh-primary); }
+    .stat__label {
+      font-size: 0.8125rem;
+      color: var(--vh-muted);
+      line-height: 1.5;
+    }
+
+    /* ── Pain Points List ── */
+    .pain-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .pain-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--vh-surface);
+      border: 1px solid var(--vh-border);
+      border-radius: var(--vh-radius);
+      font-size: 0.9375rem;
+      line-height: 1.55;
+    }
+    .pain-item__icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: #fff5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+    }
+    .pain-item__icon--green { background: #f0fdf4; }
+
+    /* ── Two Column Layout ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .two-col--wide-right {
+      grid-template-columns: 2fr 3fr;
+    }
+
+    /* ── Process Steps ── */
+    .process {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .process__step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--vh-border);
+    }
+    .process__step:last-child { border-bottom: none; }
+    .process__num {
+      font-family: var(--vh-mono);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--vh-primary);
+      min-width: 2rem;
+      padding-top: 0.15rem;
+    }
+    .process__content h4 {
+      font-family: var(--vh-display);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    .process__content p {
+      font-size: 0.8125rem;
+      color: var(--vh-muted);
+      line-height: 1.6;
+    }
+
+    /* ── CTA Slide (dark) ── */
+    .slide--dark {
+      background: var(--vh-hero-bg);
+      color: #fff;
+    }
+    .slide--dark .eyebrow { color: var(--vh-primary); }
+    .slide--dark .slide-title { color: #fff; }
+    .slide--dark .slide-subtitle { color: rgba(255,255,255,0.55); }
+    .slide--dark .slide-counter { background: rgba(23,23,28,0.85); color: rgba(255,255,255,0.38); border-color: rgba(255,255,255,0.08); }
+
+    .cta-center {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cta-center .slide-subtitle {
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      height: 3.5rem;
+      padding: 0 2.5rem;
+      font-family: var(--vh-font);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--vh-secondary);
+      border: none;
+      border-radius: 0.875rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(107, 78, 255, 0.3);
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    .btn-cta:hover {
+      background: #5036e0;
+      box-shadow: 0 6px 24px rgba(107, 78, 255, 0.4);
+      transform: translateY(-2px);
+    }
+    .btn-cta__arrow {
+      transition: transform 0.2s;
+    }
+    .btn-cta:hover .btn-cta__arrow {
+      transform: translateX(4px);
+    }
+
+    .cta-trust {
+      margin-top: 1.5rem;
+      font-family: var(--vh-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── Before/After comparison ── */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .comparison__col {
+      padding: 1.75rem;
+      border-radius: var(--vh-radius-xl);
+    }
+    .comparison__col--before {
+      background: #fff5f5;
+      border: 1px solid #fecdd3;
+    }
+    .comparison__col--after {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+    .comparison__label {
+      font-family: var(--vh-mono);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .comparison__col--before .comparison__label { color: #cf3434; }
+    .comparison__col--after .comparison__label { color: #2da44e; }
+    .comparison__col ul {
+      list-style: none;
+    }
+    .comparison__col li {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+      color: var(--vh-ink);
+    }
+    .comparison__col--before li::before {
+      content: '✕';
+      position: absolute;
+      left: 0;
+      color: #cf3434;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+    .comparison__col--after li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #2da44e;
+      font-weight: 700;
+    }
+
+    /* ── Highlight tag ── */
+    .highlight-tag {
+      display: inline-block;
+      font-family: var(--vh-mono);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .highlight-tag--orange {
+      background: var(--vh-primary-l);
+      color: var(--vh-primary);
+    }
+    .highlight-tag--violet {
+      background: var(--vh-secondary-l);
+      color: var(--vh-secondary);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .cards--3, .cards--4 { grid-template-columns: 1fr; }
+      .cards--2 { grid-template-columns: 1fr; }
+      .two-col, .two-col--wide-right { grid-template-columns: 1fr; gap: 2rem; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .comparison { grid-template-columns: 1fr; }
+      .slide { padding: 2rem 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .stats { grid-template-columns: 1fr; }
+    }
+
+    /* ── Dark nav override for slide 5 ── */
+    .nav-bar.dark-mode {
+      background: rgba(23, 23, 28, 0.88);
+      border-color: rgba(255,255,255,0.08);
+    }
+    .nav-bar.dark-mode .nav-dot { background: rgba(255,255,255,0.15); }
+    .nav-bar.dark-mode .nav-dot.active { background: var(--vh-primary); }
+    .nav-bar.dark-mode .nav-arrow { color: rgba(255,255,255,0.6); }
+    .nav-bar.dark-mode .nav-arrow:hover { background: rgba(255,255,255,0.08); }
+
+    .logo.dark-mode {
+      background: rgba(23, 23, 28, 0.85);
+      border-color: rgba(255,255,255,0.08);
+    }
+    .slide-counter.dark-mode {
+      background: rgba(23, 23, 28, 0.85);
+      border-color: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.38);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <div class="logo" id="logo">
+    <span class="vibe">Vibe</span><span class="hunt">Hunt</span>
+  </div>
+
+  <!-- Counter -->
+  <div class="slide-counter" id="counter">
+    <span class="current">01</span> / 05
+  </div>
+
+  <!-- Slider -->
+  <div class="slider" id="slider">
+
+    <!-- ═══════════════════════════════════════════════
+         SLIDE 1 — Hero: Проблема + обещание
+         ═══════════════════════════════════════════════ -->
+    <section class="slide" style="background: linear-gradient(180deg, rgba(255,255,255,0) 0%, var(--vh-teal-soft) 100%);">
+      <div class="blob" style="width:46rem;height:46rem;background:rgba(126,200,196,0.35);bottom:-18rem;left:-6rem;"></div>
+      <div class="blob" style="width:40rem;height:40rem;background:var(--vh-indigo-soft);top:-10rem;right:-14rem;"></div>
+      <div class="slide__inner cta-center">
+        <div class="eyebrow">Для HRD и лидеров команд</div>
+        <h1 class="slide-title" style="max-width:920px;">
+          <strong><span class="accent-v">Vibe</span><span class="accent">Hunt</span></strong> — платформа для<br>
+          создания <span class="accent-v">успешной команды</span>
+        </h1>
+        <p class="slide-subtitle" style="max-width:640px;">
+          Сотрудники, чьи сильные стороны совпадают с&nbsp;требованиями роли,
+          показывают на&nbsp;<strong style="color:var(--vh-ink);">21–36% более высокую</strong> производительность.
+        </p>
+        <p style="font-size:0.75rem; color:var(--vh-muted); margin-bottom:2rem;">
+          <strong style="color:var(--vh-ink);">Harvard Business Review</strong> · Исследование вовлечённости сотрудников
+        </p>
+        <div class="stats" style="max-width:860px;">
+          <div class="stat">
+            <div class="stat__value">50<span>+</span></div>
+            <div class="stat__label">факторов<br>профиля</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">34<span>%</span></div>
+            <div class="stat__label">рост конверсии<br>подбора</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">3<span>×</span></div>
+            <div class="stat__label">быстрее<br>скрининг</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">87<span>%</span></div>
+            <div class="stat__label">точность<br>culture fit</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SLIDE 2 — Боль: Без / С VibeHunt
+         ═══════════════════════════════════════════════ -->
+    <section class="slide">
+      <div class="blob" style="width:36rem;height:36rem;background:rgba(242,101,34,0.08);top:-8rem;right:-10rem;"></div>
+      <div class="slide__inner">
+        <div class="eyebrow">Проблема</div>
+        <h2 class="slide-title" style="max-width:700px;">
+          Подбор вслепую стоит <span class="accent">дороже,</span><br>чем кажется
+        </h2>
+        <p class="slide-subtitle">
+          Каждый неудачный найм обходится компании в&nbsp;6–9 месячных зарплат.
+          VibeHunt устраняет главные причины — субъективность и&nbsp;несовпадение ценностей.
+        </p>
+        <div class="comparison">
+          <div class="comparison__col comparison__col--before">
+            <div class="comparison__label">Без VibeHunt</div>
+            <ul>
+              <li>Субъективная оценка «по ощущениям»</li>
+              <li>Culture fit проверяется на 3-м месяце работы</li>
+              <li>Интервью без единых критериев</li>
+              <li>Ручной скрининг 100+ резюме</li>
+              <li>Текучка до 30% в первый год</li>
+            </ul>
+          </div>
+          <div class="comparison__col comparison__col--after">
+            <div class="comparison__label">С VibeHunt</div>
+            <ul>
+              <li>Объективный скоринг по 50+ факторам</li>
+              <li>Culture fit виден до первого интервью</li>
+              <li>AI-генерация адженды под профиль роли</li>
+              <li>Автоматический ранжированный шортлист</li>
+              <li>Удержание после оффера — до +40%</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SLIDE 3 — Решение: 3 ключевые функции
+         ═══════════════════════════════════════════════ -->
+    <section class="slide">
+      <div class="blob" style="width:40rem;height:40rem;background:var(--vh-indigo-soft);bottom:-12rem;left:-10rem;"></div>
+      <div class="slide__inner">
+        <div class="eyebrow">Решение</div>
+        <h2 class="slide-title">
+          <span class="accent-v">Три модуля,</span> которые<br>трансформируют подбор
+        </h2>
+        <div class="cards cards--3" style="margin-top: 0.5rem;">
+          <div class="card">
+            <div class="card__icon card__icon--orange">🎯</div>
+            <h3>Точность</h3>
+            <p>Совпадение с позицией по ценностям, функциональным ролям и&nbsp;culture fit</p>
+            <ul>
+              <li>Цели позиции и KPI</li>
+              <li>Функциональные роли в команде</li>
+              <li>Оценка culture fit до оффера</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card__icon card__icon--violet">⚡</div>
+            <h3>Скорость</h3>
+            <p>Автоматизация рутины и ускорение всех этапов подбора</p>
+            <ul>
+              <li>Дополнительные источники кандидатов</li>
+              <li>Авто-планирование встреч</li>
+              <li>AI-резюмирование информации</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card__icon card__icon--teal">📊</div>
+            <h3>Удобство</h3>
+            <p>Единый кабинет HR с полной картиной по каждому кандидату</p>
+            <ul>
+              <li>Вся информация в одном окне</li>
+              <li>Рекомендации по итогам интервью</li>
+              <li>Готовые рекомендации к офферу</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SLIDE 4 — Как это работает (5 шагов)
+         ═══════════════════════════════════════════════ -->
+    <section class="slide">
+      <div class="blob" style="width:42rem;height:42rem;background:rgba(126,200,196,0.2);bottom:-14rem;right:-12rem;"></div>
+      <div class="slide__inner">
+        <div class="two-col--wide-right">
+          <div>
+            <div class="eyebrow">Процесс</div>
+            <h2 class="slide-title" style="font-size:clamp(1.75rem,3.5vw,2.75rem);">
+              Путь от профиля<br>до <span class="accent">идеального найма</span>
+            </h2>
+            <p class="slide-subtitle" style="font-size:1rem;">
+              Пять этапов, которые превращают подбор из&nbsp;хаоса в&nbsp;управляемый процесс.
+            </p>
+          </div>
+          <div>
+            <div class="process">
+              <div class="process__step">
+                <div class="process__num">01</div>
+                <div class="process__content">
+                  <h4>Задайте профиль роли</h4>
+                  <p>Цели позиции, функциональные роли и критерии culture fit — платформа сформирует профиль для точного подбора.</p>
+                </div>
+              </div>
+              <div class="process__step">
+                <div class="process__num">02</div>
+                <div class="process__content">
+                  <h4>Получите ранжированных кандидатов</h4>
+                  <p>Система находит кандидатов из базы и дополнительных источников, ранжируя по совпадению с профилем роли.</p>
+                </div>
+              </div>
+              <div class="process__step">
+                <div class="process__num">03</div>
+                <div class="process__content">
+                  <h4>Автоматизируйте встречи</h4>
+                  <p>Календарь, напоминания и брифы для интервью подключаются в один клик — без лишней переписки.</p>
+                </div>
+              </div>
+              <div class="process__step">
+                <div class="process__num">04</div>
+                <div class="process__content">
+                  <h4>AI-анализ интервью</h4>
+                  <p>Платформа резюмирует встречи и даёт рекомендации по каждому кандидату на основе профиля роли.</p>
+                </div>
+              </div>
+              <div class="process__step">
+                <div class="process__num">05</div>
+                <div class="process__content">
+                  <h4>Единое окно решения</h4>
+                  <p>Вся информация — от скоринга до рекомендаций по офферу и плану адаптации — в одном кабинете.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SLIDE 5 — CTA (dark)
+         ═══════════════════════════════════════════════ -->
+    <section class="slide slide--dark">
+      <div class="blob" style="width:50rem;height:50rem;background:rgba(242,101,34,0.08);top:-16rem;right:-16rem;"></div>
+      <div class="blob" style="width:40rem;height:40rem;background:rgba(107,78,255,0.06);bottom:-12rem;left:-10rem;"></div>
+      <div class="slide__inner cta-center">
+        <div class="eyebrow">Следующий шаг</div>
+        <h2 class="slide-title" style="max-width:720px;">
+          Сделайте подбор <span class="accent">точным,</span><br>
+          <span class="accent-v">быстрым</span> и управляемым
+        </h2>
+        <p class="slide-subtitle" style="max-width:540px;">
+          Запустите пилот для одной вакансии — и убедитесь,
+          что каждый найм усиливает команду, а&nbsp;не создаёт скрытые риски.
+        </p>
+        <a href="https://make-kzk.github.io/vh48/mockups/vibe-hunt/index.html" class="btn-cta" target="_blank">
+          Запустить пилот <span class="btn-cta__arrow">→</span>
+        </a>
+        <div class="cta-trust">Бесплатный пилот · Результат за 2 недели · Без обязательств</div>
+
+        <div class="stats" style="max-width:700px; margin-top:3rem;">
+          <div class="stat" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);">
+            <div class="stat__value" style="color:#fff;">21–36<span>%</span></div>
+            <div class="stat__label" style="color:rgba(255,255,255,0.45);">рост<br>производительности</div>
+          </div>
+          <div class="stat" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);">
+            <div class="stat__value" style="color:#fff;">50<span>+</span></div>
+            <div class="stat__label" style="color:rgba(255,255,255,0.45);">факторов<br>анализа</div>
+          </div>
+          <div class="stat" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);">
+            <div class="stat__value" style="color:#fff;">~25</div>
+            <div class="stat__label" style="color:rgba(255,255,255,0.45);">минут<br>на старт</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-bar" id="navBar">
+    <button class="nav-arrow" id="prevBtn" aria-label="Предыдущий слайд">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="nav-dot active" data-slide="0"></button>
+    <button class="nav-dot" data-slide="1"></button>
+    <button class="nav-dot" data-slide="2"></button>
+    <button class="nav-dot" data-slide="3"></button>
+    <button class="nav-dot" data-slide="4"></button>
+    <button class="nav-arrow" id="nextBtn" aria-label="Следующий слайд">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </nav>
+
+  <script>
+    const slider = document.getElementById('slider');
+    const dots = document.querySelectorAll('.nav-dot');
+    const counter = document.getElementById('counter');
+    const navBar = document.getElementById('navBar');
+    const logo = document.getElementById('logo');
+    const total = 5;
+    let current = 0;
+
+    function goTo(i) {
+      if (i < 0 || i >= total) return;
+      current = i;
+      slider.style.transform = `translateX(-${current * 100}vw)`;
+
+      dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+      counter.querySelector('.current').textContent = String(current + 1).padStart(2, '0');
+
+      // Dark mode for last slide
+      const isDark = current === 4;
+      navBar.classList.toggle('dark-mode', isDark);
+      logo.classList.toggle('dark-mode', isDark);
+      counter.classList.toggle('dark-mode', isDark);
+    }
+
+    // Dots
+    dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.slide)));
+
+    // Arrows
+    document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+
+    // Keyboard
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+    });
+
+    // Swipe
+    let startX = 0;
+    document.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 60) goTo(current + (diff > 0 ? 1 : -1));
+    });
+
+    // Mouse wheel
+    let wheelLock = false;
+    document.addEventListener('wheel', e => {
+      if (wheelLock) return;
+      wheelLock = true;
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        goTo(current + (e.deltaX > 0 ? 1 : -1));
+      } else {
+        goTo(current + (e.deltaY > 0 ? 1 : -1));
+      }
+      setTimeout(() => { wheelLock = false; }, 800);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,940 @@
+/* HRD-sales deck — layout shell.
+   Visual language from mockups/vibe-hunt (vh-tokens + landing-develop).
+   Every slide is exactly one screen: sizes scale from --u so nothing scrolls. */
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.landing-dm.pres-root {
+  --u: clamp(8px, min(1vw, 1.55vh), 17px);
+  --pres-violet: #6b4eff;
+  --pres-violet-soft: rgba(107, 78, 255, 0.1);
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  height: 100vh;
+  height: 100dvh;
+  min-width: 60rem;
+  background: var(--dm-bg);
+}
+
+/* ── Slidebar (product sidebar chrome) ── */
+.landing-dm .pres-slidebar {
+  height: 100%;
+  border-right: 1px solid var(--dm-border);
+  background: #fff;
+  z-index: 20;
+}
+
+.landing-dm .pres-slidebar__nav {
+  flex: 1;
+  overflow-y: auto;
+  counter-reset: slide;
+}
+
+.landing-dm .pres-slidebar__nav button.preview-nav {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  align-items: flex-start;
+  line-height: 1.3;
+}
+
+.landing-dm .pres-slidebar__nav button.preview-nav::before {
+  counter-increment: slide;
+  content: counter(slide);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.625rem;
+  font-weight: 600;
+  width: 1.125rem;
+  flex-shrink: 0;
+  padding-top: 0.0625rem;
+  opacity: 0.55;
+}
+
+.landing-dm .pres-slidebar__nav button.preview-nav:hover {
+  background: var(--pres-violet-soft);
+}
+
+.landing-dm .pres-slidebar__foot {
+  padding: 0.75rem 0.625rem 1rem;
+  border-top: 1px solid var(--dm-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.landing-dm .pres-slidebar__progress {
+  margin: 0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #98a2b3;
+  text-align: center;
+}
+
+.landing-dm .pres-slidebar__controls {
+  display: flex;
+  gap: 0.375rem;
+}
+
+.landing-dm .pres-slidebar__controls .vh-btn {
+  flex: 1;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.625rem;
+}
+
+/* ── Progress bar ── */
+.landing-dm .pres-slidebar__progress-track {
+  width: 100%;
+  height: 4px;
+  background: var(--dm-border, #e8e8e8);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.landing-dm .pres-slidebar__progress-bar {
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(90deg, var(--pres-violet), var(--vh-color-primary));
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Stage ── */
+.landing-dm .pres-stage {
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-dm .pres-slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  gap: calc(2 * var(--u));
+  padding: calc(3.2 * var(--u)) calc(3.6 * var(--u));
+  overflow: hidden;
+}
+
+.landing-dm .pres-slide.active {
+  display: flex;
+  animation: presIn 0.28s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes presIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Shared type ── */
+.landing-dm .pres-eyebrow {
+  margin: 0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: calc(0.78 * var(--u));
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--vh-color-primary);
+}
+
+.landing-dm .pres-eyebrow--violet {
+  color: var(--pres-violet);
+}
+
+.landing-dm .pres-title {
+  font-family: Geologica, Inter, sans-serif;
+  font-weight: 800;
+  font-size: calc(2.35 * var(--u));
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--dm-ink);
+  margin: calc(0.6 * var(--u)) 0 0;
+  text-wrap: balance;
+}
+
+.landing-dm .pres-title--hero {
+  font-size: calc(3.15 * var(--u));
+}
+
+.landing-dm .pres-title em {
+  font-style: normal;
+  color: var(--vh-color-primary);
+}
+
+.landing-dm .pres-lead {
+  margin: calc(0.9 * var(--u)) 0 0;
+  font-size: calc(1.12 * var(--u));
+  line-height: 1.5;
+  color: var(--dm-muted);
+  max-width: 44ch;
+}
+
+.landing-dm .pres-source {
+  margin: 0;
+  font-size: calc(0.8 * var(--u));
+  color: #98a2b3;
+}
+
+.landing-dm .pres-source strong {
+  color: var(--dm-muted);
+}
+
+.landing-dm .pres-head {
+  flex-shrink: 0;
+}
+
+.landing-dm .pres-head__row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: calc(2 * var(--u));
+}
+
+.landing-dm .pres-head .pres-lead {
+  max-width: 58ch;
+}
+
+.landing-dm .pres-body {
+  flex: 1;
+  min-height: 0;
+}
+
+.landing-dm .pres-logo {
+  font-family: Geologica, Inter, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  letter-spacing: -0.03em;
+}
+
+.landing-dm .pres-logo span:first-child {
+  color: var(--dm-ink);
+}
+
+.landing-dm .pres-logo span:last-child {
+  color: var(--vh-color-primary);
+}
+
+/* ── Cards ── */
+.landing-dm .pres-card {
+  background: #fff;
+  border: 1px solid var(--dm-border);
+  border-radius: calc(1.15 * var(--u));
+  padding: calc(1.35 * var(--u)) calc(1.5 * var(--u));
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.6 * var(--u));
+  min-width: 0;
+}
+
+.landing-dm .pres-card__label {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: calc(0.72 * var(--u));
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pres-violet);
+}
+
+.landing-dm .pres-card__title {
+  margin: 0;
+  font-family: Geologica, Inter, sans-serif;
+  font-size: calc(1.22 * var(--u));
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--dm-ink);
+}
+
+.landing-dm .pres-card__text {
+  margin: 0;
+  font-size: calc(0.95 * var(--u));
+  line-height: 1.45;
+  color: var(--dm-muted);
+}
+
+.landing-dm .pres-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.4 * var(--u));
+}
+
+.landing-dm .pres-list li {
+  position: relative;
+  padding-left: calc(1.2 * var(--u));
+  font-size: calc(0.92 * var(--u));
+  line-height: 1.4;
+  color: var(--dm-ink);
+}
+
+.landing-dm .pres-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--vh-color-primary);
+  font-weight: 700;
+}
+
+/* ── Slide 1 — Hero ── */
+.landing-dm .pres-slide--intro .pres-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  gap: calc(3.4 * var(--u));
+  align-items: center;
+}
+
+.landing-dm .pres-intro__copy {
+  display: flex;
+  flex-direction: column;
+  gap: calc(1.4 * var(--u));
+}
+
+.landing-dm .pres-intro__copy .pres-lead {
+  margin: 0;
+}
+
+.landing-dm .pres-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: calc(0.9 * var(--u));
+}
+
+.landing-dm .pres-kpi {
+  background: #fff;
+  border: 1px solid var(--dm-border);
+  border-radius: calc(0.9 * var(--u));
+  padding: calc(1 * var(--u)) calc(1.1 * var(--u));
+}
+
+.landing-dm .pres-kpi strong {
+  display: block;
+  font-family: Geologica, Inter, sans-serif;
+  font-size: calc(1.85 * var(--u));
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--pres-violet);
+}
+
+.landing-dm .pres-kpi span {
+  display: block;
+  margin-top: calc(0.45 * var(--u));
+  font-size: calc(0.8 * var(--u));
+  line-height: 1.35;
+  color: var(--dm-muted);
+}
+
+.landing-dm .pres-actions {
+  display: flex;
+  align-items: center;
+  gap: calc(1.2 * var(--u));
+  flex-wrap: wrap;
+}
+
+.landing-dm .pres-trust {
+  display: flex;
+  align-items: center;
+  gap: calc(0.75 * var(--u));
+  font-size: calc(0.85 * var(--u));
+  color: var(--dm-muted);
+}
+
+.landing-dm .pres-trust i {
+  width: 1px;
+  height: calc(1.1 * var(--u));
+  background: var(--dm-border);
+}
+
+/* Dark match card — product's hero surface grammar */
+.landing-dm .pres-match {
+  background:
+    radial-gradient(420px 300px at 88% -10%, rgba(107, 78, 255, 0.35), transparent 68%),
+    radial-gradient(360px 260px at 10% 110%, rgba(242, 101, 34, 0.22), transparent 70%),
+    var(--vh-panel-hero);
+  border: 1px solid var(--vh-panel-hero-line);
+  border-radius: calc(1.6 * var(--u));
+  padding: calc(1.7 * var(--u));
+  box-shadow: var(--dm-card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: calc(1.1 * var(--u));
+  color: #fff;
+}
+
+.landing-dm .pres-match__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--u);
+}
+
+.landing-dm .pres-match__eyebrow {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: calc(0.72 * var(--u));
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vh-hero-sub);
+}
+
+.landing-dm .pres-match__badge {
+  font-size: calc(0.72 * var(--u));
+  font-weight: 600;
+  padding: calc(0.25 * var(--u)) calc(0.7 * var(--u));
+  border-radius: 999px;
+  border: 1px solid var(--vh-panel-hero-line-strong);
+  color: var(--vh-hero-sub);
+}
+
+.landing-dm .pres-match__score {
+  display: flex;
+  align-items: center;
+  gap: calc(1.1 * var(--u));
+}
+
+.landing-dm .pres-match__score strong {
+  font-family: Geologica, Inter, sans-serif;
+  font-size: calc(3.5 * var(--u));
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: #fff;
+}
+
+.landing-dm .pres-match__score span {
+  font-size: calc(0.92 * var(--u));
+  line-height: 1.35;
+  color: var(--vh-hero-sub);
+}
+
+.landing-dm .pres-match__rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.5 * var(--u));
+}
+
+.landing-dm .pres-match__rows li {
+  display: flex;
+  align-items: center;
+  gap: calc(0.75 * var(--u));
+  padding: calc(0.65 * var(--u)) calc(0.85 * var(--u));
+  border-radius: calc(0.75 * var(--u));
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--vh-panel-hero-line);
+}
+
+.landing-dm .pres-match__rows li:first-child {
+  background: rgba(107, 78, 255, 0.22);
+  border-color: rgba(154, 137, 255, 0.55);
+}
+
+.landing-dm .pres-match__avatar {
+  width: calc(1.9 * var(--u));
+  height: calc(1.9 * var(--u));
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: calc(0.82 * var(--u));
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.landing-dm .pres-match__person {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-dm .pres-match__person strong {
+  font-size: calc(0.92 * var(--u));
+  font-weight: 600;
+  color: #fff;
+}
+
+.landing-dm .pres-match__person span {
+  font-size: calc(0.75 * var(--u));
+  color: var(--vh-hero-dim);
+}
+
+.landing-dm .pres-match__pct {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-style: normal;
+  font-size: calc(0.92 * var(--u));
+  font-weight: 600;
+  color: #fff;
+}
+
+.landing-dm .pres-match__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(0.4 * var(--u));
+}
+
+.landing-dm .pres-match__chips span {
+  font-size: calc(0.72 * var(--u));
+  font-weight: 500;
+  padding: calc(0.25 * var(--u)) calc(0.65 * var(--u));
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--vh-panel-hero-line);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.landing-dm .pres-match__foot {
+  margin: 0;
+  padding-top: calc(0.9 * var(--u));
+  border-top: 1px solid var(--vh-panel-hero-line);
+  font-size: calc(0.8 * var(--u));
+  line-height: 1.4;
+  color: var(--vh-hero-sub);
+}
+
+/* ── Slide 2 — Pain ── */
+.landing-dm .pres-slide--pain .pres-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: calc(1.6 * var(--u));
+}
+
+.landing-dm .pres-pain__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: calc(1.2 * var(--u));
+}
+
+.landing-dm .pres-pain {
+  border-color: #f0d5c4;
+  background: linear-gradient(180deg, #fff 0%, #fffaf6 100%);
+}
+
+.landing-dm .pres-pain__head {
+  display: flex;
+  align-items: center;
+  gap: calc(0.7 * var(--u));
+}
+
+.landing-dm .pres-pain__icon {
+  width: calc(2.1 * var(--u));
+  height: calc(2.1 * var(--u));
+  border-radius: calc(0.6 * var(--u));
+  background: var(--vh-color-primary-l);
+  color: var(--vh-color-primary-deep);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.landing-dm .pres-pain__icon svg {
+  width: calc(1.15 * var(--u));
+  height: calc(1.15 * var(--u));
+  stroke: currentColor;
+  stroke-width: 1.6;
+  fill: none;
+}
+
+.landing-dm .pres-pain__stat {
+  margin: auto 0 0;
+  padding-top: calc(0.6 * var(--u));
+  border-top: 1px solid rgba(242, 101, 34, 0.15);
+  font-size: calc(0.82 * var(--u));
+  line-height: 1.4;
+  color: var(--vh-color-primary-deep);
+}
+
+.landing-dm .pres-pain__stat strong {
+  font-family: Geologica, Inter, sans-serif;
+  font-weight: 800;
+  font-size: calc(1.05 * var(--u));
+  letter-spacing: -0.02em;
+}
+
+/* Cost sidebar */
+.landing-dm .pres-cost {
+  background:
+    radial-gradient(320px 240px at 100% 0%, rgba(242, 101, 34, 0.24), transparent 70%),
+    var(--vh-panel-hero);
+  border: 1px solid var(--vh-panel-hero-line);
+  border-radius: calc(1.3 * var(--u));
+  padding: calc(1.6 * var(--u));
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: calc(1.1 * var(--u));
+  box-shadow: var(--dm-card-shadow);
+}
+
+.landing-dm .pres-cost__label {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: calc(0.72 * var(--u));
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vh-hero-sub);
+}
+
+.landing-dm .pres-cost__value {
+  font-family: Geologica, Inter, sans-serif;
+  font-size: calc(2.5 * var(--u));
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.landing-dm .pres-cost__value em {
+  font-style: normal;
+  color: var(--vh-color-primary);
+}
+
+.landing-dm .pres-cost__text {
+  margin: 0;
+  font-size: calc(0.9 * var(--u));
+  line-height: 1.45;
+  color: var(--vh-hero-sub);
+}
+
+.landing-dm .pres-cost__rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.7 * var(--u));
+  margin-top: auto;
+}
+
+.landing-dm .pres-cost__rows li {
+  display: flex;
+  align-items: baseline;
+  gap: calc(0.75 * var(--u));
+  padding-top: calc(0.7 * var(--u));
+  border-top: 1px solid var(--vh-panel-hero-line);
+  font-size: calc(0.85 * var(--u));
+  color: var(--vh-hero-sub);
+  line-height: 1.35;
+}
+
+.landing-dm .pres-cost__rows strong {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: calc(0.8 * var(--u));
+  font-weight: 600;
+  color: var(--vh-color-primary);
+  flex-shrink: 0;
+  min-width: calc(6.5 * var(--u));
+}
+
+.landing-dm .pres-cost__note {
+  margin: 0;
+  font-size: calc(0.7 * var(--u));
+  color: var(--vh-hero-dim);
+}
+
+/* ── Slide 3 — Solution ── */
+.landing-dm .pres-slide--solution .pres-body {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: calc(1.1 * var(--u));
+}
+
+.landing-dm .pres-solution {
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-dm .pres-solution::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(0.22 * var(--u));
+  background: var(--pres-violet);
+}
+
+.landing-dm .pres-solution--orange::before {
+  background: var(--vh-color-primary);
+}
+
+.landing-dm .pres-solution--orange .pres-card__label {
+  color: var(--vh-color-primary-deep);
+}
+
+.landing-dm .pres-foot-note {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(0.9 * var(--u));
+  font-size: calc(0.85 * var(--u));
+  color: var(--dm-muted);
+}
+
+.landing-dm .pres-foot-note strong {
+  color: var(--dm-ink);
+}
+
+/* ── Slide 4 — Product ── */
+.landing-dm .pres-slide--product .pres-body {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 2fr);
+  gap: calc(1.8 * var(--u));
+  align-items: center;
+}
+
+.landing-dm .pres-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: calc(1.1 * var(--u));
+  counter-reset: step;
+}
+
+.landing-dm .pres-steps li {
+  position: relative;
+  padding-left: calc(2.6 * var(--u));
+}
+
+.landing-dm .pres-steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(1.85 * var(--u));
+  height: calc(1.85 * var(--u));
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: calc(0.8 * var(--u));
+  font-weight: 600;
+  background: var(--pres-violet);
+  color: #fff;
+}
+
+.landing-dm .pres-steps strong {
+  display: block;
+  font-family: Geologica, Inter, sans-serif;
+  font-size: calc(1.08 * var(--u));
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--dm-ink);
+  padding-top: calc(0.2 * var(--u));
+}
+
+.landing-dm .pres-steps span {
+  display: block;
+  margin-top: calc(0.3 * var(--u));
+  font-size: calc(0.88 * var(--u));
+  line-height: 1.45;
+  color: var(--dm-muted);
+}
+
+/* Scale the real product screen to fit */
+.landing-dm .pres-fit {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.landing-dm .pres-fit__inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--fit-w, 60rem);
+  transform: translate(-50%, -50%) scale(var(--fit-scale, 1));
+  transform-origin: center center;
+}
+
+.landing-dm .pres-fit .how-dm__preview--company {
+  width: 100%;
+}
+
+.landing-dm .pres-fit .how-dm__laptop {
+  max-width: none;
+  border-bottom: 8px solid #101828;
+  border-radius: 1rem;
+}
+
+/* ── Slide 5 — Result ── */
+.landing-dm .pres-slide--result .pres-body {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: calc(1.8 * var(--u));
+}
+
+.landing-dm .pres-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: calc(1.1 * var(--u));
+}
+
+.landing-dm .pres-stat {
+  background: #fff;
+  border: 1px solid var(--dm-border);
+  border-radius: calc(1.1 * var(--u));
+  padding: calc(1.4 * var(--u));
+  text-align: center;
+}
+
+.landing-dm .pres-stat strong {
+  display: block;
+  font-family: Geologica, Inter, sans-serif;
+  font-size: calc(2.7 * var(--u));
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--pres-violet);
+}
+
+.landing-dm .pres-stat span {
+  display: block;
+  margin-top: calc(0.6 * var(--u));
+  font-size: calc(0.88 * var(--u));
+  line-height: 1.4;
+  color: var(--dm-muted);
+}
+
+.landing-dm .pres-stat__detail {
+  margin: calc(0.5 * var(--u)) 0 0;
+  font-size: calc(0.75 * var(--u));
+  line-height: 1.4;
+  color: #98a2b3;
+}
+
+/* Pilot CTA block */
+.landing-dm .pres-pilot {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: calc(2.4 * var(--u));
+  align-items: center;
+  padding: calc(2 * var(--u)) calc(2.4 * var(--u));
+  border-radius: calc(1.4 * var(--u));
+  background: linear-gradient(135deg, #101828 0%, #1e293b 100%);
+  box-shadow: var(--dm-card-shadow);
+  color: #fff;
+}
+
+.landing-dm .pres-pilot__title {
+  margin: calc(0.6 * var(--u)) 0 0;
+  font-family: Geologica, Inter, sans-serif;
+  font-size: calc(2 * var(--u));
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.landing-dm .pres-pilot__text {
+  margin: calc(0.7 * var(--u)) 0 0;
+  font-size: calc(0.95 * var(--u));
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.landing-dm .pres-pilot__actions {
+  display: flex;
+  align-items: center;
+  gap: calc(1.1 * var(--u));
+  margin-top: calc(1.3 * var(--u));
+  flex-wrap: wrap;
+}
+
+.landing-dm .pres-pilot__meta {
+  font-size: calc(0.8 * var(--u));
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.landing-dm .pres-pilot__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.75 * var(--u));
+}
+
+.landing-dm .pres-pilot__list li {
+  position: relative;
+  padding: 0 0 0 calc(1.6 * var(--u));
+  font-size: calc(0.92 * var(--u));
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.landing-dm .pres-pilot__list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--vh-color-primary);
+  font-weight: 700;
+}
+
+.landing-dm .pres-pilot__week {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: calc(0.72 * var(--u));
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vh-color-primary);
+}
+
+/* ── Responsive (minimal — presentation is desktop-first) ── */
+@media (max-width: 60rem) {
+  .landing-dm.pres-root {
+    min-width: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .landing-dm .pres-slidebar {
+    height: auto;
+  }
+
+  .landing-dm .pres-slidebar__nav {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .landing-dm .pres-slidebar__nav button.preview-nav {
+    min-width: 11rem;
+    flex-shrink: 0;
+  }
+
+  .landing-dm .pres-slide--intro .pres-body,
+  .landing-dm .pres-slide--pain .pres-body,
+  .landing-dm .pres-slide--product .pres-body,
+  .landing-dm .pres-pilot {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .landing-dm .pres-slide--solution .pres-body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media print {
+  html,
+  body {
+    overflow: visible;
+    height: auto;
+  }
+}

@@ -7,6 +7,7 @@
 **https://make-kzk.github.io/vh48/**
 
 - [Каталог мокапов](https://make-kzk.github.io/vh48/)
+- [**MRD Design System**](https://make-kzk.github.io/vh48/design-system/) — презентации Marketing & Reputation Day
 - [**VibeHunt mockup**](https://make-kzk.github.io/vh48/mockups/vibe-hunt/index.html) — из VibeHunt88/web
 - [Demo flow](https://make-kzk.github.io/vh48/mockups/demo/index.html) — упрощённый пример на vh48-роутере
 
