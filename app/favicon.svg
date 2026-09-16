@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="VibeHunt">
+  <title>VibeHunt</title>
+  <rect width="32" height="32" rx="7" fill="#1a1a1a"/>
+  <path d="M6 9h3.4l3.1 8.6L15.6 9H19l-4.8 14h-2.4L6 9z" fill="#ffffff"/>
+  <path d="M20 9h3v5.4h4V9h3v14h-3v-5.6h-4V23h-3V9z" fill="#f26522"/>
+</svg>

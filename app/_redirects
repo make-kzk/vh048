@@ -1,0 +1,5 @@
+# Cloudflare Pages SPA history fallback.
+# Serve index.html for any path not matched by a static asset, so client-side
+# React Router routes (/cabinet, /tests, /otchets, ...) survive a hard refresh
+# or direct link instead of returning 404. Status 200 = rewrite, not redirect.
+/*    /index.html   200

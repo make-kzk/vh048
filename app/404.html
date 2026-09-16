@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VibeHunt</title>
+    <script>
+      /**
+       * GitHub Pages SPA fallback (static hosting only).
+       *
+       * Pages serves this file for any path it has no file for. The app is a client-side SPA,
+       * so a deep link like /vh48/app/cabinet/vibe must load the app shell and let react-router
+       * resolve the route.
+       *
+       * The requested path is stashed in sessionStorage and the browser is sent to the app
+       * root; `main.tsx` restores it with history.replaceState BEFORE the router mounts, so the
+       * address bar ends up showing the original URL and no redirect marker leaks into it.
+       *
+       * The dev server and the real production host both resolve SPA routes themselves, so
+       * this file is never reached there.
+       */
+      ;(function () {
+        var base = '/vh48/app/'
+        var target = window.location.pathname + window.location.search + window.location.hash
+        if (target.indexOf(base) !== 0) {
+          window.location.replace(base)
+          return
+        }
+        try {
+          sessionStorage.setItem('vh-spa-redirect', target)
+        } catch (e) {
+          /* private mode — falls back to landing on the app root */
+        }
+        window.location.replace(base)
+      })()
+    </script>
+  </head>
+  <body></body>
+</html>
