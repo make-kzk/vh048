@@ -18,7 +18,7 @@
        * The dev server and the real production host both resolve SPA routes themselves, so
        * this file is never reached there.
        */
-      ;(function () {
+      ;(() => {
         var base = '/vh48/app/'
         var target = window.location.pathname + window.location.search + window.location.hash
         if (target.indexOf(base) !== 0) {
@@ -27,7 +27,7 @@
         }
         try {
           sessionStorage.setItem('vh-spa-redirect', target)
-        } catch (e) {
+        } catch {
           /* private mode — falls back to landing on the app root */
         }
         window.location.replace(base)
