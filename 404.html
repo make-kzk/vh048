@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VibeHunt</title>
+    <script>
+      /**
+       * GitHub Pages SPA fallback.
+       *
+       * Pages serves the SITE-ROOT 404.html for any path it has no file for — for this
+       * project site that root is /vh48/, so this file must live here. A copy inside
+       * /vh48/app/ is never consulted, which is why deep links into the app 404'd even
+       * though the app itself deployed fine.
+       *
+       * Only paths under the app are redirected. The mockups and the catalog are ordinary
+       * static pages, so a genuine typo there should still read as a 404 rather than being
+       * silently swallowed into the SPA.
+       *
+       * The requested path is stashed in sessionStorage and the browser is sent to the app
+       * root; `main.tsx` restores it with history.replaceState BEFORE the router mounts, so
+       * the address bar ends up showing the original URL.
+       */
+      ;(() => {
+        var base = '/vh48/app/'
+        var target = window.location.pathname + window.location.search + window.location.hash
+        if (target.indexOf(base) !== 0) {
+          // Not an app route — leave the 404 visible instead of hijacking it.
+          document.addEventListener('DOMContentLoaded', function () {
+            document.body.textContent = 'Страница не найдена.'
+          })
+          return
+        }
+        try {
+          sessionStorage.setItem('vh-spa-redirect', target)
+        } catch {
+          /* private mode — falls back to the app root */
+        }
+        window.location.replace(base)
+      })()
+    </script>
+  </head>
+  <body></body>
+</html>
