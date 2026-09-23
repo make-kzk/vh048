@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="landing-develop.css">
 </head>
-<body>
+<body class="landing-dm" data-audience="company">
 
 <style>
   /* Modern Deck specific overrides that use VibeHunt tokens */
@@ -39,33 +39,28 @@
     height: 100vh;
     width: 100vw;
     scroll-snap-align: start;
+    padding: 6rem 4rem 2rem 4rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 4rem;
-    box-sizing: border-box;
+    justify-content: flex-start;
     overflow: hidden;
   }
   
   .slide-inner {
-    max-width: 1100px;
-    width: 100%;
     position: relative;
     z-index: 2;
-  }
-  
-  /* Topbar from landing */
-  .deck-topbar {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    padding: 1.5rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
   }
 
+  .deck-topbar {
+    position: absolute; 
+    top: 2rem; left: 4rem; right: 4rem; 
+    max-width: 1100px; margin: 0 auto; padding: 0; 
+    display: flex; justify-content: space-between; align-items: center; z-index: 10;
+  }
+  
   /* Borrowed from hero-dm in VibeHunt */
   .slide-bg-blob {
     position: absolute;
@@ -88,7 +83,7 @@
   
   .huge-title {
     font-family: var(--vh-font-display);
-    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-size: clamp(3rem, 5vw, 4.5rem);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.04em;
@@ -107,8 +102,8 @@
   
   .slide-lead {
     font-size: clamp(1.25rem, 2vw, 1.5rem);
-    color: var(--vh-hero-sub);
-    max-width: 700px;
+    color: var(--vh-color-muted);
+    max-width: 800px;
     line-height: 1.4;
     margin: 0;
   }
@@ -140,7 +135,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 3.5rem;
   }
   
   .deck-card {
@@ -150,10 +145,39 @@
     padding: 2.5rem;
     box-shadow: 0 4px 24px rgba(0,0,0,0.02);
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
   }
   .deck-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  }
+  
+  .deck-card--featured {
+    background: var(--vh-color-secondary);
+    border-color: rgba(138,43,226,0.3);
+    color: var(--vh-color-white);
+  }
+  .deck-card--featured .deck-card-title,
+  .deck-card--featured .deck-stat-value {
+    color: var(--vh-color-white);
+  }
+  .deck-card--featured .deck-card-text {
+    color: rgba(255,255,255,0.85);
+  }
+
+  .deck-card--featured-alt {
+    background: var(--vh-color-primary);
+    border-color: rgba(242,101,34,0.3);
+    color: var(--vh-color-white);
+  }
+  .deck-card--featured-alt .deck-card-title,
+  .deck-card--featured-alt .deck-stat-value {
+    color: var(--vh-color-white);
+  }
+  .deck-card--featured-alt .deck-card-text {
+    color: rgba(255,255,255,0.85);
   }
   
   .deck-card-title {
@@ -172,12 +196,37 @@
   /* Stats styled natively */
   .deck-stat-value {
     font-family: var(--vh-font-display);
-    font-size: 4rem;
+    font-size: clamp(3.5rem, 5vw, 4.5rem);
     font-weight: 800;
     color: var(--vh-color-primary);
     line-height: 1;
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
+  }
+
+  .deck-list {
+    margin: 2rem 0 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .deck-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--vh-color-ink);
+    opacity: 0.8;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  .deck-list li:last-child {
+    margin-bottom: 0;
+  }
+  .deck-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--vh-color-secondary);
+    font-weight: bold;
   }
 
   /* Dots nav */
@@ -229,166 +278,317 @@
     <a href="#slide-3" class="nav-dot"></a>
     <a href="#slide-4" class="nav-dot"></a>
     <a href="#slide-5" class="nav-dot"></a>
+    <a href="#slide-6" class="nav-dot"></a>
   </div>
 
   <div class="deck" id="deck">
-    
-    <!-- SLIDE 1: HERO -->
+
+    <!-- SLIDE 1: SYSTEM -->
     <section class="slide" id="slide-1">
       <div class="deck-topbar">
         <div class="vh-logo" style="display: flex; align-items: baseline; gap: 0.75rem;">
           <span class="vh-logo--split"><span class="vh-logo__vibe">VIBE</span><span class="vh-logo__hunt">HUNT</span></span>
-          <span style="font-family: var(--vh-font-mono); font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
+          <span style="font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
         </div>
-        <a href="https://calendly.com/ai-hiring-audit" target="_blank" class="vh-hunt-btn vh-hunt-btn--primary">Начать охоту <span class="vh-hunt-btn__arrow" aria-hidden="true">→</span></a>
       </div>
       
-      <div class="slide-bg-blob slide-bg-blob--1"></div>
-      <div class="slide-bg-blob slide-bg-blob--2"></div>
+      <div class="slide-bg-blob slide-bg-blob--1" style="top: -10%; left: -10%;"></div>
+      <div class="slide-bg-blob slide-bg-blob--2" style="bottom: -20%; right: -10%;"></div>
       
       <div class="slide-inner">
-        <h1 class="huge-title" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">ТОЧНЫЙ ПОДБОР СОТРУДНИКОВ<br>ПОД <em class="primary">ВАШ ВАЙБ</em></h1>
-        <p class="slide-lead">Сочетание мировых HR-методологий и предиктивных AI моделей</p>
-        
-        <div class="deck-grid" style="margin-top: 4rem;">
-          <div class="deck-card">
-            <div class="deck-stat-value">×4.6</div>
-            <h3 class="deck-card-title">Скорость найма</h3>
-            <p class="deck-card-text">Ускорение полного цикла закрытия вакансии.</p>
-          </div>
-          <div class="deck-card">
-            <div class="deck-stat-value">97%</div>
-            <h3 class="deck-card-title">Релевантность</h3>
-            <p class="deck-card-text">Точность совпадения кандидата с ожиданиями.</p>
-          </div>
-          <div class="deck-card">
-            <div class="deck-stat-value">140+ <span style="font-size: 1.5rem; letter-spacing: 0;">часов</span></div>
-            <h3 class="deck-card-title">Эффективность</h3>
-            <p class="deck-card-text">Сохранение времени команды на адаптации.</p>
-          </div>
-        </div>
-        <div style="margin-top: 1.5rem; font-family: var(--vh-font-mono); font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">*по данным внутренней аналитики</div>
-      </div>
-    </section>
-
-    <!-- SLIDE 2: PROBLEM -->
-    <section class="slide" id="slide-2">
-      <div class="slide-inner">
-        <span class="eyebrow">Текущие боли</span>
-        <h2 class="huge-title">Знакомая <em>картина?</em></h2>
-        <p class="slide-lead">Ключевые ловушки традиционного подбора регулярно сжигают бюджет и время команды.</p>
+        <h2 class="huge-title"><span style="color: var(--vh-color-secondary);">Интеллектуальная</span> система <span style="color: var(--vh-color-primary);">найма</span></h2>
+        <p class="slide-lead">Мы делаем предиктивный анализ соответствия кандидата и позиции, чтобы ускорить процесс выбора и избежать ошибки найма.</p>
         
         <div class="deck-grid">
-          <div class="deck-card" style="border-top: 4px solid var(--vh-color-secondary);">
-            <h3 class="deck-card-title">Операционка сжирает время</h3>
-            <p class="deck-card-text">10–15 часов в неделю уходит на ручной скрининг, бесконечные переписки и встречи.</p>
+          <!-- Card 1 -->
+          <div class="deck-card" style="background: rgba(242, 101, 34, 0.04); border: 1px solid rgba(242, 101, 34, 0.1);">
+            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; color: var(--vh-color-ink);">Скорость найма</h3>
+            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
+              <div class="deck-stat-value" style="margin: 0; line-height: 0.9; color: var(--vh-color-secondary);">×4.6</div>
+            </div>
+            <p class="deck-card-text" style="color: var(--vh-color-muted);">Ускорение полного цикла закрытия вакансии.</p>
           </div>
-          <div class="deck-card" style="border-top: 4px solid var(--vh-color-secondary);">
-            <h3 class="deck-card-title">Найм как лотерея</h3>
-            <p class="deck-card-text">Выбор на интуиции без оцифрованных критериев и структурированного профиля роли.</p>
+          <!-- Card 2 -->
+          <div class="deck-card" style="background: rgba(138, 43, 226, 0.04); border: 1.5px solid var(--vh-color-secondary);">
+            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; color: var(--vh-color-ink);">Релевантность</h3>
+            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
+              <div class="deck-stat-value" style="margin: 0; line-height: 0.9; color: var(--vh-color-secondary);">97%</div>
+            </div>
+            <p class="deck-card-text" style="color: var(--vh-color-muted);">Точность совпадения кандидата с ожиданиями.</p>
           </div>
-          <div class="deck-card" style="border-top: 4px solid var(--vh-color-secondary);">
-            <h3 class="deck-card-title">Ошибка найма</h3>
-            <p class="deck-card-text">Кандидат успешно продает себя на интервью, но выгорает и уходит на испытательном.</p>
+          <!-- Card 3 -->
+          <div class="deck-card" style="background: rgba(138, 43, 226, 0.04); border: 1px solid rgba(138, 43, 226, 0.1);">
+            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; color: var(--vh-color-ink);">Эффективность</h3>
+            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
+              <div class="deck-stat-value" style="margin: 0; line-height: 0.9; color: var(--vh-color-secondary);">140+ <span style="font-size: 1.5rem; letter-spacing: 0;">часов</span></div>
+            </div>
+            <p class="deck-card-text" style="color: var(--vh-color-muted);">Сохранение времени команды на адаптации.</p>
           </div>
         </div>
+        <div style="margin-top: 1.5rem; font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">*по данным внутренней аналитики</div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: COST OF ERROR -->
+    <section class="slide" id="slide-2">
+      <style>
+        #slide-2 .deck-list li::before { color: var(--vh-color-secondary) !important; }
+      </style>
+      <div class="deck-topbar">
+        <div class="vh-logo" style="display: flex; align-items: baseline; gap: 0.75rem;">
+          <span class="vh-logo--split"><span class="vh-logo__vibe">VIBE</span><span class="vh-logo__hunt">HUNT</span></span>
+          <span style="font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
+        </div>
+      </div>
+      <div class="slide-bg-blob slide-bg-blob--1" style="background: var(--vh-color-primary); top: 50%; right: -200px; left: auto; opacity: 0.15;"></div>
+      
+      <div class="slide-inner">
+        <span class="eyebrow" style="margin-bottom: 1.5rem;">Проблема</span>
+        <h2 class="huge-title" style="margin-bottom: 1.5rem;">Знакомая <span style="color: var(--vh-color-primary);">картина?</span></h2>
         
-        <div class="deck-card" style="margin-top: 1.5rem; background: var(--vh-color-primary-l); border-color: rgba(242,101,34,0.1); border-left: 4px solid var(--vh-color-primary);">
-            <h3 class="deck-card-title" style="color: var(--vh-color-primary);">Реальная цена ошибки найма</h3>
-            <p class="deck-card-text" style="color: var(--vh-color-ink);">Отнимает больше времени команды, чем экономит. Компания теряет <strong style="color: var(--vh-color-primary);">2х расхода</strong> на повторный цикл и <strong style="color: var(--vh-color-primary);">3х оклада</strong> на простой.</p>
+        <div class="deck-grid" style="margin-top: 3.5rem;">
+          <div class="deck-card">
+            <h3 class="deck-card-title" style="margin-bottom: 0.5rem;">Время</h3>
+            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
+              <div class="deck-stat-value" style="color: var(--vh-color-primary); font-size: clamp(3.5rem, 5vw, 4.5rem); margin: 0; line-height: 0.9;">28 <span style="font-size: 1.5rem; letter-spacing: 0;">часов</span></div>
+            </div>
+            <p class="deck-card-text">Каждую неделю уходит на ручной скрининг, бесконечные переписки и встречи.</p>
+          </div>
+          <div class="deck-card">
+            <h3 class="deck-card-title" style="margin-bottom: 0.5rem;">Лотерея</h3>
+            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
+              <div class="deck-stat-value" style="color: var(--vh-color-primary); font-size: clamp(3.5rem, 5vw, 4.5rem); margin: 0; line-height: 0.9;"><span style="font-size: 1.5rem; letter-spacing: 0;">от</span> 30%</div>
+            </div>
+            <p class="deck-card-text">Кандидатов вообще не соответствует ожиданиям профиля.</p>
+          </div>
+          <div class="deck-card deck-card--featured-alt">
+            <h3 class="deck-card-title" style="margin-bottom: 0.5rem;">Ошибка найма</h3>
+            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
+              <div class="deck-stat-value" style="color: var(--vh-color-primary); font-size: clamp(3.5rem, 5vw, 4.5rem); margin: 0; line-height: 0.9;"><span style="font-size: 1.5rem; letter-spacing: 0;">всего</span> 1</div>
+            </div>
+            <p class="deck-card-text">Токсичный сотрудник в команде может создать неприятности всему бизнесу.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 3: PIPELINE -->
+    <!-- SLIDE 3: COST 2 -->
     <section class="slide" id="slide-3">
-      <div class="slide-bg-blob slide-bg-blob--2" style="top: 0; right: 0;"></div>
+      <div class="deck-topbar">
+        <div class="vh-logo" style="display: flex; align-items: baseline; gap: 0.75rem;">
+          <span class="vh-logo--split"><span class="vh-logo__vibe">VIBE</span><span class="vh-logo__hunt">HUNT</span></span>
+          <span style="font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
+        </div>
+      </div>
+      <div class="slide-bg-blob slide-bg-blob--2" style="background: var(--vh-color-primary); bottom: 0; left: 0; opacity: 0.15;"></div>
+      
       <div class="slide-inner">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-          <div>
-            <span class="eyebrow primary">Сквозной процесс</span>
-            <h2 class="huge-title">Система <em class="primary">полного цикла</em></h2>
-            <p class="slide-lead">Мы превращаем найм в оцифрованный конвейер — от профилирования до успешного прохождения испытательного срока.</p>
+        <span class="eyebrow primary" style="margin-bottom: 1.5rem;">Последствия</span>
+        <h2 class="huge-title" style="margin-bottom: 1.5rem;">Реальная цена <span style="color: var(--vh-color-primary);">ошибки найма</span></h2>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: stretch; margin-top: 3.5rem;">
+          
+          <!-- Left column -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="deck-card" style="min-height: auto; flex: 1; padding: 2rem; display: flex; flex-direction: column; justify-content: center; background: var(--vh-panel-base);">
+              <h3 class="deck-card-title" style="color: var(--vh-color-secondary); margin-bottom: 0.5rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Прямые убытки</h3>
+              <p class="deck-card-text" style="font-size: 1.125rem;">Затраты на подбор, адаптацию, налоги и оклад до момента увольнения.</p>
+            </div>
+            
+            <div class="deck-card" style="min-height: auto; flex: 1; padding: 2rem; display: flex; flex-direction: row; align-items: center; gap: 1.5rem;">
+              <div class="deck-stat-value" style="color: var(--vh-color-secondary); margin: 0; line-height: 1; flex-shrink: 0; font-size: clamp(2.5rem, 4vw, 3.5rem);">×3</div>
+              <h3 class="deck-card-title" style="margin: 0; line-height: 1.4; font-weight: 400;">Оклада позиции на покрытие простоя</h3>
+            </div>
           </div>
           
-          <div style="display: flex; flex-direction: column;">
-            <div class="pipeline-step">
-              <div class="pipeline-num">01</div>
-              <div>
-                <h3 class="deck-card-title">Архитектура роли</h3>
-                <p class="deck-card-text">Оцифровка культурного кода и матрицы навыков.</p>
-              </div>
-            </div>
-            <div class="pipeline-step">
-              <div class="pipeline-num">02</div>
-              <div>
-                <h3 class="deck-card-title">Пре-скрининг</h3>
-                <p class="deck-card-text">Психологический трекинг и жесткий отсев.</p>
-              </div>
-            </div>
-            <div class="pipeline-step">
-              <div class="pipeline-num">03</div>
-              <div>
-                <h3 class="deck-card-title">AI-Интервью & Оффер</h3>
-                <p class="deck-card-text">Автоматизация скоринга и адаптация 30–60–90.</p>
-              </div>
-            </div>
+          <!-- Right column -->
+          <div class="deck-card deck-card--featured" style="min-height: auto; padding: 3rem; display: flex; flex-direction: column; justify-content: center; transform: none;">
+            <h3 class="deck-card-title" style="color: var(--vh-color-secondary); margin-bottom: 1.5rem;">Ключевые риски</h3>
+            <ul class="deck-list" style="margin: 0;">
+              <li>Потеря клиентской базы</li>
+              <li>Утечка интеллектуальной собственности</li>
+              <li>Репутационные риски бизнеса</li>
+              <li>Выгорание текущей команды из-за перегрузки</li>
+            </ul>
           </div>
+          
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 4: FOUNDATION -->
+    <!-- SLIDE 4: PIPELINE -->
     <section class="slide" id="slide-4">
+      <div class="deck-topbar">
+        <div class="vh-logo" style="display: flex; align-items: baseline; gap: 0.75rem;">
+          <span class="vh-logo--split"><span class="vh-logo__vibe">VIBE</span><span class="vh-logo__hunt">HUNT</span></span>
+          <span style="font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
+        </div>
+      </div>
+      <div class="slide-bg-blob slide-bg-blob--1" style="background: var(--vh-color-secondary); top: 50%; left: 0; opacity: 0.15;"></div>
       <div class="slide-inner">
-        <span class="eyebrow">Методология</span>
-        <h2 class="huge-title">Фундамент <em>надежности</em></h2>
         
-        <div class="deck-grid" style="grid-template-columns: repeat(2, 1fr);">
-          <div class="deck-card" style="display: flex; gap: 2rem; align-items: center;">
-            <div class="deck-stat-value" style="font-size: 2.5rem; color: var(--vh-color-secondary-l);">01</div>
-            <div>
-              <h3 class="deck-card-title">Опыт HRD</h3>
-              <p class="deck-card-text">Практика управления подбором в структурах 2000+ сотрудников.</p>
-            </div>
+        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: flex-start;">
+          
+          <!-- Left Column -->
+          <div>
+            <h2 class="huge-title" style="margin-bottom: 1.5rem;"><span style="color: var(--vh-color-secondary);">Точный</span> подбор сотрудников по <span style="color: var(--vh-color-primary);">вайбу</span></h2>
+            <p class="slide-lead">Глубокий анализ совместимости кандидата с ролью, культурой компании и стилем руководителя по международным HR-методологиям и предиктивной AI-аналитике.</p>
           </div>
-          <div class="deck-card" style="display: flex; gap: 2rem; align-items: center;">
-            <div class="deck-stat-value" style="font-size: 2.5rem; color: var(--vh-color-secondary-l);">02</div>
-            <div>
-              <h3 class="deck-card-title">Проверено на себе</h3>
-              <p class="deck-card-text">Создано для масштабирования проектов. Нанимаем команду по этим алгоритмам.</p>
+
+          <!-- Right Column -->
+          <div style="position: relative; display: flex; flex-direction: column; gap: 2rem;">
+            <!-- Vertical line -->
+            <div style="position: absolute; top: 24px; bottom: 24px; left: 24px; width: 2px; background: var(--vh-color-secondary); opacity: 0.15; z-index: 1;"></div>
+            
+            <div style="display: flex; gap: 2rem; position: relative; z-index: 2;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0;">1</div>
+              <div style="padding-top: 0.25rem;">
+                <h3 class="deck-card-title" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Архитектура роли</h3>
+                <p class="deck-card-text">Создаем точный профиль идеального кандидата под ваш бизнес и стиль управления.</p>
+              </div>
             </div>
-          </div>
-          <div class="deck-card" style="display: flex; gap: 2rem; align-items: center;">
-            <div class="deck-stat-value" style="font-size: 2.5rem; color: var(--vh-color-secondary-l);">03</div>
-            <div>
-              <h3 class="deck-card-title">Мировые стандарты</h3>
-              <p class="deck-card-text">Оценка по сертифицированным методологиям (GALLUP, SHL, Deloitte).</p>
+            
+            <div style="display: flex; gap: 2rem; position: relative; z-index: 2;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0;">2</div>
+              <div style="padding-top: 0.25rem;">
+                <h3 class="deck-card-title" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Пре-скрининг</h3>
+                <p class="deck-card-text">Анализируем паттерны кандидата — до вас доходят только те, кто совпадает с «Архитектурой роли».</p>
+              </div>
             </div>
-          </div>
-          <div class="deck-card" style="display: flex; gap: 2rem; align-items: center;">
-            <div class="deck-stat-value" style="font-size: 2.5rem; color: var(--vh-color-secondary-l);">04</div>
-            <div>
-              <h3 class="deck-card-title">Инженерия AI & ML</h3>
-              <p class="deck-card-text">Собственный R&D-отдел. Строгий математический код и баланс нейросетей.</p>
+            
+            <div style="display: flex; gap: 2rem; position: relative; z-index: 2;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0;">3</div>
+              <div style="padding-top: 0.25rem;">
+                <h3 class="deck-card-title" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Автоматизация</h3>
+                <p class="deck-card-text">Автоматизируем процессы организации встречи и подготовку к интервью.</p>
+              </div>
             </div>
+            
+            <div style="display: flex; gap: 2rem; position: relative; z-index: 2;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0;">4</div>
+              <div style="padding-top: 0.25rem;">
+                <h3 class="deck-card-title" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Анализ соответствия</h3>
+                <p class="deck-card-text">Предоставляем отчет по соответствию кандидата и позиции: соответствие роли, драйверы и риски, совместимость с руководителем и компанией.</p>
+              </div>
+            </div>
+            
+            <div style="display: flex; gap: 2rem; position: relative; z-index: 2;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0;">5</div>
+              <div style="padding-top: 0.25rem;">
+                <h3 class="deck-card-title" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Оффер</h3>
+                <p class="deck-card-text">Собираем оффер по личным мотиваторам кандидата и трек адаптации на 30–60–90 дней.</p>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 5: CTA -->
-    <section class="slide" id="slide-5" style="background: var(--vh-panel-hero);">
-      <div class="slide-bg-blob slide-bg-blob--1" style="background: var(--vh-color-secondary); top: 50%; left: 50%; transform: translate(-50%, -50%); filter: blur(150px); opacity: 0.2;"></div>
-      <div class="slide-inner" style="text-align: center;">
-        <span class="eyebrow primary" style="background: rgba(242,101,34,0.15);">Финальный шаг</span>
-        <h2 class="huge-title" style="color: var(--vh-color-white);">Готовы перевести найм<br>из лотереи в <em class="primary">систему?</em></h2>
-        <p class="slide-lead" style="margin: 0 auto 3rem auto; color: var(--vh-hero-sub);">Мы берем на себя 90% рутины, оставляя вам финальные управленческие решения.<br>Забронируйте 15-минутный аудит — без оплат и обязательств.</p>
-        
-        <div style="display: flex; justify-content: center; gap: 2rem;">
-          <a href="https://calendly.com/ai-hiring-audit" target="_blank" class="vh-btn vh-btn--primary vh-btn--lg" style="padding: 1.25rem 2.5rem; font-size: 1.25rem; text-decoration: none;">Выбрать удобное время →</a>
+    <!-- SLIDE 5: SYSTEM -->
+    <section class="slide" id="slide-5">
+      <div class="deck-topbar">
+        <div class="vh-logo" style="display: flex; align-items: baseline; gap: 0.75rem;">
+          <span class="vh-logo--split"><span class="vh-logo__vibe">VIBE</span><span class="vh-logo__hunt">HUNT</span></span>
+          <span style="font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
         </div>
-        <p style="margin-top: 1.5rem; color: var(--vh-hero-sub); font-family: var(--vh-font-mono); font-size: 0.875rem;">Формат: Zoom / Google Meet</p>
+      </div>
+      <div class="slide-bg-blob slide-bg-blob--1" style="top: -10%; right: -10%; left: auto;"></div>
+      <div class="slide-bg-blob slide-bg-blob--2" style="bottom: -20%; left: -10%; right: auto;"></div>
+      <div class="slide-inner">
+        <h2 class="huge-title">Система, проверенная <span style="color: var(--vh-color-secondary);">на себе</span></h2>
+        <p class="slide-lead" style="max-width: 800px;">Создано для масштабирования собственных проектов. Нанимаем и развиваем свою команду по этим алгоритмам.</p>
+        
+        <div class="deck-grid">
+          <div class="deck-card">
+            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; min-height: 3.5rem;">Опыт HRD</h3>
+            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
+              <div class="deck-stat-value" style="margin: 0; line-height: 0.9; color: var(--vh-color-secondary);">01</div>
+            </div>
+            <p class="deck-card-text">Практика управления подбором в структурах 2000+ сотрудников. Настройка систем от небольших команд до корпораций.</p>
+          </div>
+          <div class="deck-card">
+            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; min-height: 3.5rem;">Золотые мировые стандарты</h3>
+            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
+              <div class="deck-stat-value" style="margin: 0; line-height: 0.9; color: var(--vh-color-secondary);">02</div>
+            </div>
+            <p class="deck-card-text">Архитектура оценки построена сертифицированными экспертами по международным методологиям.</p>
+          </div>
+          <div class="deck-card">
+            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; min-height: 3.5rem;">Инженерия данных AI & ML</h3>
+            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
+              <div class="deck-stat-value" style="margin: 0; line-height: 0.9; color: var(--vh-color-secondary);">03</div>
+            </div>
+            <p class="deck-card-text">Собственный R&D отдел экспертов по машинному обучению, который создает баланс для точных прогнозов результата.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: CTA -->
+    <section class="slide" id="slide-6" style="background: var(--vh-panel-hero);">
+      <div class="deck-topbar" style="position: absolute; top: 2rem; left: 4rem; right: 4rem; max-width: 1100px; margin: 0 auto; padding: 0; display: flex; justify-content: space-between; align-items: center; z-index: 10;">
+        <div class="vh-logo" style="display: flex; align-items: baseline; gap: 0.75rem;">
+          <span class="vh-logo--split"><span class="vh-logo__vibe" style="color: var(--vh-color-white);">VIBE</span><span class="vh-logo__hunt">HUNT</span></span>
+          <span style="font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
+        </div>
+      </div>
+      
+      <div class="slide-bg-blob slide-bg-blob--1" style="background: var(--vh-color-secondary); top: 50%; left: 50%; transform: translate(-50%, -50%); filter: blur(150px); opacity: 0.2;"></div>
+      
+      <div class="slide-inner">
+        <h2 class="huge-title" style="margin-bottom: 3rem; text-align: center; font-size: clamp(1.5rem, 2.7vw, 3rem); line-height: 1.1; color: var(--vh-color-white); white-space: nowrap; letter-spacing: -0.02em;">Готовы перевести найм из лотереи в <span style="color: var(--vh-color-primary);">систему?</span></h2>
+
+        <div style="display: grid; grid-template-columns: 320px 1fr; gap: 5rem; align-items: center;">
+          
+          <!-- Left Content (QR Code) -->
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2.5rem; width: 100%; box-sizing: border-box;">
+            <!-- QR Placeholder -->
+            <div style="width: 220px; height: 220px; background: white; border-radius: 16px; padding: 16px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
+              <div style="width: 100%; height: 100%; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #666;">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 0.5rem;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><rect x="7" y="7" width="3" height="3"/><rect x="14" y="7" width="3" height="3"/><rect x="7" y="14" width="3" height="3"/><rect x="14" y="14" width="3" height="3"/></svg>
+                <span style="font-size: 0.875rem; font-family: var(--vh-font-family); font-weight: 500;">Ваш QR-код</span>
+              </div>
+            </div>
+            <p style="color: var(--vh-color-white); font-family: var(--vh-font-family); font-size: 1rem; text-align: center; max-width: 240px; margin: 0; opacity: 0.9; line-height: 1.4;">Наведите камеру, чтобы выбрать удобное время</p>
+          </div>
+
+          <!-- Right Content (Roadmap) -->
+          <div style="text-align: left;">
+            <p class="slide-lead" style="margin-bottom: 2rem; font-size: 1.25rem; color: rgba(255,255,255,0.8);">Забронируйте 15-минутный аудит вашего процесса найма.</p>
+            
+            <h4 style="color: var(--vh-color-white); font-family: var(--vh-font-display); font-size: 1.25rem; margin-bottom: 1.5rem; font-weight: 600;">Что мы успеем за 15 минут:</h4>
+            
+            <div style="display: flex; flex-direction: column; gap: 1.5rem; position: relative;">
+              <div style="position: absolute; top: 1.5rem; bottom: 1.5rem; left: 1.25rem; width: 2px; background: var(--vh-color-secondary); opacity: 0.15; z-index: 1;"></div>
+              
+              <div style="display: flex; gap: 1.5rem; position: relative; z-index: 2; align-items: flex-start;">
+                <div style="width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-panel-hero); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0; font-size: 1rem;">1</div>
+                <div style="padding-top: 0.25rem;">
+                  <strong style="color: var(--vh-color-white); display: block; margin-bottom: 0.25rem; font-size: 1.125rem;">Подсветим слепые зоны</strong>
+                  <p style="color: rgba(255,255,255,0.62); margin: 0; font-size: 0.9375rem; line-height: 1.4;">Разберем вашу текущую воронку и найдем этапы, где вы теряете деньги и время.</p>
+                </div>
+              </div>
+              
+              <div style="display: flex; gap: 1.5rem; position: relative; z-index: 2; align-items: flex-start;">
+                <div style="width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-panel-hero); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0; font-size: 1rem;">2</div>
+                <div style="padding-top: 0.25rem;">
+                  <strong style="color: var(--vh-color-white); display: block; margin-bottom: 0.25rem; font-size: 1.125rem;">Определим профиль</strong>
+                  <p style="color: rgba(255,255,255,0.62); margin: 0; font-size: 0.9375rem; line-height: 1.4;">Сформируем «Архитектуру роли» для вашей самой проблемной вакансии.</p>
+                </div>
+              </div>
+              
+              <div style="display: flex; gap: 1.5rem; position: relative; z-index: 2; align-items: flex-start;">
+                <div style="width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-panel-hero); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0; font-size: 1rem;">3</div>
+                <div style="padding-top: 0.25rem;">
+                  <strong style="color: var(--vh-color-white); display: block; margin-bottom: 0.25rem; font-size: 1.125rem;">Покажем изнанку</strong>
+                  <p style="color: rgba(255,255,255,0.62); margin: 0; font-size: 0.9375rem; line-height: 1.4;">Продемонстрируем, как работает система на реальных примерах.</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
       </div>
     </section>
 
