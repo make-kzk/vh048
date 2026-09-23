@@ -4,13 +4,13 @@
 
 ## Live
 
-**https://make-kzk.github.io/vh48/**
+**https://make-kzk.github.io/vh048/**
 
-- [Каталог мокапов](https://make-kzk.github.io/vh48/)
-- [**VibeHunt — дизайн-система**](https://make-kzk.github.io/vh48/design-system/vibehunt/) — токены и компоненты из мокапа
-- [**Альтернативная дизайн-система**](https://make-kzk.github.io/vh48/design-system/) — презентации Marketing & Reputation Day
-- [**VibeHunt mockup**](https://make-kzk.github.io/vh48/mockups/vibe-hunt/index.html) — из VibeHunt88/web
-- [Demo flow](https://make-kzk.github.io/vh48/mockups/demo/index.html) — упрощённый пример на vh48-роутере
+- [Каталог мокапов](https://make-kzk.github.io/vh048/)
+- [**VibeHunt — дизайн-система**](https://make-kzk.github.io/vh048/design-system/vibehunt/) — токены и компоненты из мокапа
+- [**Альтернативная дизайн-система**](https://make-kzk.github.io/vh048/design-system/) — презентации Marketing & Reputation Day
+- [**VibeHunt mockup**](https://make-kzk.github.io/vh048/mockups/vibe-hunt/index.html) — из VibeHunt88/web
+- [Demo flow](https://make-kzk.github.io/vh048/mockups/demo/index.html) — упрощённый пример на vh48-роутере
 
 ### Одноразовая настройка GitHub Pages (как у [Vaibee](https://make-kzk.github.io/Vaibee/))
 
@@ -42,7 +42,7 @@ cd vh48
 
 ### Online (GitHub Pages)
 
-1. Откройте [каталог](https://make-kzk.github.io/vh48/) или [VibeHunt](https://make-kzk.github.io/vh48/mockups/vibe-hunt/index.html)
+1. Откройте [каталог](https://make-kzk.github.io/vh048/) или [VibeHunt](https://make-kzk.github.io/vh048/mockups/vibe-hunt/index.html)
 2. Локально без скрипта (опционально):
 
 ```bash

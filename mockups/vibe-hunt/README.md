@@ -35,7 +35,7 @@
 
 Открыть: [index.html](./index.html)
 
-GitHub Pages: `https://make-kzk.github.io/vh48/mockups/vibe-hunt/index.html`
+GitHub Pages: `https://make-kzk.github.io/vh048/mockups/vibe-hunt/index.html`
 
 ## Связь с Vaibee
 
