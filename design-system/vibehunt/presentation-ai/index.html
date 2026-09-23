@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Интеллектуальный AI-найм персонала</title>
+  <meta name="theme-color" content="#f7fbfb">
+  <link rel="stylesheet" href="../../../mockups/vibe-hunt/vh-tokens.css">
+  <link rel="stylesheet" href="../../../mockups/vibe-hunt/vh-components.css">
+  <link rel="stylesheet" href="../../../mockups/vibe-hunt/style.css">
+  <link rel="stylesheet" href="../../../mockups/vibe-hunt/landing-develop.css">
+  <link rel="stylesheet" href="../presentation/presentation.css">
+</head>
+<body>
+  <div class="landing-dm pres-root" data-audience="company">
+    <aside class="preview-sidebar preview-sidebar--company pres-slidebar" aria-label="Навигация по слайдам">
+      <div class="preview-sidebar__brand">
+        <span class="preview-sidebar__logo">Vibe<span>Hunt</span></span>
+        <span class="preview-sidebar__badge">AI-Hire</span>
+      </div>
+
+      <nav class="preview-sidebar__nav pres-slidebar__nav" role="tablist" aria-label="Слайды">
+        <button type="button" class="preview-nav preview-nav--company preview-nav--active" role="tab" aria-selected="true" data-slide="0">
+          Скорость и точность
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="1">
+          Текущие боли найма
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="2">
+          Масштаб угрозы
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="3">
+          Сквозной процесс
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="4">
+          Методология
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="5">
+          Клиентский путь
+        </button>
+        <button type="button" class="preview-nav preview-nav--company" role="tab" aria-selected="false" data-slide="6">
+          Финальный шаг
+        </button>
+      </nav>
+
+      <div class="pres-slidebar__foot">
+        <div class="pres-slidebar__progress-track">
+          <div class="pres-slidebar__progress-bar" id="pres-bar"></div>
+        </div>
+        <p class="pres-slidebar__progress" id="pres-progress">1 / 7</p>
+        <div class="pres-slidebar__controls">
+          <button type="button" class="vh-btn" id="pres-prev" disabled>← Назад</button>
+          <button type="button" class="vh-btn vh-btn--primary" id="pres-next">Далее →</button>
+        </div>
+        <button type="button" class="vh-btn vh-btn--ghost pres-notes-toggle" id="pres-notes-toggle">Заметки (N)</button>
+      </div>
+    </aside>
+
+    <main class="pres-stage">
+
+      <!-- SLIDE 1 -->
+      <section class="pres-slide pres-slide--scenes active" data-slide-panel="0" aria-label="Метрики найма">
+        <header class="pres-head">
+          <p class="pres-eyebrow">*по данным внутренней аналитики</p>
+          <h2 class="pres-title">Интеллектуальный <em>AI-найм</em> персонала</h2>
+        </header>
+        <div class="pres-body">
+          <div style="display:flex; gap: 1rem; flex-wrap: wrap;">
+            <article class="pres-card pres-scene" style="flex:1;">
+              <p class="pres-scene__day">×4,5</p>
+              <p class="pres-scene__text">Ускорение полного цикла закрытия вакансии</p>
+              <p style="font-size: 0.75rem; font-weight: bold; margin-top:0.5rem; text-transform: uppercase;">Скорость найма</p>
+            </article>
+            <article class="pres-card pres-scene" style="flex:1;">
+              <p class="pres-scene__day">97%</p>
+              <p class="pres-scene__text">Точность совпадения кандидата с ожиданиями</p>
+              <p style="font-size: 0.75rem; font-weight: bold; margin-top:0.5rem; text-transform: uppercase;">Релевантность</p>
+            </article>
+            <article class="pres-card pres-scene" style="flex:1;">
+              <p class="pres-scene__day">140+ ч</p>
+              <p class="pres-scene__text">Сохранение времени команды на вводе в должность</p>
+              <p style="font-size: 0.75rem; font-weight: bold; margin-top:0.5rem; text-transform: uppercase;">Эффективность</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2 -->
+      <section class="pres-slide pres-slide--factors" data-slide-panel="1" hidden aria-label="Текущие боли найма">
+        <header class="pres-head">
+          <p class="pres-eyebrow">Текущие боли найма</p>
+          <h2 class="pres-title">Знакомая <em>картина?</em></h2>
+          <p class="pres-lead">Ключевые ловушки традиционного подбора, которые регулярно сжигают бюджет и время команды. Вы тратите колоссальный ресурс на процесс, результат которого абсолютно непредсказуем.</p>
+        </header>
+        <div class="pres-body">
+          <article class="pres-card pres-factor">
+            <span class="pres-factor__num">1</span>
+            <h3 class="pres-factor__title">Операционка сжирает время</h3>
+            <p class="pres-factor__text">10–15 часов в неделю уходит на ручной скрининг, бесконечные переписки и встречи.</p>
+          </article>
+          <article class="pres-card pres-factor">
+            <span class="pres-factor__num">2</span>
+            <h3 class="pres-factor__title">Каждый найм как лотерея</h3>
+            <p class="pres-factor__text">Выбор на интуиции без оцифрованных критериев и структурированного профиля роли.</p>
+          </article>
+          <article class="pres-card pres-factor">
+            <span class="pres-factor__num">3</span>
+            <h3 class="pres-factor__title">Ошибка найма</h3>
+            <p class="pres-factor__text">Кандидат продает себя на интервью, но выгорает и уходит на испытательном сроке.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SLIDE 3 -->
+      <section class="pres-slide pres-slide--impact" data-slide-panel="2" hidden aria-label="Масштаб угрозы">
+        <header class="pres-head">
+          <p class="pres-eyebrow pres-eyebrow--violet">Масштаб угрозы и последствия</p>
+          <h2 class="pres-title">Реальная цена <em>ошибки найма</em></h2>
+          <p class="pres-lead">Ошибка найма — это не просто потерянные деньги и время. Это риск стабильности вашего бизнеса.</p>
+        </header>
+        <div class="pres-body">
+          <aside class="pres-calc" aria-label="Расчёт стоимости ошибки">
+            <p class="pres-calc__label">Скрытые ловушки</p>
+            <p class="pres-calc__formula">
+              <em>×2</em> расхода на повторный цикл<br><br>
+              <em>×3</em> оклада позиции на простой
+            </p>
+            <p class="pres-calc__note">Отнимает больше времени команды, чем экономит. Создает видимость бурной работы вместо результата.</p>
+          </aside>
+          <div>
+            <ul class="pres-impact-list">
+              <li>Потеря клиентской базы и лояльности партнеров</li>
+              <li>Утечка интеллектуальной собственности и данных</li>
+              <li>Репутационные риски на рынке труда</li>
+              <li>Выгорание текущей команды из-за повышенной нагрузки</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4 -->
+      <section class="pres-slide pres-slide--flow" data-slide-panel="3" hidden aria-label="Сквозной процесс">
+        <header class="pres-head">
+          <p class="pres-eyebrow">Сквозной процесс подбора</p>
+          <h2 class="pres-title">Интеллектуальная система найма <em>полного цикла</em></h2>
+          <p class="pres-lead">Мы превращаем найм в оцифрованный конвейер — от профилирования до успешного прохождения испытательного срока.</p>
+        </header>
+        <div class="pres-body">
+          <div class="pres-pipeline" role="list">
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">1</span><p class="pres-pipeline__label">Архитектура роли</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">2</span><p class="pres-pipeline__label">Пре-скрининг</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">3</span><p class="pres-pipeline__label">AI-Интервью</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">4</span><p class="pres-pipeline__label">Предиктивный отчет</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">5</span><p class="pres-pipeline__label">Оффер и онбординг</p></div>
+          </div>
+          <div style="margin-top: 2rem; display: grid; gap: 1rem; grid-template-columns: 1fr 1fr;">
+            <div class="pres-card"><strong>01 Архитектура роли</strong>: Оцифровка культурного кода и матрицы навыков.</div>
+            <div class="pres-card"><strong>02 Пре-скрининг</strong>: Психологический трекинг и отсев.</div>
+            <div class="pres-card"><strong>03 AI-Интервью</strong>: Автоматизация встреч и автоскоринг.</div>
+            <div class="pres-card"><strong>04 Анализ рисков</strong>: Оценка совместимости и зон роста.</div>
+            <div class="pres-card" style="grid-column: span 2;"><strong>05 Оффер</strong>: По личным мотиваторам и трек адаптации на 30–60–90 дней.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 -->
+      <section class="pres-slide pres-slide--factors" data-slide-panel="4" hidden aria-label="Методология">
+        <header class="pres-head">
+          <p class="pres-eyebrow pres-eyebrow--violet">Фундамент надежности</p>
+          <h2 class="pres-title">Сплав международной экспертизы и <em>AI</em></h2>
+          <p class="pres-lead">Наша система — это интеллект HR-директоров и методологий Big-4, умноженный на мощность алгоритмов.</p>
+        </header>
+        <div class="pres-body">
+          <article class="pres-card pres-factor">
+            <h3 class="pres-factor__title">Проверено на себе</h3>
+            <p class="pres-factor__text">Создано для масштабирования собственных проектов. Нанимаем свою команду по этим алгоритмам.</p>
+          </article>
+          <article class="pres-card pres-factor">
+            <h3 class="pres-factor__title">Опыт HRD</h3>
+            <p class="pres-factor__text">Практика управления подбором в структурах 2000+ сотрудников.</p>
+          </article>
+          <article class="pres-card pres-factor">
+            <h3 class="pres-factor__title">Мировые стандарты</h3>
+            <p class="pres-factor__text">Оценка по сертифицированным методологиям (GALLUP, SHL, Deloitte) вместо догадок.</p>
+          </article>
+          <article class="pres-card pres-factor">
+            <h3 class="pres-factor__title">Инженерия AI & ML</h3>
+            <p class="pres-factor__text">Собственный R&D-отдел. Строгий математический код и баланс нейросетей.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SLIDE 6 -->
+      <section class="pres-slide pres-slide--flow" data-slide-panel="5" hidden aria-label="Клиентский путь">
+        <header class="pres-head">
+          <p class="pres-eyebrow">Прозрачный клиентский путь</p>
+          <h2 class="pres-title">Максимум результата при <em>минимуме усилий</em></h2>
+          <p class="pres-lead">Мы берем на себя 90% рутины, оставляя вам только финальные управленческие решения.</p>
+        </header>
+        <div class="pres-body">
+          <div class="pres-pipeline" role="list">
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">15м</span><p class="pres-pipeline__label">Аудит</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">1д</span><p class="pres-pipeline__label">Входные данные</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">14д</span><p class="pres-pipeline__label">Топ-5 кандидатов</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">Отчет</span><p class="pres-pipeline__label">Аналитика</p></div>
+            <div class="pres-pipeline__step" role="listitem"><span class="pres-pipeline__num">Финал</span><p class="pres-pipeline__label">Оффер и адаптация</p></div>
+          </div>
+          <p class="pres-flow-note">На протяжении всего пути вас сопровождает профессиональный HR-консультант.</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 -->
+      <section class="pres-slide pres-slide--pilot" data-slide-panel="6" hidden aria-label="Финальный шаг">
+        <header class="pres-head">
+          <p class="pres-eyebrow">Финальный шаг</p>
+          <h2 class="pres-title">Готовы перевести найм из лотереи в <em>систему?</em></h2>
+          <p class="pres-lead">Без предварительных оплат, навязывания услуг и обязательств.</p>
+        </header>
+        <div class="pres-body">
+          <article class="pres-card pres-pilot-card">
+            <p class="pres-card__label">Что мы успеем за 15 минут</p>
+            <h3 class="pres-card__title">Экспресс-аудит вашего процесса</h3>
+            <ul class="pres-list">
+              <li><strong>Подсветим слепые зоны:</strong> разберем воронку и найдем этапы, где вы теряете деньги.</li>
+              <li><strong>Определим профиль:</strong> сформируем архитектуру роли для самой проблемной вакансии.</li>
+              <li><strong>Покажем изнанку:</strong> продемонстрируем систему на реальных метриках.</li>
+            </ul>
+          </article>
+          <article class="pres-card pres-pilot-card pres-pilot-card--cta">
+            <p class="pres-card__label">Слоты открыты на этой неделе</p>
+            <h3 class="pres-card__title">Забронируйте 15-минутный аудит</h3>
+            <div class="pres-actions pres-actions--pilot" style="margin-top: 1.5rem;">
+              <a class="vh-hunt-btn vh-hunt-btn--primary" href="https://calendly.com/ai-hiring-audit" target="_blank">
+                Выбрать удобное время <span class="vh-hunt-btn__arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--dm-muted);">Формат: Zoom / Google Meet<br>calendly.com/ai-hiring-audit</p>
+          </article>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Hidden speaker notes -->
+  <template id="notes-source">
+    <div data-notes="0">
+      <h3>Говорит спикер</h3>
+      <p>Интеллектуальный AI-найм персонала: мы достигаем 97% точности совпадения и сохраняем до 140+ часов времени вашей команды.</p>
+    </div>
+    <div data-notes="1">
+      <h3>Говорит спикер</h3>
+      <p>Каждый найм сегодня — как лотерея. Вы тратите часы на рутину, а потом кандидат выгорает на испытательном сроке.</p>
+    </div>
+    <div data-notes="2">
+      <h3>Говорит спикер</h3>
+      <p>Ошибка обходится дорого: двойные расходы на подбор, упущенная прибыль и репутационные риски. Мы убираем эти риски.</p>
+    </div>
+    <div data-notes="3">
+      <h3>Говорит спикер</h3>
+      <p>Система работает как часы: от оцифровки роли и скрининга до предиктивного отчета и контролируемой адаптации.</p>
+    </div>
+    <div data-notes="4">
+      <h3>Говорит спикер</h3>
+      <p>Мы используем опыт международных стандартов и HR-методологий, подкрепленный возможностями AI и Machine Learning.</p>
+    </div>
+    <div data-notes="5">
+      <h3>Говорит спикер</h3>
+      <p>Всего 15 минут на старте — и через 14 дней вы получаете топ-5 кандидатов с глубокой аналитикой. Всю рутину мы берем на себя.</p>
+    </div>
+    <div data-notes="6">
+      <h3>Говорит спикер</h3>
+      <p>Давайте начнем с простого шага — 15 минутного звонка-аудита, чтобы оценить вашу текущую ситуацию.</p>
+    </div>
+  </template>
+
+  <aside class="pres-notes-panel" id="pres-notes" aria-hidden="true" aria-label="Заметки спикера">
+    <div class="pres-notes-panel__head">
+      <h2>Заметки спикера</h2>
+      <button type="button" class="vh-btn vh-btn--ghost" id="pres-notes-close" style="font-size:0.75rem;padding:0.35rem 0.6rem">✕</button>
+    </div>
+    <div class="pres-notes-panel__body" id="pres-notes-body"></div>
+  </aside>
+
+  <script>
+    (function () {
+      var src = document.getElementById('notes-source');
+      if (src) {
+        var holder = document.createElement('div');
+        holder.hidden = true;
+        holder.innerHTML = src.innerHTML;
+        document.body.appendChild(holder);
+      }
+    })();
+  </script>
+  <script src="../presentation/presentation.js"></script>
+</body>
+</html>
