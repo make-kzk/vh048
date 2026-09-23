@@ -1,222 +1,227 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="dark">
+<html lang="ru" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI-найм — Презентация</title>
+  <title>VibeHunt — click-through mockup</title>
+  <meta name="theme-color" content="#fafafa">
   <link rel="stylesheet" href="vh-tokens.css">
   <link rel="stylesheet" href="vh-components.css">
-  <style>
-    :root {
-      --slide-bg: #0d0d12;
-      --slide-text: #ffffff;
-      --slide-muted: #8a8f98;
-      --accent: var(--vh-color-secondary);
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-border: rgba(255, 255, 255, 0.08);
-    }
-    html, body {
-      margin: 0; padding: 0;
-      width: 100%; height: 100%;
-      background: var(--slide-bg);
-      color: var(--slide-text);
-      font-family: var(--vh-font-family);
-      overflow: hidden;
-    }
-    .deck {
-      height: 100vh;
-      width: 100vw;
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-    }
-    /* Hide scrollbar for clean presentation look */
-    .deck::-webkit-scrollbar { display: none; }
-    .deck { -ms-overflow-style: none; scrollbar-width: none; }
-    
-    .slide {
-      position: relative;
-      height: 100vh;
-      width: 100vw;
-      scroll-snap-align: start;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 4rem;
-      box-sizing: border-box;
-    }
-    .slide-inner {
-      max-width: 1100px;
-      width: 100%;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .eyebrow {
-      font-family: var(--vh-font-mono);
-      color: var(--accent);
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-    
-    .title-huge {
-      font-family: var(--vh-font-display);
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      margin: 0 0 1.5rem 0;
-    }
-    .title-huge em {
-      font-style: normal;
-      color: var(--accent);
-    }
-    
-    .lead {
-      font-size: clamp(1.25rem, 2vw, 1.5rem);
-      color: var(--slide-muted);
-      max-width: 700px;
-      line-height: 1.4;
-      margin: 0;
-    }
-
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 4rem;
-    }
-    .bento-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 2.5rem;
-      transition: transform 0.3s ease, background 0.3s ease;
-      backdrop-filter: blur(20px);
-    }
-    .bento-card:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.05);
-    }
-    
-    .bento-stat {
-      font-family: var(--vh-font-display);
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: var(--slide-text);
-      line-height: 1;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-    .bento-stat span { color: var(--accent); }
-    
-    .bento-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin: 0 0 0.75rem 0;
-      color: var(--slide-text);
-    }
-    .bento-text {
-      color: var(--slide-muted);
-      margin: 0;
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .pipeline {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-top: 4rem;
-      position: relative;
-    }
-    .pipeline::before {
-      content: '';
-      position: absolute;
-      top: 24px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--card-border);
-      z-index: 0;
-    }
-    .pipeline-step {
-      position: relative;
-      z-index: 1;
-      width: 18%;
-    }
-    .pipeline-num {
-      width: 48px;
-      height: 48px;
-      background: var(--slide-bg);
-      border: 2px solid var(--accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--vh-font-display);
-      font-weight: 800;
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-      color: var(--accent);
-    }
-    
-    /* Navigation dots */
-    .nav-dots {
-      position: fixed;
-      right: 2rem;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      z-index: 100;
-    }
-    .nav-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--card-border);
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .nav-dot:hover, .nav-dot.active {
-      background: var(--accent);
-      transform: scale(1.5);
-    }
-
-    /* Ambient glow */
-    .ambient-glow {
-      position: absolute;
-      width: 60vw;
-      height: 60vw;
-      background: radial-gradient(circle, rgba(107, 78, 255, 0.15) 0%, rgba(0,0,0,0) 70%);
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-      pointer-events: none;
-    }
-    
-    .footer-note {
-      position: absolute;
-      bottom: 2rem;
-      left: 4rem;
-      font-family: var(--vh-font-mono);
-      font-size: 0.75rem;
-      color: var(--slide-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="landing-develop.css">
 </head>
 <body>
+
+<style>
+  /* Modern Deck specific overrides that use VibeHunt tokens */
+  html, body {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    /* Use VibeHunt native background and text colors */
+    background: var(--vh-panel-app);
+    color: var(--vh-color-ink);
+  }
+  
+  .deck {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+  
+  .deck::-webkit-scrollbar { display: none; }
+  .deck { -ms-overflow-style: none; scrollbar-width: none; }
+  
+  .slide {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 4rem;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  .slide-inner {
+    max-width: 1100px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Topbar from landing */
+  .deck-topbar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+
+  /* Borrowed from hero-dm in VibeHunt */
+  .slide-bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .slide-bg-blob--1 {
+    width: 800px; height: 800px;
+    background: var(--vh-color-primary);
+    top: -200px; left: -200px;
+  }
+  .slide-bg-blob--2 {
+    width: 600px; height: 600px;
+    background: var(--vh-color-secondary);
+    bottom: -100px; right: -100px;
+  }
+  
+  .huge-title {
+    font-family: var(--vh-font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: var(--vh-color-ink);
+    margin: 0 0 1.5rem 0;
+  }
+  
+  .huge-title em {
+    font-style: normal;
+    color: var(--vh-color-secondary);
+  }
+
+  .huge-title em.primary {
+    color: var(--vh-color-primary);
+  }
+  
+  .slide-lead {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    color: var(--vh-hero-sub);
+    max-width: 700px;
+    line-height: 1.4;
+    margin: 0;
+  }
+  
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--vh-color-secondary-l);
+    border: 1px solid rgba(138,43,226,0.2);
+    border-radius: var(--vh-radius-pill);
+    font-size: var(--vh-text-xs);
+    font-weight: var(--vh-fw-semibold);
+    color: var(--vh-color-secondary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .eyebrow.primary {
+    background: var(--vh-color-primary-l);
+    border-color: rgba(242,101,34,0.2);
+    color: var(--vh-color-primary);
+  }
+
+  /* Using VibeHunt's feature-dm grid style */
+  .deck-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  
+  .deck-card {
+    background: var(--vh-color-white);
+    border: 1px solid var(--vh-color-border-subtle);
+    border-radius: var(--vh-radius-lg);
+    padding: 2.5rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+    transition: transform 0.3s ease;
+  }
+  .deck-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  }
+  
+  .deck-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    color: var(--vh-color-ink);
+  }
+  .deck-card-text {
+    color: var(--vh-color-muted);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  /* Stats styled natively */
+  .deck-stat-value {
+    font-family: var(--vh-font-display);
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--vh-color-primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* Dots nav */
+  .nav-dots {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+  }
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--vh-color-border);
+    transition: all 0.3s ease;
+  }
+  .nav-dot.active {
+    background: var(--vh-color-primary);
+    transform: scale(1.5);
+  }
+  
+  /* Pipeline */
+  .pipeline-step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    background: var(--vh-color-white);
+    padding: 1.5rem;
+    border-radius: var(--vh-radius-lg);
+    border: 1px solid var(--vh-color-border-subtle);
+  }
+  .pipeline-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--vh-color-secondary-l);
+    font-family: var(--vh-font-display);
+    line-height: 1;
+  }
+</style>
 
   <div class="nav-dots" id="dots">
     <a href="#slide-1" class="nav-dot active"></a>
@@ -224,182 +229,163 @@
     <a href="#slide-3" class="nav-dot"></a>
     <a href="#slide-4" class="nav-dot"></a>
     <a href="#slide-5" class="nav-dot"></a>
-    <a href="#slide-6" class="nav-dot"></a>
   </div>
 
   <div class="deck" id="deck">
     
-    <!-- Slide 1: Cover -->
+    <!-- SLIDE 1: HERO -->
     <section class="slide" id="slide-1">
-      <div class="ambient-glow"></div>
+      <div class="deck-topbar">
+        <div class="vh-logo vh-logo--split"><span class="vh-logo__vibe">AI</span><span class="vh-logo__hunt">Hire</span></div>
+        <a href="https://calendly.com/ai-hiring-audit" target="_blank" class="vh-hunt-btn vh-hunt-btn--primary">Начать охоту <span class="vh-hunt-btn__arrow" aria-hidden="true">→</span></a>
+      </div>
+      
+      <div class="slide-bg-blob slide-bg-blob--1"></div>
+      <div class="slide-bg-blob slide-bg-blob--2"></div>
+      
       <div class="slide-inner">
-        <span class="eyebrow">VibeHunt · Платформа подбора</span>
-        <h1 class="title-huge">Интеллектуальный<br><em>AI-найм</em> персонала</h1>
-        <p class="lead">Синергия мировых HR-стандартов корпоративного уровня и точных математических алгоритмов.</p>
+        <span class="eyebrow primary">VibeHunt · Платформа подбора</span>
+        <h1 class="huge-title">Интеллектуальный<br><em class="primary">AI-найм</em> персонала</h1>
+        <p class="slide-lead">Синергия мировых HR-стандартов корпоративного уровня и точных математических алгоритмов.</p>
         
-        <div class="bento-grid">
-          <div class="bento-card">
-            <div class="bento-stat">×4.5</div>
-            <h3 class="bento-title">Скорость найма</h3>
-            <p class="bento-text">Ускорение полного цикла закрытия вакансии.</p>
+        <div class="deck-grid" style="margin-top: 4rem;">
+          <div class="deck-card">
+            <div class="deck-stat-value">×4.5</div>
+            <h3 class="deck-card-title">Скорость найма</h3>
+            <p class="deck-card-text">Ускорение полного цикла закрытия вакансии.</p>
           </div>
-          <div class="bento-card">
-            <div class="bento-stat">97<span>%</span></div>
-            <h3 class="bento-title">Релевантность</h3>
-            <p class="bento-text">Точность совпадения кандидата с ожиданиями.</p>
+          <div class="deck-card">
+            <div class="deck-stat-value">97%</div>
+            <h3 class="deck-card-title">Релевантность</h3>
+            <p class="deck-card-text">Точность совпадения кандидата с ожиданиями.</p>
           </div>
-          <div class="bento-card">
-            <div class="bento-stat">140<span>+</span></div>
-            <h3 class="bento-title">Эффективность</h3>
-            <p class="bento-text">Сохранение часов команды на вводе в должность.</p>
+          <div class="deck-card">
+            <div class="deck-stat-value">140+</div>
+            <h3 class="deck-card-title">Эффективность</h3>
+            <p class="deck-card-text">Сохранение часов команды на вводе в должность.</p>
           </div>
         </div>
       </div>
-      <div class="footer-note">*По данным внутренней аналитики</div>
     </section>
 
-    <!-- Slide 2: Problem -->
+    <!-- SLIDE 2: PROBLEM -->
     <section class="slide" id="slide-2">
       <div class="slide-inner">
         <span class="eyebrow">Текущие боли</span>
-        <h2 class="title-huge">Знакомая <em>картина?</em></h2>
-        <p class="lead">Ключевые ловушки традиционного подбора регулярно сжигают бюджет и время команды.</p>
+        <h2 class="huge-title">Знакомая <em>картина?</em></h2>
+        <p class="slide-lead">Ключевые ловушки традиционного подбора регулярно сжигают бюджет и время команды.</p>
         
-        <div class="bento-grid">
-          <div class="bento-card" style="border-top: 4px solid #f26522;">
-            <h3 class="bento-title">Операционка сжирает время</h3>
-            <p class="bento-text">10–15 часов в неделю уходит на ручной скрининг, бесконечные переписки и встречи.</p>
+        <div class="deck-grid">
+          <div class="deck-card" style="border-top: 4px solid var(--vh-color-secondary);">
+            <h3 class="deck-card-title">Операционка сжирает время</h3>
+            <p class="deck-card-text">10–15 часов в неделю уходит на ручной скрининг, бесконечные переписки и встречи.</p>
           </div>
-          <div class="bento-card" style="border-top: 4px solid #f26522;">
-            <h3 class="bento-title">Найм как лотерея</h3>
-            <p class="bento-text">Выбор на интуиции без оцифрованных критериев и структурированного профиля роли.</p>
+          <div class="deck-card" style="border-top: 4px solid var(--vh-color-secondary);">
+            <h3 class="deck-card-title">Найм как лотерея</h3>
+            <p class="deck-card-text">Выбор на интуиции без оцифрованных критериев и структурированного профиля роли.</p>
           </div>
-          <div class="bento-card" style="border-top: 4px solid #f26522;">
-            <h3 class="bento-title">Ошибка найма</h3>
-            <p class="bento-text">Кандидат успешно продает себя на интервью, но выгорает и уходит на испытательном.</p>
+          <div class="deck-card" style="border-top: 4px solid var(--vh-color-secondary);">
+            <h3 class="deck-card-title">Ошибка найма</h3>
+            <p class="deck-card-text">Кандидат успешно продает себя на интервью, но выгорает и уходит на испытательном.</p>
           </div>
+        </div>
+        
+        <div class="deck-card" style="margin-top: 1.5rem; background: var(--vh-color-primary-l); border-color: rgba(242,101,34,0.1); border-left: 4px solid var(--vh-color-primary);">
+            <h3 class="deck-card-title" style="color: var(--vh-color-primary);">Реальная цена ошибки найма</h3>
+            <p class="deck-card-text" style="color: var(--vh-color-ink);">Отнимает больше времени команды, чем экономит. Компания теряет <strong style="color: var(--vh-color-primary);">2х расхода</strong> на повторный цикл и <strong style="color: var(--vh-color-primary);">3х оклада</strong> на простой.</p>
         </div>
       </div>
     </section>
 
-    <!-- Slide 3: Impact -->
+    <!-- SLIDE 3: PIPELINE -->
     <section class="slide" id="slide-3">
-      <div class="ambient-glow" style="background: radial-gradient(circle, rgba(242, 101, 34, 0.1) 0%, rgba(0,0,0,0) 70%);"></div>
+      <div class="slide-bg-blob slide-bg-blob--2" style="top: 0; right: 0;"></div>
       <div class="slide-inner">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
           <div>
-            <span class="eyebrow" style="color: #f26522;">Масштаб угрозы</span>
-            <h2 class="title-huge" style="font-size: clamp(2.5rem, 4vw, 4rem);">Реальная цена<br><em style="color: #f26522;">ошибки найма</em></h2>
-            <p class="lead">Отнимает больше времени команды, чем экономит. Создает видимость бурной работы вместо результата.</p>
-            <ul style="margin-top: 2rem; color: var(--slide-muted); font-size: 1.125rem; line-height: 1.8; padding-left: 1.25rem;">
-              <li>Потеря клиентской базы</li>
-              <li>Утечка интеллектуальной собственности</li>
-              <li>Репутационные риски бизнеса</li>
-              <li>Выгорание текущей команды из-за нагрузки</li>
-            </ul>
+            <span class="eyebrow primary">Сквозной процесс</span>
+            <h2 class="huge-title">Система <em class="primary">полного цикла</em></h2>
+            <p class="slide-lead">Мы превращаем найм в оцифрованный конвейер — от профилирования до успешного прохождения испытательного срока.</p>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <div class="bento-card">
-              <div class="bento-stat" style="color: #f26522;">×2</div>
-              <p class="bento-title">Расхода на повторный цикл подбора</p>
+          
+          <div style="display: flex; flex-direction: column;">
+            <div class="pipeline-step">
+              <div class="pipeline-num">01</div>
+              <div>
+                <h3 class="deck-card-title">Архитектура роли</h3>
+                <p class="deck-card-text">Оцифровка культурного кода и матрицы навыков.</p>
+              </div>
             </div>
-            <div class="bento-card">
-              <div class="bento-stat" style="color: #f26522;">×3</div>
-              <p class="bento-title">Оклада позиции на покрытие простоя</p>
+            <div class="pipeline-step">
+              <div class="pipeline-num">02</div>
+              <div>
+                <h3 class="deck-card-title">Пре-скрининг</h3>
+                <p class="deck-card-text">Психологический трекинг и жесткий отсев.</p>
+              </div>
+            </div>
+            <div class="pipeline-step">
+              <div class="pipeline-num">03</div>
+              <div>
+                <h3 class="deck-card-title">AI-Интервью & Оффер</h3>
+                <p class="deck-card-text">Автоматизация скоринга и адаптация 30–60–90.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Slide 4: Pipeline -->
+    <!-- SLIDE 4: FOUNDATION -->
     <section class="slide" id="slide-4">
       <div class="slide-inner">
-        <span class="eyebrow">Сквозной процесс</span>
-        <h2 class="title-huge">Система <em>полного цикла</em></h2>
-        <p class="lead">Мы превращаем найм в оцифрованный конвейер — от профилирования до успешного прохождения испытательного срока.</p>
+        <span class="eyebrow">Методология</span>
+        <h2 class="huge-title">Фундамент <em>надежности</em></h2>
         
-        <div class="pipeline">
-          <div class="pipeline-step">
-            <div class="pipeline-num">1</div>
-            <h3 class="bento-title">Архитектура роли</h3>
-            <p class="bento-text">Оцифровка культурного кода и матрицы навыков.</p>
-          </div>
-          <div class="pipeline-step">
-            <div class="pipeline-num">2</div>
-            <h3 class="bento-title">Пре-скрининг</h3>
-            <p class="bento-text">Психологический трекинг и жесткий отсев.</p>
-          </div>
-          <div class="pipeline-step">
-            <div class="pipeline-num">3</div>
-            <h3 class="bento-title">AI-Интервью</h3>
-            <p class="bento-text">Автоматизация встреч и моментальный скоринг.</p>
-          </div>
-          <div class="pipeline-step">
-            <div class="pipeline-num">4</div>
-            <h3 class="bento-title">Анализ рисков</h3>
-            <p class="bento-text">Оценка совместимости с лидером и зон роста.</p>
-          </div>
-          <div class="pipeline-step">
-            <div class="pipeline-num">5</div>
-            <h3 class="bento-title">Оффер</h3>
-            <p class="bento-text">Трек адаптации на 30–60–90 дней.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Slide 5: Foundation -->
-    <section class="slide" id="slide-5">
-      <div class="slide-inner">
-        <span class="eyebrow">Фундамент надежности</span>
-        <h2 class="title-huge">Экспертиза & <em>AI</em></h2>
-        
-        <div class="bento-grid" style="grid-template-columns: repeat(2, 1fr);">
-          <div class="bento-card" style="display: flex; gap: 2rem; align-items: center;">
-            <div class="bento-stat" style="font-size: 2.5rem; width: 60px;">01</div>
+        <div class="deck-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="deck-card" style="display: flex; gap: 2rem; align-items: center;">
+            <div class="deck-stat-value" style="font-size: 2.5rem; color: var(--vh-color-secondary-l);">01</div>
             <div>
-              <h3 class="bento-title">Опыт HRD</h3>
-              <p class="bento-text">Практика управления подбором в структурах 2000+ сотрудников.</p>
+              <h3 class="deck-card-title">Опыт HRD</h3>
+              <p class="deck-card-text">Практика управления подбором в структурах 2000+ сотрудников.</p>
             </div>
           </div>
-          <div class="bento-card" style="display: flex; gap: 2rem; align-items: center;">
-            <div class="bento-stat" style="font-size: 2.5rem; width: 60px;">02</div>
+          <div class="deck-card" style="display: flex; gap: 2rem; align-items: center;">
+            <div class="deck-stat-value" style="font-size: 2.5rem; color: var(--vh-color-secondary-l);">02</div>
             <div>
-              <h3 class="bento-title">Проверено на себе</h3>
-              <p class="bento-text">Создано для масштабирования проектов. Нанимаем свою команду по этим алгоритмам.</p>
+              <h3 class="deck-card-title">Проверено на себе</h3>
+              <p class="deck-card-text">Создано для масштабирования проектов. Нанимаем команду по этим алгоритмам.</p>
             </div>
           </div>
-          <div class="bento-card" style="display: flex; gap: 2rem; align-items: center;">
-            <div class="bento-stat" style="font-size: 2.5rem; width: 60px;">03</div>
+          <div class="deck-card" style="display: flex; gap: 2rem; align-items: center;">
+            <div class="deck-stat-value" style="font-size: 2.5rem; color: var(--vh-color-secondary-l);">03</div>
             <div>
-              <h3 class="bento-title">Мировые стандарты</h3>
-              <p class="bento-text">Оценка по сертифицированным методологиям (GALLUP, SHL, Deloitte).</p>
+              <h3 class="deck-card-title">Мировые стандарты</h3>
+              <p class="deck-card-text">Оценка по сертифицированным методологиям (GALLUP, SHL, Deloitte).</p>
             </div>
           </div>
-          <div class="bento-card" style="display: flex; gap: 2rem; align-items: center;">
-            <div class="bento-stat" style="font-size: 2.5rem; width: 60px;">04</div>
+          <div class="deck-card" style="display: flex; gap: 2rem; align-items: center;">
+            <div class="deck-stat-value" style="font-size: 2.5rem; color: var(--vh-color-secondary-l);">04</div>
             <div>
-              <h3 class="bento-title">Инженерия AI & ML</h3>
-              <p class="bento-text">Собственный R&D-отдел. Строгий математический код и баланс нейросетей.</p>
+              <h3 class="deck-card-title">Инженерия AI & ML</h3>
+              <p class="deck-card-text">Собственный R&D-отдел. Строгий математический код и баланс нейросетей.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Slide 6: CTA -->
-    <section class="slide" id="slide-6">
-      <div class="ambient-glow"></div>
+    <!-- SLIDE 5: CTA -->
+    <section class="slide" id="slide-5" style="background: var(--vh-panel-hero);">
+      <div class="slide-bg-blob slide-bg-blob--1" style="background: var(--vh-color-secondary); top: 50%; left: 50%; transform: translate(-50%, -50%); filter: blur(150px); opacity: 0.2;"></div>
       <div class="slide-inner" style="text-align: center;">
-        <span class="eyebrow">Финальный шаг</span>
-        <h2 class="title-huge">Готовы перевести найм<br>из лотереи в <em>систему?</em></h2>
-        <p class="lead" style="margin: 0 auto 3rem auto;">Мы берем на себя 90% рутины, оставляя вам финальные управленческие решения.<br>Забронируйте 15-минутный аудит — без оплат и обязательств.</p>
+        <span class="eyebrow primary" style="background: rgba(242,101,34,0.15);">Финальный шаг</span>
+        <h2 class="huge-title" style="color: var(--vh-color-white);">Готовы перевести найм<br>из лотереи в <em class="primary">систему?</em></h2>
+        <p class="slide-lead" style="margin: 0 auto 3rem auto; color: var(--vh-hero-sub);">Мы берем на себя 90% рутины, оставляя вам финальные управленческие решения.<br>Забронируйте 15-минутный аудит — без оплат и обязательств.</p>
         
         <div style="display: flex; justify-content: center; gap: 2rem;">
-          <a href="https://calendly.com/ai-hiring-audit" target="_blank" class="vh-btn vh-btn--primary vh-btn--lg" style="background: var(--accent); color: white; border: none; padding: 1.25rem 2.5rem; font-size: 1.25rem; text-decoration: none;">Выбрать удобное время →</a>
+          <a href="https://calendly.com/ai-hiring-audit" target="_blank" class="vh-btn vh-btn--primary vh-btn--lg" style="padding: 1.25rem 2.5rem; font-size: 1.25rem; text-decoration: none;">Выбрать удобное время →</a>
         </div>
-        <p style="margin-top: 1.5rem; color: var(--slide-muted); font-family: var(--vh-font-mono); font-size: 0.875rem;">Формат: Zoom / Google Meet</p>
+        <p style="margin-top: 1.5rem; color: var(--vh-hero-sub); font-family: var(--vh-font-mono); font-size: 0.875rem;">Формат: Zoom / Google Meet</p>
       </div>
     </section>
 
@@ -408,9 +394,7 @@
   <script>
     const deck = document.getElementById('deck');
     const dots = document.querySelectorAll('.nav-dot');
-    const slides = document.querySelectorAll('.slide');
 
-    // Update active dot on scroll
     deck.addEventListener('scroll', () => {
       let index = Math.round(deck.scrollTop / window.innerHeight);
       dots.forEach((dot, i) => {
