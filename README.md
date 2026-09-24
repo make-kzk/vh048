@@ -9,6 +9,7 @@
 - [Каталог мокапов](https://make-kzk.github.io/vh048/)
 - [**VibeHunt — дизайн-система**](https://make-kzk.github.io/vh048/design-system/vibehunt/) — токены и компоненты из мокапа
 - [**Альтернативная дизайн-система**](https://make-kzk.github.io/vh048/design-system/) — презентации Marketing & Reputation Day
+- [**AI Hiring Deck (Презентация)**](https://make-kzk.github.io/vh048/mockups/vibe-hunt/ai-hire-deck.html) — слайды презентации платформы
 - [**VibeHunt mockup**](https://make-kzk.github.io/vh048/mockups/vibe-hunt/index.html) — из VibeHunt88/web
 - [Demo flow](https://make-kzk.github.io/vh048/mockups/demo/index.html) — упрощённый пример на vh48-роутере
 
