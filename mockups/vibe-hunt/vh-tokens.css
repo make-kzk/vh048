@@ -85,7 +85,7 @@
   --vh-sem-warning-l: #fffbeb;
 
   /* === TEXT === */
-  --vh-color-ink: #1a1a1a;
+  --vh-color-ink: #101828;
   --vh-color-slate: #404040;
   /* Darkened from the mockup's #808080 (3.78:1 on --vh-bg-page — fails WCAG AA).
      #6e6e6e keeps the muted look at ≥ 4.5:1 (PRD §8.4 MUST; guarded by tokens.test.ts). */
