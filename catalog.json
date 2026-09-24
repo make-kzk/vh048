@@ -1,46 +1,82 @@
 {
   "mockups": [
     {
+      "slug": "ai-hire-deck",
+      "title": "AI Hiring Platform Deck",
+      "summary": "Презентация AI-системы найма: архитектура роли, пре-скрининг, анализ соответствия (6 слайдов).",
+      "path": "mockups/vibe-hunt/ai-hire-deck.html",
+      "tags": [
+        "presentation",
+        "vibehunt",
+        "ai"
+      ]
+    },
+    {
       "slug": "vibehunt-design-system",
       "title": "VibeHunt — дизайн-система",
       "summary": "Production DS из click-through мокапа: orange/violet бренд, Geologica/Onest, landing, sidebar, dark theme.",
       "path": "design-system/vibehunt/index.html",
-      "tags": ["design-system", "vibehunt", "production"]
+      "tags": [
+        "design-system",
+        "vibehunt",
+        "production"
+      ]
     },
     {
       "slug": "vibehunt-match-deck",
       "title": "VibeHunt — презентация мэтчинга (7 слайдов)",
       "summary": "B2B deck для операционного директора: PM/аккаунты, мэтч, цена 140 000 ₸, пилот. VibeHunt DS + заметки спикера (N).",
       "path": "design-system/vibehunt/presentation/index.html",
-      "tags": ["presentation", "b2b", "vibehunt", "sales"]
+      "tags": [
+        "presentation",
+        "b2b",
+        "vibehunt",
+        "sales"
+      ]
     },
     {
       "slug": "alt-design-system",
       "title": "Альтернативная дизайн-система",
       "summary": "Альтернативная DS для презентаций: цвета, типографика, шаблоны слайдов из PDF Marketing & Reputation Day.",
       "path": "design-system/index.html",
-      "tags": ["design-system", "mrd", "presentations"]
+      "tags": [
+        "design-system",
+        "mrd",
+        "presentations"
+      ]
     },
     {
       "slug": "hrd-presentation",
       "title": "VibeHunt Business — Pitch Deck для HRD",
       "summary": "Продающая 5-слайдовая презентация для HRD (1 слайд = 1 экран, навигационный слайдбар, ROI калькулятор).",
       "path": "mockups/hrd-presentation/index.html",
-      "tags": ["b2b", "hrd", "pitch-deck", "vibehunt"]
+      "tags": [
+        "b2b",
+        "hrd",
+        "pitch-deck",
+        "vibehunt"
+      ]
     },
     {
       "slug": "vibe-hunt",
       "title": "VibeHunt (VibeHunt88)",
       "summary": "Оригинальный click-through из VibeHunt88/web: landing → register → cabinet → vibe → reports.",
       "path": "mockups/vibe-hunt/index.html",
-      "tags": ["vibehunt", "vibehunt88", "production-design"]
+      "tags": [
+        "vibehunt",
+        "vibehunt88",
+        "production-design"
+      ]
     },
     {
       "slug": "demo",
       "title": "Demo flow",
       "summary": "Упрощённый пример на vh48-роутере: landing → регистрация → кабинет → тест → результат.",
       "path": "mockups/demo/index.html",
-      "tags": ["example", "vibehunt"]
+      "tags": [
+        "example",
+        "vibehunt"
+      ]
     }
   ]
 }
