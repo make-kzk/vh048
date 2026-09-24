@@ -540,34 +540,38 @@
       <div class="slide-bg-blob slide-bg-blob--1" style="background: var(--vh-color-secondary); top: 50%; left: 50%; transform: translate(-50%, -50%); filter: blur(150px); opacity: 0.2;"></div>
       
       <div class="slide-inner">
-        <div style="display: grid; grid-template-columns: 1fr 320px; gap: 4rem; align-items: stretch; height: 100%;">
+        <!-- Full-width Title -->
+        <h2 class="huge-title" style="margin-bottom: 2rem; text-align: left; line-height: 1.1; max-width: 100%;">Забронируйте <span style="color: var(--vh-color-primary);">15-минутный</span> аудит вашего процесса найма</h2>
+        
+        <div style="display: grid; grid-template-columns: 1fr 320px; gap: 4rem; align-items: flex-end; height: 100%;">
           
-          <!-- Left Column: Title, Subtitle, Bullet List -->
-          <div>
-            <h2 class="huge-title" style="margin-bottom: 1rem; text-align: left; line-height: 1.1;">Забронируйте <span style="color: var(--vh-color-primary);">15-минутный</span> аудит вашего процесса найма</h2>
-            <p class="slide-lead" style="margin-bottom: 3rem; text-align: left; max-width: 100%;">профессиональный HR специалист подскажет, где наиболее высокие зоны риска и их оптимизацию</p>
+          <!-- Left Column: Subtitle and List -->
+          <div style="padding-bottom: 2rem;">
+            <p class="slide-lead" style="margin-bottom: 3rem; text-align: left; max-width: 100%; font-size: 1.25rem;">профессиональный HR специалист подскажет, где наиболее высокие зоны риска и их оптимизацию</p>
 
-
-
-            <!-- Simple Bullet List -->
-            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.5rem;">
-              <li style="position: relative; padding-left: 1.5rem;">
-                <div style="position: absolute; left: 0; top: 0.5rem; width: 6px; height: 6px; border-radius: 50%; background: var(--vh-color-secondary);"></div>
-                <p style="color: var(--vh-color-ink); margin: 0; font-size: 1.125rem; line-height: 1.4; padding-top: 0.15rem;">Разберем вашу текущую воронку и найдем этапы, где вы теряете деньги и время.</p>
-              </li>
-              <li style="position: relative; padding-left: 1.5rem;">
-                <div style="position: absolute; left: 0; top: 0.5rem; width: 6px; height: 6px; border-radius: 50%; background: var(--vh-color-primary);"></div>
-                <p style="color: var(--vh-color-ink); margin: 0; font-size: 1.125rem; line-height: 1.4; padding-top: 0.15rem;">Сформируем «Архитектуру роли» для вашей самой проблемной вакансии.</p>
-              </li>
-              <li style="position: relative; padding-left: 1.5rem;">
-                <div style="position: absolute; left: 0; top: 0.5rem; width: 6px; height: 6px; border-radius: 50%; background: var(--vh-color-secondary);"></div>
-                <p style="color: var(--vh-color-ink); margin: 0; font-size: 1.125rem; line-height: 1.4; padding-top: 0.15rem;">Продемонстрируем, как работает система на реальных кейсах и метриках.</p>
-              </li>
-            </ul>
+            <!-- Numbered List -->
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+              
+              <div style="display: flex; gap: 1.25rem; align-items: flex-start;">
+                <div style="font-family: var(--vh-font-display); font-weight: 700; font-size: 1.25rem; color: var(--vh-color-secondary); line-height: 1.2; flex-shrink: 0;">01</div>
+                <p style="color: var(--vh-color-ink); margin: 0; font-size: 1.125rem; line-height: 1.4;">Разберем вашу текущую воронку и найдем этапы, где вы теряете деньги и время.</p>
+              </div>
+              
+              <div style="display: flex; gap: 1.25rem; align-items: flex-start;">
+                <div style="font-family: var(--vh-font-display); font-weight: 700; font-size: 1.25rem; color: var(--vh-color-primary); line-height: 1.2; flex-shrink: 0;">02</div>
+                <p style="color: var(--vh-color-ink); margin: 0; font-size: 1.125rem; line-height: 1.4;">Сформируем «Архитектуру роли» для вашей самой проблемной вакансии.</p>
+              </div>
+              
+              <div style="display: flex; gap: 1.25rem; align-items: flex-start;">
+                <div style="font-family: var(--vh-font-display); font-weight: 700; font-size: 1.25rem; color: var(--vh-color-secondary); line-height: 1.2; flex-shrink: 0;">03</div>
+                <p style="color: var(--vh-color-ink); margin: 0; font-size: 1.125rem; line-height: 1.4;">Продемонстрируем, как работает система на реальных кейсах и метриках.</p>
+              </div>
+              
+            </div>
           </div>
 
           <!-- Right Column (QR Code and Button) -->
-          <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; padding-bottom: 2rem;">
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 2rem;">
             
             <!-- QR Placeholder -->
             <div style="width: 240px; height: 240px; background: white; border-radius: 24px; padding: 20px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 48px rgba(0,0,0,0.08);">
