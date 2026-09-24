@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeHunt — Investor Pitch Deck (Pre-Seed)</title>
+  <meta name="description" content="Питч-дек VibeHunt для инвесторов: предиктивный AI-найм персонала по ролевой совместимости и психодиагностике.">
+  <meta name="theme-color" content="#fafafa">
+  <link rel="stylesheet" href="vh-tokens.css">
+  <link rel="stylesheet" href="vh-components.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="landing-develop.css">
+  <style>
+    /* =========================================================
+       INVESTOR PITCH DECK STYLES
+       Minimal text, maximum signal, crisp typography & metrics
+       ========================================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #fafafc;
+      color: #0f172a;
+      font-family: var(--vh-font-family, "Inter", -apple-system, sans-serif);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .deck {
+      height: 100vh;
+      width: 100vw;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .deck::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slide {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4.5rem 4rem 3rem 4rem;
+      overflow: hidden;
+      background: #fafafc;
+    }
+
+    .slide-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1140px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Topbar */
+    .deck-topbar {
+      position: absolute;
+      top: 2rem;
+      left: 4rem;
+      right: 4rem;
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .topbar-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 0.85rem;
+      pointer-events: auto;
+      text-decoration: none;
+    }
+
+    .logo-vibe {
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--vh-color-secondary, #6b4eff);
+    }
+    .logo-hunt {
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--vh-color-primary, #f26522);
+    }
+
+    .topbar-tag {
+      font-family: var(--vh-font-family, sans-serif);
+      font-weight: 600;
+      font-size: 0.72rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .topbar-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(107, 78, 255, 0.08);
+      color: var(--vh-color-secondary, #6b4eff);
+      border: 1px solid rgba(107, 78, 255, 0.2);
+      pointer-events: auto;
+    }
+
+    /* Ambient blobs */
+    .slide-bg-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: 0.11;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .slide-bg-blob--purple {
+      width: 700px;
+      height: 700px;
+      background: var(--vh-color-secondary, #6b4eff);
+    }
+    .slide-bg-blob--orange {
+      width: 550px;
+      height: 550px;
+      background: var(--vh-color-primary, #f26522);
+    }
+
+    /* Typography */
+    .huge-title {
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-size: clamp(2.1rem, 3.6vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      margin: 0 0 0.85rem 0;
+    }
+
+    .c-purple { color: var(--vh-color-secondary, #6b4eff); }
+    .c-orange { color: var(--vh-color-primary, #f26522); }
+
+    .slide-lead {
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      color: #64748b;
+      max-width: 840px;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    /* Cards Grid */
+    .deck-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.75rem;
+    }
+
+    .deck-card {
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 20px;
+      padding: 2rem 1.85rem;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 230px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .deck-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+    }
+
+    .deck-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 0.4rem 0;
+      line-height: 1.3;
+    }
+
+    .stat-wrapper {
+      height: 64px;
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 1rem;
+    }
+
+    .deck-stat-value {
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-size: clamp(2.8rem, 4vw, 3.8rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .stat-unit {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-left: 0.25rem;
+    }
+
+    .stat-prefix {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-right: 0.3rem;
+    }
+
+    .deck-card-text {
+      color: #64748b;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .deck-card-source {
+      margin-top: auto;
+      padding-top: 1rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .slide-footer-note {
+      margin-top: 1.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Highlighted card borders */
+    .card-border-purple {
+      border: 1.5px solid var(--vh-color-secondary, #6b4eff);
+      background: #ffffff;
+    }
+    .card-border-orange {
+      border: 1.5px solid var(--vh-color-primary, #f26522);
+      background: #ffffff;
+    }
+
+    /* Horizontal bottom tag bar */
+    .bottom-tag-bar {
+      margin-top: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(15, 23, 42, 0.03);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 100px;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.85rem;
+      color: #475569;
+    }
+    .bottom-tag-bar strong {
+      color: #0f172a;
+    }
+
+    /* Pipeline Step Row */
+    .pipeline-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-top: 2.75rem;
+      position: relative;
+    }
+    .pipeline-card {
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 16px;
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.02);
+    }
+    .pipeline-card.core-mvp {
+      border: 1.5px solid var(--vh-color-secondary, #6b4eff);
+      box-shadow: 0 6px 20px rgba(107, 78, 255, 0.08);
+    }
+    .step-pill {
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-size: 0.85rem;
+      font-weight: 700;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.85rem;
+    }
+    .step-pill--purple {
+      background: var(--vh-color-secondary, #6b4eff);
+      color: #ffffff;
+    }
+    .step-pill--orange {
+      background: var(--vh-color-primary, #f26522);
+      color: #ffffff;
+    }
+    .pipeline-core-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--vh-color-secondary, #6b4eff);
+      background: rgba(107, 78, 255, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Funnel Layout */
+    .funnel-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .funnel-stage {
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 16px;
+      padding: 1.5rem;
+      position: relative;
+    }
+    .funnel-stage.winner {
+      border: 1.5px solid var(--vh-color-primary, #f26522);
+      background: #ffffff;
+    }
+    .funnel-num {
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1;
+      margin: 0.5rem 0;
+    }
+    .funnel-rate {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--vh-color-secondary, #6b4eff);
+    }
+
+    /* Stepper for Pilot Status */
+    .stepper-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .stepper-item {
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 16px;
+      padding: 1.5rem 1.25rem;
+      position: relative;
+    }
+    .stepper-item.completed {
+      border-color: rgba(16, 185, 129, 0.3);
+      background: rgba(16, 185, 129, 0.02);
+    }
+    .stepper-item.current {
+      border: 2px solid var(--vh-color-primary, #f26522);
+      box-shadow: 0 6px 20px rgba(242, 101, 34, 0.12);
+    }
+    .stepper-icon {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    /* Dark Slide 12 */
+    .slide--dark {
+      background: #0b0f19;
+      color: #ffffff;
+    }
+    .slide--dark .slide-lead {
+      color: #94a3b8;
+    }
+    .slide--dark .huge-title {
+      color: #ffffff;
+    }
+    .slide12-grid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 2.5rem;
+      align-items: stretch;
+      margin-top: 2.5rem;
+    }
+    .use-of-funds-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .deck-card--dark {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      padding: 1.75rem 1.5rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+    .fund-percent {
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+    .cta-action-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+    .qr-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      flex: 1;
+      min-height: 180px;
+    }
+    .qr-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .qr-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--vh-color-secondary, #6b4eff);
+    }
+    .cta-button {
+      display: block;
+      width: 100%;
+      background: var(--vh-color-primary, #f26522);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.95rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(242, 101, 34, 0.35);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .cta-button:hover {
+      background: #d94f0a;
+      transform: translateY(-2px);
+    }
+
+    /* Nav Dots */
+    .nav-dots {
+      position: fixed;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 100;
+    }
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(148, 163, 184, 0.45);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .nav-dot:hover {
+      transform: scale(1.3);
+      background: var(--vh-color-primary, #f26522);
+    }
+    .nav-dot.active {
+      background: var(--vh-color-primary, #f26522);
+      transform: scale(1.5);
+    }
+    .nav-dots.on-dark .nav-dot {
+      background: rgba(255, 255, 255, 0.35);
+    }
+    .nav-dots.on-dark .nav-dot.active {
+      background: var(--vh-color-primary, #f26522);
+    }
+
+    .slide-counter {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 4rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #94a3b8;
+      letter-spacing: 0.05em;
+      z-index: 10;
+    }
+    .slide-counter.on-dark {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .deck-nav-hint {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #94a3b8;
+      letter-spacing: 0.03em;
+      z-index: 99;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .deck-nav-hint kbd {
+      background: rgba(15, 23, 42, 0.06);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: inherit;
+      font-size: 0.7rem;
+    }
+    .deck-nav-hint.on-dark {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    .deck-nav-hint.on-dark kbd {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .slide {
+        padding: 4.5rem 2rem 2.5rem 2rem;
+        height: auto;
+        min-height: 100vh;
+      }
+      .deck-topbar { left: 2rem; right: 2rem; }
+      .deck { scroll-snap-type: none; }
+      .deck-grid, .pipeline-row, .funnel-row, .stepper-row, .use-of-funds-row, .slide12-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .slide-counter { left: 2rem; }
+    }
+  </style>
+</head>
+<body class="landing-dm" data-audience="company">
+
+  <!-- Vertical Dots Navigation (12 Slides) -->
+  <nav class="nav-dots" id="dots" aria-label="Слайды питч-дека">
+    <a href="#slide-1" class="nav-dot active" title="1. Титул"></a>
+    <a href="#slide-2" class="nav-dot" title="2. Проблема"></a>
+    <a href="#slide-3" class="nav-dot" title="3. Сегменты"></a>
+    <a href="#slide-4" class="nav-dot" title="4. Продукт"></a>
+    <a href="#slide-5" class="nav-dot" title="5. Как это работает"></a>
+    <a href="#slide-6" class="nav-dot" title="6. Технология"></a>
+    <a href="#slide-7" class="nav-dot" title="7. Бизнес-модель"></a>
+    <a href="#slide-8" class="nav-dot" title="8. Трекшн: Продажи"></a>
+    <a href="#slide-9" class="nav-dot" title="9. Трекшн: Пилот"></a>
+    <a href="#slide-10" class="nav-dot" title="10. Команда"></a>
+    <a href="#slide-11" class="nav-dot" title="11. Роадмап"></a>
+    <a href="#slide-12" class="nav-dot" title="12. Раунд (Ask)"></a>
+  </nav>
+
+  <div class="slide-counter" id="counter">01 / 12</div>
+
+  <div class="deck-nav-hint" id="nav-hint">
+    <span>Листайте</span> <kbd>↓</kbd> <kbd>↑</kbd>
+  </div>
+
+  <div class="deck" id="deck">
+
+    <!-- =======================================================
+         SLIDE 1. TITLE & PREDICTIVE FIT
+         ======================================================= -->
+    <section class="slide" id="slide-1">
+      <div class="deck-topbar">
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
+        <div class="topbar-badge">Pre-seed Round · 2026</div>
+      </div>
+
+      <div class="slide-bg-blob slide-bg-blob--purple" style="top: -15%; left: -10%;"></div>
+      <div class="slide-bg-blob slide-bg-blob--orange" style="bottom: -20%; right: -10%;"></div>
+
+      <div class="slide-inner">
+        <h1 class="huge-title"><span class="c-purple">Точный</span> подбор сотрудников по <span class="c-orange">вайбу</span></h1>
+        <p class="slide-lead">Мы делаем предиктивный анализ соответствия кандидата и позиции,<br>чтобы ускорить процесс выбора и избежать ошибки найма.</p>
+
+        <div class="deck-grid">
+          <!-- Card 1 -->
+          <div class="deck-card">
+            <h3 class="deck-card-title">Скорость найма</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value c-purple">×4.6</div>
+            </div>
+            <p class="deck-card-text">Ускорение полного цикла<br>закрытия вакансии.</p>
+          </div>
+
+          <!-- Card 2 (Highlighted with purple border) -->
+          <div class="deck-card card-border-purple">
+            <h3 class="deck-card-title">Релевантность</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value c-purple">97%</div>
+            </div>
+            <p class="deck-card-text">Точность совпадения<br>кандидата с ожиданиями.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="deck-card">
+            <h3 class="deck-card-title">Эффективность</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value c-purple">140+ <span class="stat-unit">часов</span></div>
+            </div>
+            <p class="deck-card-text">Сохранение времени команды<br>на адаптации.</p>
+          </div>
+        </div>
+
+        <div class="slide-footer-note">*ПО ДАННЫМ ВНУТРЕННЕЙ АНАЛИТИКИ</div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SLIDE 2. PROBLEM
+         ======================================================= -->
+    <section class="slide" id="slide-2">
+      <div class="deck-topbar">
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
+      </div>
+
+      <div class="slide-bg-blob slide-bg-blob--orange" style="top: 25%; right: -15%;"></div>
+
+      <div class="slide-inner">
+        <h2 class="huge-title">
+          Малый бизнес нанимает <span class="c-purple">на ощущениях</span> — и платит <span class="c-orange">за ошибку</span>
+        </h2>
+        <p class="slide-lead">
+          Сценарий: мидл не тянет задачи или культуру и уходит через 2–4 месяца.
+        </p>
+
+        <div class="deck-grid">
+          <div class="deck-card">
+            <h3 class="deck-card-title">Потеря времени</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value c-orange">10–15 <span class="stat-unit">ч/нед</span></div>
+            </div>
+            <p class="deck-card-text">Ручной скрининг резюме, переписки и пустые встречи.</p>
+            <div class="deck-card-source">SHRM Research</div>
+          </div>
+
+          <div class="deck-card">
+            <h3 class="deck-card-title">Лотерея выбора</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value c-orange"><span class="stat-prefix">от</span> 30%</div>
+            </div>
+            <p class="deck-card-text">Кандидатов вообще не соответствуют профилю роли.</p>
+            <div class="deck-card-source">hh.ru / HeadHunter Research</div>
+          </div>
+
+          <div class="deck-card card-border-orange">
+            <h3 class="deck-card-title">Цена ошибки</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value c-orange">×3 <span class="stat-unit">оклада</span></div>
+            </div>
+            <p class="deck-card-text">Прямые убытки на повторный поиск, онбординг и простой.</p>
+            <div class="deck-card-source">Gallup / Glassdoor Economic</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SLIDE 3. TARGET SEGMENTS
+         ======================================================= -->
+    <section class="slide" id="slide-3">
+      <div class="deck-topbar">
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
+      </div>
+
+      <div class="slide-bg-blob slide-bg-blob--purple" style="bottom: -15%; left: -10%;"></div>
+
+      <div class="slide-inner">
+        <h2 class="huge-title">
+          Три покупателя с <span class="c-purple">одной болью</span> — страхом <span class="c-orange">ошибки</span>
+        </h2>
+        <p class="slide-lead">
+          Отчёт снимает неопределенность и ускоряет согласование кандидата.
+        </p>
+
+        <div class="deck-grid">
+          <div class="deck-card">
+            <h3 class="deck-card-title">Фриланс-рекрутер</h3>
+            <p class="deck-card-text" style="margin-bottom: 0.75rem;">
+              <strong>Боль:</strong> Риск бесплатной замены и долгие согласования клиентом.
+            </p>
+            <p class="deck-card-text" style="color: var(--vh-color-secondary, #6b4eff);">
+              <strong>Ценность:</strong> Твердый аргумент для клиента, перевыставление в счет.
+            </p>
+          </div>
+
+          <div class="deck-card card-border-purple">
+            <h3 class="deck-card-title">Собственник / CEO</h3>
+            <p class="deck-card-text" style="margin-bottom: 0.75rem;">
+              <strong>Боль:</strong> Нанимает сам на эмоциях, вложился — и взял не того.
+            </p>
+            <p class="deck-card-text" style="color: var(--vh-color-secondary, #6b4eff);">
+              <strong>Ценность:</strong> Объективный разбор вместо интуиции, экономия 15 ч/нед.
+            </p>
+          </div>
+
+          <div class="deck-card">
+            <h3 class="deck-card-title">HR Generalist</h3>
+            <p class="deck-card-text" style="margin-bottom: 0.75rem;">
+              <strong>Боль:</strong> Отвечает за найм, но решение принимает нанимающий менеджер.
+            </p>
+            <p class="deck-card-text" style="color: var(--vh-color-secondary, #6b4eff);">
+              <strong>Ценность:</strong> Профиль роли, согласованный с ЛПР до старта найма.
+            </p>
+          </div>
+        </div>
+
+        <div class="bottom-tag-bar">
+          <strong>Фокусные роли MVP:</strong> Бизнес-ассистент · HR-менеджер · Fullstack-разработчик · РОП
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SLIDE 4. PRODUCT / SOLUTION
+         ======================================================= -->
+    <section class="slide" id="slide-4">
+      <div class="deck-topbar">
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
+      </div>
+
+      <div class="slide-bg-blob slide-bg-blob--purple" style="top: 40%; left: -10%;"></div>
+
+      <div class="slide-inner">
+        <h2 class="huge-title">
+          <span class="c-purple">Отчёт</span> по совместимости кандидата с позицией
+        </h2>
+        <p class="slide-lead">
+          Предиктивный скоринг соответствия до оффера вместо субъективной симпатии.
+        </p>
+
+        <div class="deck-grid" style="grid-template-columns: 1.1fr 1fr; margin-top: 2.5rem;">
+          <!-- Left: 3 Dimensions -->
+          <div class="deck-card" style="min-height: auto;">
+            <h3 class="deck-card-title" style="color: var(--vh-color-secondary, #6b4eff); margin-bottom: 1.25rem;">
+              3 измерения оценки роли
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: 1.15rem;">
+              <div>
+                <strong style="color: #0f172a; font-size: 1rem;">1. Культура компании</strong>
+                <p class="deck-card-text" style="font-size: 0.9rem;">Ценности, темп работы, уровень свободы и принятия решений.</p>
+              </div>
+              <div>
+                <strong style="color: #0f172a; font-size: 1rem;">2. Функциональные задачи</strong>
+                <p class="deck-card-text" style="font-size: 0.9rem;">Грейд, профиль мышления, реальный ролевой потенциал.</p>
+              </div>
+              <div>
+                <strong style="color: #0f172a; font-size: 1rem;">3. Стиль руководителя</strong>
+                <p class="deck-card-text" style="font-size: 0.9rem;">Психологический мэтч с лидером и совместимость с командой.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Artifact Mockup -->
+          <div class="deck-card card-border-purple" style="min-height: auto; justify-content: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <span style="font-weight: 700; font-size: 1.1rem; color: #0f172a;">Паспорт совместимости</span>
+              <span style="background: rgba(107, 78, 255, 0.1); color: var(--vh-color-secondary, #6b4eff); font-weight: 700; font-size: 0.85rem; padding: 4px 10px; border-radius: 100px;">Fit: 94%</span>
+            </div>
+            <div style="border-top: 1px solid rgba(15, 23, 42, 0.08); padding-top: 0.85rem; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.9rem;">
+              <div>⚡ <strong>Драйверы:</strong> Быстрый запуск, автономность, системность</div>
+              <div>⚠️ <strong>Риски:</strong> Не переносит микроменеджмент и хаос задач</div>
+              <div>🤝 <strong>Командный вайб:</strong> Высокий мэтч с прямым лидером (89%)</div>
+              <div>📅 <strong>Трек адаптации:</strong> KPI чек-поинты на 30–60–90 дней</div>
+            </div>
+            <div class="deck-card-source" style="margin-top: 1rem;">Источники: Резюме · Опросники · AI-интервью · Тестовое</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SLIDE 5. HOW IT WORKS
+         ======================================================= -->
+    <section class="slide" id="slide-5">
+      <div class="deck-topbar">
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
+      </div>
+
+      <div class="slide-inner">
+        <h2 class="huge-title">
+          <span class="c-purple">Интеллектуальная</span> система найма
+        </h2>
+        <p class="slide-lead">
+          5 шагов полного цикла. Ядро нашего MVP и первых продаж — шаги 1 и 4.
+        </p>
+
+        <div class="pipeline-row">
+          <div class="pipeline-card core-mvp">
+            <span class="pipeline-core-badge">MVP</span>
+            <div class="step-pill step-pill--purple">1</div>
+            <h3 class="deck-card-title" style="font-size: 1rem;">Архитектура роли</h3>
+            <p class="deck-card-text" style="font-size: 0.85rem;">Точный профиль идеального кандидата под бизнес.</p>
+          </div>
+
+          <div class="pipeline-card">
+            <div class="step-pill step-pill--orange">2</div>
+            <h3 class="deck-card-title" style="font-size: 1rem;">Пре-скрининг</h3>
+            <p class="deck-card-text" style="font-size: 0.85rem;">До клиента доходят только релевантные кандидаты.</p>
+          </div>
+
+          <div class="pipeline-card">
+            <div class="step-pill step-pill--purple">3</div>
+            <h3 class="deck-card-title" style="font-size: 1rem;">Автоматизация</h3>
+            <p class="deck-card-text" style="font-size: 0.85rem;">Организация встреч и подготовка вопросов к интервью.</p>
+          </div>
+
+          <div class="pipeline-card core-mvp">
+            <span class="pipeline-core-badge">MVP</span>
+            <div class="step-pill step-pill--orange">4</div>
+            <h3 class="deck-card-title" style="font-size: 1rem;">Анализ соответствия</h3>
+            <p class="deck-card-text" style="font-size: 0.85rem;">Подробный отчёт совместимости с ролью и командой.</p>
+          </div>
+
+          <div class="pipeline-card">
+            <div class="step-pill step-pill--purple">5</div>
+            <h3 class="deck-card-title" style="font-size: 1rem;">Оффер и трек</h3>
+            <p class="deck-card-text" style="font-size: 0.85rem;">Оффер по мотиваторам + план на 30–60–90 дней.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SLIDE 6. TECHNOLOGY & WHY US
+         ======================================================= -->
+    <section class="slide" id="slide-6">
+      <div class="deck-topbar">
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
+      </div>
+
+      <div class="slide-bg-blob slide-bg-blob--purple" style="top: -10%; right: -10%;"></div>
+
+      <div class="slide-inner">
+        <h2 class="huge-title">
+          Методология + данные, <span class="c-purple">проверено на себе</span>
+        </h2>
+        <p class="slide-lead">
+          Синтез глубокого опыта управления подбором и современных ML-моделей.
+        </p>
+
+        <div class="deck-grid">
+          <div class="deck-card">
+            <div class="stat-wrapper">
+              <div class="deck-stat-value c-purple">01</div>
+            </div>
+            <h3 class="deck-card-title">Опыт HRD</h3>
+            <p class="deck-card-text">
+              Практика управления подбором в структурах 2000+ сотрудников: от стартапов до корпораций.
+            </p>
+          </div>
+
+          <div class="deck-card">
+            <div class="stat-wrapper">
+              <div class="deck-stat-value c-purple">02</div>
+            </div>
+            <h3 class="deck-card-title">Золотые стандарты</h3>
+            <p class="deck-card-text">
+              Архитектура оценки построена сертифицированными экспертами по международным HR-методологиям.
+            </p>
+          </div>
+
+          <div class="deck-card">
+            <div class="stat-wrapper">
+              <div class="deck-stat-value c-purple">03</div>
+            </div>
+            <h3 class="deck-card-title">Предиктивный AI</h3>
+            <p class="deck-card-text">
+              ML-алгоритмы балансируют ролевой профиль и прогнозируют долгосрочный результат найма.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SLIDE 7. BUSINESS MODEL
+         ======================================================= -->
+    <section class="slide" id="slide-7">
+      <div class="deck-topbar">
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
+      </div>
+
+      <div class="slide-bg-blob slide-bg-blob--orange" style="bottom: -15%; right: -10%;"></div>
+
+      <div class="slide-inner">
+        <h2 class="huge-title">
+          <span class="c-purple">140 000 ₸</span> за позицию
+        </h2>
+        <p class="slide-lead">
+          Простая и понятная B2B-модель с быстрым циклом оплаты.
+        </p>
+
+        <div class="deck-grid">
+          <div class="deck-card card-border-purple">
+            <h3 class="deck-card-title">Стоимость</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value c-purple">140 000 <span class="stat-unit">₸</span></div>
+            </div>
+            <p class="deck-card-text">Фиксированная цена полного цикла ролевого аудита одной позиции (~$300).</p>
+          </div>
+
+          <div class="deck-card">
+            <h3 class="deck-card-title">100% Предоплата</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value c-purple">3 <span class="stat-unit">этапа</span></div>
+            </div>
+            <p class="deck-card-text">Депозит на баланс, поэтапное списание: Профиль роли → Отчёты → Оффер.</p>
+          </div>
+
+          <div class="deck-card">
+            <h3 class="deck-card-title">B2B / Рекрутер</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value c-purple">0 <span class="stat-unit">расходов</span></div>
+            </div>
+            <p class="deck-card-text">Для рекрутера отчёт — платная услуга в счёте клиенту, а не расход из комиссии.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SLIDE 8. TRACTION: SALES
+         ======================================================= -->
+    <section class="slide" id="slide-8">
+      <div class="deck-topbar">
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
+      </div>
+
+      <div class="slide-bg-blob slide-bg-blob--purple" style="top: 20%; left: -10%;"></div>
+
+      <div class="slide-inner">
+        <h2 class="huge-title">
+          Ранний сигнал: <span class="c-purple">первый платящий клиент</span>
+        </h2>
+        <p class="slide-lead">
+          Аудит конвертирует в оплату 1 из 1. Узкое место: перевод из презентации в аудит.
+        </p>
+
+        <!-- KPI Bars -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem;">
+          <div class="deck-card" style="min-height: auto; padding: 1.25rem 1.5rem;">
+            <div style="font-size: 0.8rem; font-weight: 600; color: #64748b;">Выручка</div>
+            <div style="font-size: 1.75rem; font-weight: 700; color: #0f172a; margin-top: 0.25rem;">140 000 ₸</div>
+          </div>
+          <div class="deck-card" style="min-height: auto; padding: 1.25rem 1.5rem;">
+            <div style="font-size: 0.8rem; font-weight: 600; color: #64748b;">Платящих клиентов</div>
+            <div style="font-size: 1.75rem; font-weight: 700; color: var(--vh-color-secondary, #6b4eff); margin-top: 0.25rem;">1</div>
+          </div>
+          <div class="deck-card" style="min-height: auto; padding: 1.25rem 1.5rem;">
+            <div style="font-size: 0.8rem; font-weight: 600; color: #64748b;">Конверсия аудита</div>
+            <div style="font-size: 1.75rem; font-weight: 700; color: var(--vh-color-primary, #f26522); margin-top: 0.25rem;">100%</div>
+          </div>
+          <div class="deck-card" style="min-height: auto; padding: 1.25rem 1.5rem;">
+            <div style="font-size: 0.8rem; font-weight: 600; color: #64748b;">MRR</div>
+            <div style="font-size: 1.75rem; font-weight: 700; color: #0f172a; margin-top: 0.25rem;">0 (разовая)</div>
+          </div>
+        </div>
+
+        <!-- Funnel -->
+        <div class="funnel-row">
+          <div class="funnel-stage">
+            <span style="font-size: 0.75rem; color: #94a3b8; font-weight: 600;">1. Скрининг</span>
+            <div class="funnel-num">4</div>
+            <span class="funnel-rate">Вход воронки</span>
+          </div>
+
+          <div class="funnel-stage">
+            <span style="font-size: 0.75rem; color: #94a3b8; font-weight: 600;">2. Презентация</span>
+            <div class="funnel-num">4</div>
+            <span class="funnel-rate">100% конверсия</span>
+          </div>
+
+          <div class="funnel-stage">
+            <span style="font-size: 0.75rem; color: #94a3b8; font-weight: 600;">3. Аудит</span>
+            <div class="funnel-num">1</div>
+            <span class="funnel-rate" style="color: var(--vh-color-primary, #f26522);">25% (узкое место)</span>
+          </div>
+
+          <div class="funnel-stage winner">
+            <span style="font-size: 0.75rem; color: #94a3b8; font-weight: 600;">4. Оплата</span>
+            <div class="funnel-num c-purple">1</div>
+            <span class="funnel-rate" style="color: #10b981;">100% конверсия</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SLIDE 9. TRACTION: PILOT IN PROGRESS
+         ======================================================= -->
+    <section class="slide" id="slide-9">
+      <div class="deck-topbar">
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
+      </div>
+
+      <div class="slide-inner">
+        <h2 class="huge-title">
+          Первая вакансия: <span class="c-purple">дошли до интервью</span>
+        </h2>
+        <p class="slide-lead">
+          Пилотный клиент тестирует систему в бою. Текущий статус воронки исполнения.
+        </p>
+
+        <div class="stepper-row">
+          <div class="stepper-item completed">
+            <span class="stepper-icon" style="color: #10b981;">✓ Завершено</span>
+            <h4 style="margin: 0; font-size: 0.95rem; color: #0f172a;">1. Вакансия</h4>
+            <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #64748b;">Заявка принята (1)</p>
+          </div>
+
+          <div class="stepper-item completed">
+            <span class="stepper-icon" style="color: #10b981;">✓ Завершено</span>
+            <h4 style="margin: 0; font-size: 0.95rem; color: #0f172a;">2. Профиль роли</h4>
+            <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #64748b;">Критерии согласованы (1)</p>
+          </div>
+
+          <div class="stepper-item current">
+            <span class="stepper-icon" style="color: var(--vh-color-primary, #f26522);">⚡ В работе</span>
+            <h4 style="margin: 0; font-size: 0.95rem; color: #0f172a;">3. Интервью</h4>
+            <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #64748b;">Оценка финалистов (1)</p>
+          </div>
+
+          <div class="stepper-item">
+            <span class="stepper-icon" style="color: #94a3b8;">○ Впереди</span>
+            <h4 style="margin: 0; font-size: 0.95rem; color: #0f172a;">4. Оффер</h4>
+            <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #64748b;">Формирование предложения</p>
+          </div>
+
+          <div class="stepper-item">
+            <span class="stepper-icon" style="color: #94a3b8;">○ Впереди</span>
+            <h4 style="margin: 0; font-size: 0.95rem; color: #0f172a;">5. Адаптация</h4>
+            <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #64748b;">Трек 30–60–90 дней</p>
+          </div>
+        </div>
+
+        <div class="bottom-tag-bar">
+          <strong>Целевые метрики когорты:</strong> Time-to-hire &lt; 14 дней · Прохождение испытательного срока &gt; 90% · Retention 90 дней
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SLIDE 10. TEAM
+         ======================================================= -->
+    <section class="slide" id="slide-10">
+      <div class="deck-topbar">
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
+      </div>
+
+      <div class="slide-inner">
+        <h2 class="huge-title">
+          Команда <span class="c-purple">продукта</span>, <span class="c-orange">продаж</span> и методологии
+        </h2>
+        <p class="slide-lead">
+          Глубокая связка сильного продуктового лидерства и корпоративной HR-практики.
+        </p>
+
+        <div class="deck-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 2.5rem;">
+          <div class="deck-card">
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--vh-color-secondary, #6b4eff); text-transform: uppercase;">CEO & Founder</div>
+            <h3 class="deck-card-title" style="margin-top: 0.25rem;">Максим К.</h3>
+            <p class="deck-card-text">ex-CPO DataScienceOffice (Ростелеком). Запуск и масштабирование AI и B2B платформ.</p>
+          </div>
+
+          <div class="deck-card">
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--vh-color-secondary, #6b4eff); text-transform: uppercase;">HRD & Methodology</div>
+            <h3 class="deck-card-title" style="margin-top: 0.25rem;">Head of HR</h3>
+            <p class="deck-card-text">Практика управления подбором в структурах 2000+ человек. Сертифицированный эксперт психодиагностики.</p>
+          </div>
+
+          <div class="deck-card">
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--vh-color-primary, #f26522); text-transform: uppercase;">AI & Engineering</div>
+            <h3 class="deck-card-title" style="margin-top: 0.25rem;">Data Science Lead</h3>
+            <p class="deck-card-text">Архитектура предиктивного скоринга, сопоставление векторов совместимости кандидатов.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SLIDE 11. ROADMAP
+         ======================================================= -->
+    <section class="slide" id="slide-11">
+      <div class="deck-topbar">
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
+      </div>
+
+      <div class="slide-inner">
+        <h2 class="huge-title">
+          От оценки кандидата — к <span class="c-purple">оценке команды</span>
+        </h2>
+        <p class="slide-lead">
+          Два этапа масштабирования: от разовой оценки найма к регулярной подписке.
+        </p>
+
+        <div class="deck-grid" style="grid-template-columns: 1fr 1fr; margin-top: 2.5rem;">
+          <div class="deck-card card-border-purple">
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--vh-color-secondary, #6b4eff); text-transform: uppercase;">Этап 1 · Сейчас (2026)</div>
+            <h3 class="deck-card-title" style="margin-top: 0.25rem;">Оценка кандидата при найме</h3>
+            <ul style="margin: 0.75rem 0 0 0; padding-left: 1.25rem; font-size: 0.95rem; color: #64748b; display: flex; flex-direction: column; gap: 0.5rem;">
+              <li>Валидация юнит-экономики на первых 10 B2B клиентах</li>
+              <li>Автоматизация генерации отчёта совместимости</li>
+              <li>Партнерская сеть из 20+ независимых рекрутеров</li>
+            </ul>
+          </div>
+
+          <div class="deck-card">
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--vh-color-primary, #f26522); text-transform: uppercase;">Этап 2 · Масштабирование (2026–2027)</div>
+            <h3 class="deck-card-title" style="margin-top: 0.25rem;">Формирование и аудит команд</h3>
+            <ul style="margin: 0.75rem 0 0 0; padding-left: 1.25rem; font-size: 0.95rem; color: #64748b; display: flex; flex-direction: column; gap: 0.5rem;">
+              <li>Team Fit: анализ психологического баланса отделов</li>
+              <li>Предиктивная аналитика риска выгорания и конфликтов</li>
+              <li>Переход на MRR / SaaS-подписку для растущего бизнеса</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SLIDE 12. ROUND / ASK (DARK THEME)
+         ======================================================= -->
+    <section class="slide slide--dark" id="slide-12">
+      <div class="slide-bg-blob slide-bg-blob--purple" style="top: 50%; left: 50%; transform: translate(-50%, -50%); filter: blur(160px); opacity: 0.22;"></div>
+
+      <div class="slide-inner">
+        <h2 class="huge-title">
+          Привлекаем <span class="c-orange">Pre-seed раунд</span>
+        </h2>
+        <p class="slide-lead">
+          Цель: валидация конверсий, масштабирование продаж через рекрутеров и автоматизация платформы.
+        </p>
+
+        <div class="slide12-grid">
+          <!-- Left: 3 Fund allocations -->
+          <div class="use-of-funds-row">
+            <div class="deck-card--dark">
+              <div class="fund-percent c-purple">45%</div>
+              <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem; color: #ffffff;">Продукт и AI</h4>
+              <p style="margin: 0; font-size: 0.88rem; color: #94a3b8; line-height: 1.4;">
+                Автоматизация скоринга и генерации отчетов без ручного труда.
+              </p>
+            </div>
+
+            <div class="deck-card--dark">
+              <div class="fund-percent c-orange">35%</div>
+              <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem; color: #ffffff;">Дистрибуция</h4>
+              <p style="margin: 0; font-size: 0.88rem; color: #94a3b8; line-height: 1.4;">
+                Привлечение пула фриланс-рекрутеров и прямые продажи в малый бизнес.
+              </p>
+            </div>
+
+            <div class="deck-card--dark">
+              <div class="fund-percent c-purple">20%</div>
+              <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem; color: #ffffff;">Методология</h4>
+              <p style="margin: 0; font-size: 0.88rem; color: #94a3b8; line-height: 1.4;">
+                Калибровка валидности психодиагностических моделей на рынке ЦА.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: Contact & QR -->
+          <div class="cta-action-col">
+            <div class="qr-card">
+              <div class="qr-inner">
+                <svg width="68" height="68" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="#6b4eff" stroke-width="3"/>
+                  <rect x="9" y="9" width="6" height="6" rx="1.5" fill="#6b4eff"/>
+                  <rect x="28" y="4" width="16" height="16" rx="4" fill="none" stroke="#6b4eff" stroke-width="3"/>
+                  <rect x="33" y="9" width="6" height="6" rx="1.5" fill="#6b4eff"/>
+                  <rect x="4" y="28" width="16" height="16" rx="4" fill="none" stroke="#6b4eff" stroke-width="3"/>
+                  <rect x="9" y="33" width="6" height="6" rx="1.5" fill="#6b4eff"/>
+                  <rect x="24" y="24" width="4" height="4" rx="1" fill="#f26522"/>
+                  <rect x="32" y="24" width="4" height="4" rx="1" fill="#6b4eff"/>
+                  <rect x="24" y="32" width="4" height="4" rx="1" fill="#6b4eff"/>
+                  <rect x="40" y="24" width="4" height="4" rx="1" fill="#f26522"/>
+                  <rect x="24" y="40" width="4" height="4" rx="1" fill="#6b4eff"/>
+                  <rect x="32" y="32" width="4" height="4" rx="1" fill="#f26522"/>
+                  <rect x="40" y="32" width="4" height="4" rx="1" fill="#6b4eff"/>
+                  <rect x="32" y="40" width="4" height="4" rx="1" fill="#6b4eff"/>
+                  <rect x="40" y="40" width="4" height="4" rx="1" fill="#f26522"/>
+                </svg>
+                <span class="qr-label">Записаться на питч</span>
+              </div>
+            </div>
+
+            <a href="https://t.me/make_kzk" target="_blank" rel="noopener noreferrer" class="cta-button">
+              ОБСУДИТЬ РАУНД
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    (function() {
+      const deck = document.getElementById('deck');
+      const dotsNav = document.getElementById('dots');
+      const dots = document.querySelectorAll('.nav-dot');
+      const navHint = document.getElementById('nav-hint');
+      const counter = document.getElementById('counter');
+      const slides = document.querySelectorAll('.slide');
+      let isScrolling = false;
+
+      function updateActiveSlide() {
+        const scrollTop = deck.scrollTop;
+        const slideHeight = window.innerHeight;
+        const index = Math.min(Math.max(Math.round(scrollTop / slideHeight), 0), slides.length - 1);
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+
+        if (counter) {
+          const num = (index + 1).toString().padStart(2, '0');
+          counter.textContent = `${num} / 12`;
+        }
+
+        const currentSlide = slides[index];
+        const isDark = currentSlide && currentSlide.classList.contains('slide--dark');
+        if (dotsNav) dotsNav.classList.toggle('on-dark', isDark);
+        if (navHint) navHint.classList.toggle('on-dark', isDark);
+        if (counter) counter.classList.toggle('on-dark', isDark);
+      }
+
+      deck.addEventListener('scroll', () => {
+        if (!isScrolling) {
+          window.requestAnimationFrame(() => {
+            updateActiveSlide();
+            isScrolling = false;
+          });
+          isScrolling = true;
+        }
+      }, { passive: true });
+
+      // Click on dot navigation
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = slides[i];
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      // Keyboard arrow / space navigation
+      window.addEventListener('keydown', (e) => {
+        if (['ArrowDown', 'PageDown', 'Space'].includes(e.code) || e.key === 'ArrowRight') {
+          e.preventDefault();
+          const currentIndex = Math.round(deck.scrollTop / window.innerHeight);
+          if (currentIndex < slides.length - 1) {
+            slides[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+          }
+        } else if (['ArrowUp', 'PageUp'].includes(e.code) || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const currentIndex = Math.round(deck.scrollTop / window.innerHeight);
+          if (currentIndex > 0) {
+            slides[currentIndex - 1].scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+
+      updateActiveSlide();
+    })();
+  </script>
+</body>
+</html>

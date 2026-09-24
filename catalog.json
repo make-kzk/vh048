@@ -14,6 +14,19 @@
       ]
     },
     {
+      "slug": "new-pd",
+      "title": "VibeHunt — Investor Pitch Deck (New)",
+      "summary": "Обновленный инвесторский питч-дек с титульным экраном предиктивного фита и метрик (12 слайдов).",
+      "path": "mockups/vibe-hunt/new-pd.html",
+      "tags": [
+        "presentation",
+        "vibehunt",
+        "investor",
+        "pitch-deck",
+        "ai"
+      ]
+    },
+    {
       "slug": "ai-hire-deck",
       "title": "AI Hiring Platform Deck",
       "summary": "Презентация AI-системы найма: архитектура роли, пре-скрининг, анализ соответствия (6 слайдов).",
