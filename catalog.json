@@ -1,6 +1,19 @@
 {
   "mockups": [
     {
+      "slug": "investor-pitch-deck",
+      "title": "VibeHunt — Investor Pitch Deck (Pre-Seed)",
+      "summary": "Инвесторский питч-дек: предиктивный AI-найм, 3 сегмента, бизнес-модель 140 000 ₸, трекшн и раунд $50k (12 слайдов).",
+      "path": "mockups/vibe-hunt/investor-pitch-deck.html",
+      "tags": [
+        "presentation",
+        "vibehunt",
+        "investor",
+        "pitch-deck",
+        "ai"
+      ]
+    },
+    {
       "slug": "ai-hire-deck",
       "title": "AI Hiring Platform Deck",
       "summary": "Презентация AI-системы найма: архитектура роли, пре-скрининг, анализ соответствия (6 слайдов).",
