@@ -433,36 +433,56 @@
         <h2 class="huge-title" style="margin-bottom: 1.5rem;"><span style="color: var(--vh-color-secondary);">Интеллектуальная</span> система <span style="color: var(--vh-color-primary);">найма</span></h2>
         <p class="slide-lead" style="max-width: 900px;">Глубокий анализ совместимости кандидата с ролью, культурой компании и стилем руководителя по международным HR-методологиям и предиктивной AI-аналитике.</p>
         
-        <div class="deck-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 3.5rem; gap: 1.5rem;">
+        <div style="display: flex; flex-direction: column-reverse; gap: 1.5rem; margin-top: 3rem; position: relative; padding-bottom: 2rem;">
           
-          <div class="deck-card" style="background: rgba(138, 43, 226, 0.04); border: 1px solid rgba(138, 43, 226, 0.1);">
-            <div style="font-size: 2rem; font-weight: 700; color: var(--vh-color-secondary); margin-bottom: 0.5rem; line-height: 1;">01</div>
-            <h3 class="deck-card-title" style="font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--vh-color-ink);">Архитектура роли</h3>
-            <p class="deck-card-text" style="font-size: 0.95rem; color: var(--vh-color-muted);">Создаем точный профиль идеального кандидата под ваш бизнес и стиль управления.</p>
+          <!-- Background S-Curve Line (Optional decorative) -->
+          <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;" preserveAspectRatio="none" viewBox="0 0 1000 400">
+            <path d="M 100 350 C 300 350, 400 250, 600 250 C 800 250, 300 100, 600 50" fill="none" stroke="var(--vh-color-secondary)" stroke-width="2" stroke-dasharray="8 8" opacity="0.2"/>
+          </svg>
+
+          <!-- Step 1 (Bottom Left) -->
+          <div style="margin-left: 0%; width: 45%; display: flex; gap: 1.5rem; align-items: flex-start; position: relative; z-index: 1;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0; box-shadow: 0 4px 12px rgba(138,43,226,0.15);">1</div>
+            <div style="padding-top: 0.25rem;">
+              <h3 style="font-size: 1.125rem; margin-bottom: 0.25rem; color: var(--vh-color-ink); font-weight: 700;">Архитектура роли</h3>
+              <p style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted); margin: 0;">Создаем точный профиль идеального кандидата под ваш бизнес и стиль управления.</p>
+            </div>
           </div>
           
-          <div class="deck-card" style="background: rgba(242, 101, 34, 0.04); border: 1px solid rgba(242, 101, 34, 0.1);">
-            <div style="font-size: 2rem; font-weight: 700; color: var(--vh-color-primary); margin-bottom: 0.5rem; line-height: 1;">02</div>
-            <h3 class="deck-card-title" style="font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--vh-color-ink);">Пре-скрининг</h3>
-            <p class="deck-card-text" style="font-size: 0.95rem; color: var(--vh-color-muted);">Анализируем паттерны кандидата — до вас доходят только те, кто совпадает с «Архитектурой роли».</p>
+          <!-- Step 2 (Bottom Mid) -->
+          <div style="margin-left: 20%; width: 45%; display: flex; gap: 1.5rem; align-items: flex-start; position: relative; z-index: 1;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-primary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; color: var(--vh-color-primary); flex-shrink: 0; box-shadow: 0 4px 12px rgba(242,101,34,0.15);">2</div>
+            <div style="padding-top: 0.25rem;">
+              <h3 style="font-size: 1.125rem; margin-bottom: 0.25rem; color: var(--vh-color-ink); font-weight: 700;">Пре-скрининг</h3>
+              <p style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted); margin: 0;">Анализируем паттерны кандидата — до вас доходят только те, кто совпадает с «Архитектурой роли».</p>
+            </div>
           </div>
           
-          <div class="deck-card" style="background: rgba(138, 43, 226, 0.04); border: 1px solid rgba(138, 43, 226, 0.1);">
-            <div style="font-size: 2rem; font-weight: 700; color: var(--vh-color-secondary); margin-bottom: 0.5rem; line-height: 1;">03</div>
-            <h3 class="deck-card-title" style="font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--vh-color-ink);">Автоматизация</h3>
-            <p class="deck-card-text" style="font-size: 0.95rem; color: var(--vh-color-muted);">Автоматизируем процессы организации встречи и подготовку к интервью.</p>
+          <!-- Step 3 (Mid Right) -->
+          <div style="margin-left: 50%; width: 45%; display: flex; gap: 1.5rem; align-items: flex-start; position: relative; z-index: 1;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0; box-shadow: 0 4px 12px rgba(138,43,226,0.15);">3</div>
+            <div style="padding-top: 0.25rem;">
+              <h3 style="font-size: 1.125rem; margin-bottom: 0.25rem; color: var(--vh-color-ink); font-weight: 700;">Автоматизация</h3>
+              <p style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted); margin: 0;">Автоматизируем процессы организации встречи и подготовку к интервью.</p>
+            </div>
           </div>
           
-          <div class="deck-card" style="background: rgba(242, 101, 34, 0.04); border: 1px solid rgba(242, 101, 34, 0.1);">
-            <div style="font-size: 2rem; font-weight: 700; color: var(--vh-color-primary); margin-bottom: 0.5rem; line-height: 1;">04</div>
-            <h3 class="deck-card-title" style="font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--vh-color-ink);">Анализ соответствия</h3>
-            <p class="deck-card-text" style="font-size: 0.95rem; color: var(--vh-color-muted);">Подробный отчет: соответствие роли, драйверы, риски и совместимость с командой.</p>
+          <!-- Step 4 (Top Mid) -->
+          <div style="margin-left: 30%; width: 45%; display: flex; gap: 1.5rem; align-items: flex-start; position: relative; z-index: 1;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-primary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; color: var(--vh-color-primary); flex-shrink: 0; box-shadow: 0 4px 12px rgba(242,101,34,0.15);">4</div>
+            <div style="padding-top: 0.25rem;">
+              <h3 style="font-size: 1.125rem; margin-bottom: 0.25rem; color: var(--vh-color-ink); font-weight: 700;">Анализ соответствия</h3>
+              <p style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted); margin: 0;">Подробный отчет: соответствие роли, драйверы, риски и совместимость с командой.</p>
+            </div>
           </div>
           
-          <div class="deck-card" style="background: rgba(138, 43, 226, 0.04); border: 1px solid rgba(138, 43, 226, 0.1);">
-            <div style="font-size: 2rem; font-weight: 700; color: var(--vh-color-secondary); margin-bottom: 0.5rem; line-height: 1;">05</div>
-            <h3 class="deck-card-title" style="font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--vh-color-ink);">Оффер</h3>
-            <p class="deck-card-text" style="font-size: 0.95rem; color: var(--vh-color-muted);">Собираем оффер по мотиваторам кандидата и трек адаптации на 30–60–90 дней.</p>
+          <!-- Step 5 (Top Right) -->
+          <div style="margin-left: 55%; width: 45%; display: flex; gap: 1.5rem; align-items: flex-start; position: relative; z-index: 1;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0; box-shadow: 0 4px 12px rgba(138,43,226,0.15);">5</div>
+            <div style="padding-top: 0.25rem;">
+              <h3 style="font-size: 1.125rem; margin-bottom: 0.25rem; color: var(--vh-color-ink); font-weight: 700;">Оффер</h3>
+              <p style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted); margin: 0;">Собираем оффер по мотиваторам кандидата и трек адаптации на 30–60–90 дней.</p>
+            </div>
           </div>
           
         </div>
