@@ -3,607 +3,1035 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Интеллектуальный AI-найм персонала — VibeHunt</title>
+  <title>VibeHunt — Интеллектуальный AI-найм персонала</title>
+  <meta name="description" content="Презентация платформы VibeHunt: точный предиктивный подбор сотрудников по вайбу, международным HR-методологиям и AI-аналитике.">
   <meta name="theme-color" content="#fafafa">
   <link rel="stylesheet" href="vh-tokens.css">
   <link rel="stylesheet" href="vh-components.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="landing-develop.css">
+  <style>
+    /* =========================================================
+       DECK CORE & LAYOUT STYLES
+       ========================================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #fafafc;
+      color: #0f172a;
+      font-family: var(--vh-font-family, "Inter", -apple-system, sans-serif);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .deck {
+      height: 100vh;
+      width: 100vw;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .deck::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slide {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem 3rem 4rem;
+      overflow: hidden;
+      background: #fafafc;
+    }
+
+    .slide-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1140px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Topbar with Logo */
+    .deck-topbar {
+      position: absolute;
+      top: 2.25rem;
+      left: 4rem;
+      right: 4rem;
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .topbar-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 0.85rem;
+      pointer-events: auto;
+      text-decoration: none;
+    }
+
+    .logo-vibe {
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--vh-color-secondary, #6b4eff);
+    }
+    .logo-hunt {
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--vh-color-primary, #f26522);
+    }
+
+    .topbar-tag {
+      font-family: var(--vh-font-family, sans-serif);
+      font-weight: 600;
+      font-size: 0.72rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Soft ambient blobs */
+    .slide-bg-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: 0.12;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .slide-bg-blob--purple {
+      width: 700px;
+      height: 700px;
+      background: var(--vh-color-secondary, #6b4eff);
+    }
+    .slide-bg-blob--orange {
+      width: 550px;
+      height: 550px;
+      background: var(--vh-color-primary, #f26522);
+    }
+
+    /* Typography */
+    .huge-title {
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      margin: 0 0 1.25rem 0;
+    }
+
+    .slide-lead {
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      color: #64748b;
+      max-width: 820px;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    /* Cards Grid */
+    .deck-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .deck-card {
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 20px;
+      padding: 2.25rem 2rem;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 250px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .deck-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+    }
+
+    .deck-card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 0.5rem 0;
+      line-height: 1.3;
+    }
+
+    .stat-wrapper {
+      height: 72px;
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 1.25rem;
+    }
+
+    .deck-stat-value {
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-size: clamp(3.2rem, 4.4vw, 4.2rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .stat-unit {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-left: 0.25rem;
+    }
+
+    .stat-prefix {
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-right: 0.35rem;
+    }
+
+    .deck-card-text {
+      color: #64748b;
+      font-size: 0.98rem;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .slide-footer-note {
+      margin-top: 1.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Highlighted card borders matching screenshots */
+    .card-border-purple {
+      border: 1.5px solid var(--vh-color-secondary, #6b4eff);
+      background: #ffffff;
+    }
+    .card-border-orange {
+      border: 1.5px solid var(--vh-color-primary, #f26522);
+      background: #ffffff;
+    }
+
+    /* =========================================================
+       SLIDE 3: COST OF ERROR
+       ========================================================= */
+    .slide3-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.22fr;
+      gap: 2.5rem;
+      align-items: stretch;
+      margin-top: 3rem;
+    }
+
+    .deck-card--horiz {
+      min-height: auto;
+      flex: 1;
+      padding: 1.85rem 2rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .deck-card--horiz .deck-stat-value {
+      flex-shrink: 0;
+      font-size: clamp(2.8rem, 3.8vw, 3.6rem);
+      line-height: 1;
+    }
+    .horiz-card-text {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #0f172a;
+      line-height: 1.35;
+    }
+
+    .deck-card--risks {
+      min-height: auto;
+      padding: 2.5rem 2.75rem;
+      border: 1.5px solid var(--vh-color-secondary, #6b4eff);
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .risks-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--vh-color-secondary, #6b4eff);
+      margin: 0 0 1.5rem 0;
+    }
+
+    .risks-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .risks-list li {
+      position: relative;
+      padding-left: 1.4rem;
+      font-size: 1.1rem;
+      color: #0f172a;
+      line-height: 1.45;
+    }
+    .risks-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: -0.1rem;
+      color: #0f172a;
+      font-size: 1.35rem;
+    }
+
+    /* =========================================================
+       SLIDE 4: PIPELINE / ARCHITECTURE
+       ========================================================= */
+    .slide4-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 3.5rem;
+      align-items: flex-start;
+      margin-top: 1rem;
+    }
+
+    .pipeline-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      padding-left: 0.5rem;
+    }
+    .pipeline-line {
+      position: absolute;
+      top: 24px;
+      bottom: 24px;
+      left: 23px;
+      width: 2px;
+      background: var(--vh-color-secondary, #6b4eff);
+      opacity: 0.18;
+      z-index: 1;
+    }
+
+    .pipeline-item {
+      display: flex;
+      gap: 1.4rem;
+      position: relative;
+      z-index: 2;
+      align-items: flex-start;
+    }
+
+    .pipeline-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .pipeline-circle--purple {
+      border: 2px solid var(--vh-color-secondary, #6b4eff);
+      color: var(--vh-color-secondary, #6b4eff);
+    }
+    .pipeline-circle--orange {
+      border: 2px solid var(--vh-color-primary, #f26522);
+      color: var(--vh-color-primary, #f26522);
+    }
+
+    .pipeline-content {
+      padding-top: 0.2rem;
+    }
+    .pipeline-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 0.25rem 0;
+      line-height: 1.3;
+    }
+    .pipeline-text {
+      font-size: 0.95rem;
+      color: #64748b;
+      line-height: 1.42;
+      margin: 0;
+    }
+
+    /* =========================================================
+       SLIDE 6: DARK CTA SLIDE
+       ========================================================= */
+    .slide--dark {
+      background: #0b0f19;
+      color: #ffffff;
+    }
+    .slide--dark .slide-lead {
+      color: #94a3b8;
+    }
+
+    .slide6-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 270px;
+      gap: 2.5rem;
+      align-items: stretch;
+      margin-top: 2.5rem;
+    }
+
+    .slide6-cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .deck-card--dark {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      padding: 1.75rem 1.5rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .deck-card--dark:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-3px);
+    }
+
+    .dark-card-num {
+      font-family: var(--vh-font-display, "Geologica", sans-serif);
+      font-size: 1.65rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .dark-card-text {
+      font-size: 0.95rem;
+      line-height: 1.48;
+      color: #f1f5f9;
+      margin: 0;
+    }
+
+    .cta-action-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .qr-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      flex: 1;
+      min-height: 180px;
+    }
+
+    .qr-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .qr-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--vh-color-secondary, #6b4eff);
+      letter-spacing: 0.01em;
+    }
+
+    .cta-button {
+      display: block;
+      width: 100%;
+      background: var(--vh-color-primary, #f26522);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.95rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(242, 101, 34, 0.35);
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .cta-button:hover {
+      background: #d94f0a;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(242, 101, 34, 0.5);
+    }
+
+    /* =========================================================
+       NAVIGATION DOTS
+       ========================================================= */
+    .nav-dots {
+      position: fixed;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 100;
+    }
+    .nav-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(148, 163, 184, 0.45);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .nav-dot:hover {
+      transform: scale(1.3);
+      background: var(--vh-color-primary, #f26522);
+    }
+    .nav-dot.active {
+      background: var(--vh-color-primary, #f26522);
+      transform: scale(1.5);
+    }
+    .nav-dots.on-dark .nav-dot {
+      background: rgba(255, 255, 255, 0.35);
+    }
+    .nav-dots.on-dark .nav-dot.active {
+      background: var(--vh-color-primary, #f26522);
+    }
+
+    /* Keyboard navigation hint */
+    .deck-nav-hint {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 2rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #94a3b8;
+      letter-spacing: 0.03em;
+      z-index: 99;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .deck-nav-hint kbd {
+      background: rgba(15, 23, 42, 0.06);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: inherit;
+      font-size: 0.7rem;
+    }
+    .deck-nav-hint.on-dark {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    .deck-nav-hint.on-dark kbd {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .slide {
+        padding: 4.5rem 2rem 2.5rem 2rem;
+      }
+      .deck-topbar {
+        left: 2rem;
+        right: 2rem;
+      }
+      .slide3-layout,
+      .slide4-layout,
+      .slide6-content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .deck-grid,
+      .slide6-cards-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .cta-action-col {
+        max-width: 280px;
+        margin: 0 auto;
+      }
+      .deck {
+        scroll-snap-type: none;
+      }
+      .slide {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 6rem;
+        padding-bottom: 4rem;
+      }
+    }
+  </style>
 </head>
 <body class="landing-dm" data-audience="company">
 
-<style>
-  /* Modern Deck specific overrides that use VibeHunt tokens */
-  html, body {
-    margin: 0; padding: 0;
-    width: 100%; height: 100%;
-    overflow: hidden;
-    /* Use VibeHunt native background and text colors */
-    background: var(--vh-panel-app);
-    color: var(--vh-color-ink);
-  }
-  
-  .deck {
-    height: 100vh;
-    width: 100vw;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-  }
-  
-  .deck::-webkit-scrollbar { display: none; }
-  .deck { -ms-overflow-style: none; scrollbar-width: none; }
-  
-  .slide {
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-    scroll-snap-align: start;
-    padding: 6rem 4rem 2rem 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow: hidden;
-  }
-  
-  .slide-inner {
-    position: relative;
-    z-index: 2;
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-  }
+  <!-- Vertical Dots Navigation -->
+  <nav class="nav-dots" id="dots" aria-label="Слайды презентации">
+    <a href="#slide-1" class="nav-dot active" title="Слайд 1: Скорость и релевантность" aria-label="Слайд 1"></a>
+    <a href="#slide-2" class="nav-dot" title="Слайд 2: Проблема и цена ошибок" aria-label="Слайд 2"></a>
+    <a href="#slide-3" class="nav-dot" title="Слайд 3: Реальная цена ошибки найма" aria-label="Слайд 3"></a>
+    <a href="#slide-4" class="nav-dot" title="Слайд 4: Интеллектуальная система найма" aria-label="Слайд 4"></a>
+    <a href="#slide-5" class="nav-dot" title="Слайд 5: Система, проверенная на себе" aria-label="Слайд 5"></a>
+    <a href="#slide-6" class="nav-dot" title="Слайд 6: Забронировать аудит" aria-label="Слайд 6"></a>
+  </nav>
 
-  .deck-topbar {
-    position: absolute; 
-    top: 2rem; left: 4rem; right: 4rem; 
-    max-width: 1100px; margin: 0 auto; padding: 0; 
-    display: flex; justify-content: space-between; align-items: center; z-index: 10;
-  }
-  
-  /* Borrowed from hero-dm in VibeHunt */
-  .slide-bg-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.15;
-    z-index: 0;
-    pointer-events: none;
-  }
-  .slide-bg-blob--1 {
-    width: 800px; height: 800px;
-    background: var(--vh-color-primary);
-    top: -200px; left: -200px;
-  }
-  .slide-bg-blob--2 {
-    width: 600px; height: 600px;
-    background: var(--vh-color-secondary);
-    bottom: -100px; right: -100px;
-  }
-  
-  .huge-title {
-    font-family: var(--vh-font-display);
-    font-size: clamp(2.5rem, 4.5vw, 4rem);
-    font-weight: 400;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--vh-color-ink);
-    margin: 0 0 1.5rem 0;
-  }
-  
-  .huge-title span, .huge-title em {
-    font-weight: 400;
-  }
-  .huge-title em {
-    font-style: normal;
-    color: var(--vh-color-secondary);
-    font-weight: 400;
-  }
-
-  .huge-title em.primary {
-    color: var(--vh-color-primary);
-  }
-  
-  .slide-lead {
-    font-size: clamp(1.25rem, 2vw, 1.5rem);
-    color: var(--vh-color-muted);
-    max-width: 800px;
-    line-height: 1.4;
-    margin: 0;
-  }
-  
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    background: var(--vh-color-secondary-l);
-    border: 1px solid rgba(138,43,226,0.2);
-    border-radius: var(--vh-radius-pill);
-    font-size: var(--vh-text-xs);
-    font-weight: var(--vh-fw-semibold);
-    color: var(--vh-color-secondary);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-
-  .eyebrow.primary {
-    background: var(--vh-color-primary-l);
-    border-color: rgba(242,101,34,0.2);
-    color: var(--vh-color-primary);
-  }
-
-  /* Using VibeHunt's feature-dm grid style */
-  .deck-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 3.5rem;
-  }
-  
-  .deck-card {
-    background: var(--vh-color-white);
-    border: 1px solid var(--vh-color-border-subtle);
-    border-radius: var(--vh-radius-lg);
-    padding: 2.5rem;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.02);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    min-height: 260px;
-  }
-  .deck-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
-  }
-  
-  .deck-card--featured {
-    background: var(--vh-color-secondary);
-    border-color: rgba(138,43,226,0.3);
-    color: var(--vh-color-white);
-  }
-  .deck-card--featured .deck-card-title,
-  .deck-card--featured .deck-stat-value {
-    color: var(--vh-color-white);
-  }
-  .deck-card--featured .deck-card-text {
-    color: rgba(255,255,255,0.85);
-  }
-
-  .deck-card--featured-alt {
-    background: var(--vh-color-primary);
-    border-color: rgba(242,101,34,0.3);
-    color: var(--vh-color-white);
-  }
-  .deck-card--featured-alt .deck-card-title,
-  .deck-card--featured-alt .deck-stat-value {
-    color: var(--vh-color-white);
-  }
-  .deck-card--featured-alt .deck-card-text {
-    color: rgba(255,255,255,0.85);
-  }
-  
-  .deck-card-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin: 0 0 0.75rem 0;
-    color: var(--vh-color-ink);
-  }
-  .deck-card-text {
-    color: var(--vh-color-muted);
-    font-size: 1rem;
-    line-height: 1.5;
-    margin: 0;
-  }
-  
-  /* Stats styled natively */
-  .deck-stat-value {
-    font-family: var(--vh-font-display);
-    font-size: clamp(3.5rem, 5vw, 4.5rem);
-    font-weight: 400;
-    color: var(--vh-color-primary);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
-  }
-
-  .deck-list {
-    margin: 2rem 0 0 0;
-    padding: 0;
-    list-style: none;
-  }
-  .deck-list li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--vh-color-ink);
-    opacity: 0.8;
-    font-size: 1.125rem;
-    line-height: 1.6;
-  }
-  .deck-list li:last-child {
-    margin-bottom: 0;
-  }
-  .deck-list li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: var(--vh-color-secondary);
-    font-weight: bold;
-  }
-
-  /* Dots nav */
-  .nav-dots {
-    position: fixed;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 100;
-  }
-  .nav-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--vh-color-border);
-    transition: all 0.3s ease;
-  }
-  .nav-dot.active {
-    background: var(--vh-color-primary);
-    transform: scale(1.5);
-  }
-  
-  /* Pipeline */
-  .pipeline-step {
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-    background: var(--vh-color-white);
-    padding: 1.5rem;
-    border-radius: var(--vh-radius-lg);
-    border: 1px solid var(--vh-color-border-subtle);
-  }
-  .pipeline-num {
-    font-size: 2rem;
-    font-weight: 400;
-    color: var(--vh-color-secondary-l);
-    font-family: var(--vh-font-display);
-    line-height: 1;
-  }
-</style>
-
-  <div class="nav-dots" id="dots">
-    <a href="#slide-1" class="nav-dot active"></a>
-    <a href="#slide-2" class="nav-dot"></a>
-    <a href="#slide-3" class="nav-dot"></a>
-    <a href="#slide-4" class="nav-dot"></a>
-    <a href="#slide-5" class="nav-dot"></a>
-    <a href="#slide-6" class="nav-dot"></a>
+  <!-- Keyboard navigation hint -->
+  <div class="deck-nav-hint" id="nav-hint">
+    <span>Листайте</span> <kbd>↓</kbd> <kbd>↑</kbd>
   </div>
 
   <div class="deck" id="deck">
 
-    <!-- SLIDE 1: SYSTEM -->
+    <!-- =======================================================
+         SLIDE 1: PREDICTIVE FIT
+         ======================================================= -->
     <section class="slide" id="slide-1">
       <div class="deck-topbar">
-        <div class="vh-logo" style="display: flex; align-items: baseline; gap: 0.75rem;">
-          <span class="vh-logo--split"><span class="vh-logo__vibe">VIBE</span><span class="vh-logo__hunt">HUNT</span></span>
-          <span style="font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
-        </div>
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
       </div>
-      
-      <div class="slide-bg-blob slide-bg-blob--1" style="top: -10%; left: -10%;"></div>
-      <div class="slide-bg-blob slide-bg-blob--2" style="bottom: -20%; right: -10%;"></div>
-      
+
+      <div class="slide-bg-blob slide-bg-blob--purple" style="top: -15%; left: -10%;"></div>
+      <div class="slide-bg-blob slide-bg-blob--orange" style="bottom: -20%; right: -10%;"></div>
+
       <div class="slide-inner">
-        <h2 class="huge-title" style="white-space: nowrap;"><span style="color: var(--vh-color-secondary);">Точный</span> подбор сотрудников по <span style="color: var(--vh-color-primary);">вайбу</span></h2>
-        <p class="slide-lead" style="max-width: 800px;">Мы делаем предиктивный анализ соответствия кандидата и позиции, чтобы ускорить процесс выбора и избежать ошибки найма.</p>
-        
+        <h2 class="huge-title"><span style="color: var(--vh-color-secondary, #6b4eff);">Точный</span> подбор сотрудников по <span style="color: var(--vh-color-primary, #f26522);">вайбу</span></h2>
+        <p class="slide-lead">Мы делаем предиктивный анализ соответствия кандидата и позиции,<br>чтобы ускорить процесс выбора и избежать ошибки найма.</p>
+
         <div class="deck-grid">
           <!-- Card 1 -->
-          <div class="deck-card" style="background: rgba(242, 101, 34, 0.04); border: 1px solid rgba(242, 101, 34, 0.1);">
-            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; color: var(--vh-color-ink);">Скорость найма</h3>
-            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
-              <div class="deck-stat-value" style="margin: 0; line-height: 0.9; color: var(--vh-color-secondary);">×4.6</div>
+          <div class="deck-card">
+            <h3 class="deck-card-title">Скорость найма</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value" style="color: var(--vh-color-secondary, #6b4eff);">×4.6</div>
             </div>
-            <p class="deck-card-text" style="color: var(--vh-color-muted);">Ускорение полного цикла закрытия вакансии.</p>
+            <p class="deck-card-text">Ускорение полного цикла<br>закрытия вакансии.</p>
           </div>
-          <!-- Card 2 -->
-          <div class="deck-card" style="background: rgba(138, 43, 226, 0.04); border: 1.5px solid var(--vh-color-secondary);">
-            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; color: var(--vh-color-ink);">Релевантность</h3>
-            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
-              <div class="deck-stat-value" style="margin: 0; line-height: 0.9; color: var(--vh-color-secondary);">97%</div>
+
+          <!-- Card 2 (Highlighted with purple border) -->
+          <div class="deck-card card-border-purple">
+            <h3 class="deck-card-title">Релевантность</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value" style="color: var(--vh-color-secondary, #6b4eff);">97%</div>
             </div>
-            <p class="deck-card-text" style="color: var(--vh-color-muted);">Точность совпадения кандидата с ожиданиями.</p>
+            <p class="deck-card-text">Точность совпадения<br>кандидата с ожиданиями.</p>
           </div>
+
           <!-- Card 3 -->
-          <div class="deck-card" style="background: rgba(138, 43, 226, 0.04); border: 1px solid rgba(138, 43, 226, 0.1);">
-            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; color: var(--vh-color-ink);">Эффективность</h3>
-            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
-              <div class="deck-stat-value" style="margin: 0; line-height: 0.9; color: var(--vh-color-secondary);">140+ <span style="font-size: 1.5rem; letter-spacing: 0;">часов</span></div>
+          <div class="deck-card">
+            <h3 class="deck-card-title">Эффективность</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value" style="color: var(--vh-color-secondary, #6b4eff);">140+ <span class="stat-unit">часов</span></div>
             </div>
-            <p class="deck-card-text" style="color: var(--vh-color-muted);">Сохранение времени команды на адаптации.</p>
+            <p class="deck-card-text">Сохранение времени команды<br>на адаптации.</p>
           </div>
         </div>
-        <div style="margin-top: 1.5rem; font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">*по данным внутренней аналитики</div>
+
+        <div class="slide-footer-note">*ПО ДАННЫМ ВНУТРЕННЕЙ АНАЛИТИКИ</div>
       </div>
     </section>
 
-    <!-- SLIDE 2: COST OF ERROR -->
+    <!-- =======================================================
+         SLIDE 2: CURRENT PAIN
+         ======================================================= -->
     <section class="slide" id="slide-2">
-      <style>
-        #slide-2 .deck-list li::before { color: var(--vh-color-secondary) !important; }
-      </style>
       <div class="deck-topbar">
-        <div class="vh-logo" style="display: flex; align-items: baseline; gap: 0.75rem;">
-          <span class="vh-logo--split"><span class="vh-logo__vibe">VIBE</span><span class="vh-logo__hunt">HUNT</span></span>
-          <span style="font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
-        </div>
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
       </div>
-      <div class="slide-bg-blob slide-bg-blob--1" style="background: var(--vh-color-primary); top: 50%; right: -200px; left: auto; opacity: 0.15;"></div>
-      
+
+      <div class="slide-bg-blob slide-bg-blob--orange" style="top: 30%; right: -15%; opacity: 0.14;"></div>
+
       <div class="slide-inner">
-        <h2 class="huge-title" style="margin-bottom: 0.75rem;"><span style="color: var(--vh-color-secondary);">Знакомая</span> картина?</h2>
-        <p class="slide-lead" style="max-width: 800px; margin-bottom: 0;">Вы тратите колоссальный ресурс на процесс, результат которого абсолютно непредсказуем.</p>
-        
-        <div class="deck-grid" style="margin-top: 3.5rem;">
-          <div class="deck-card" style="background: rgba(242, 101, 34, 0.04); border: 1px solid rgba(242, 101, 34, 0.1);">
-            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; color: var(--vh-color-ink);">Время</h3>
-            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
-              <div class="deck-stat-value" style="color: var(--vh-color-primary); font-size: clamp(3.5rem, 5vw, 4.5rem); margin: 0; line-height: 0.9;">10-15 <span style="font-size: 1.5rem; letter-spacing: 0;">часов</span></div>
+        <h2 class="huge-title"><span style="color: var(--vh-color-secondary, #6b4eff);">Знакомая</span> картина?</h2>
+        <p class="slide-lead">Вы тратите колоссальный ресурс на процесс, результат которого<br>абсолютно непредсказуем.</p>
+
+        <div class="deck-grid">
+          <!-- Card 1 -->
+          <div class="deck-card">
+            <h3 class="deck-card-title">Время</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value" style="color: var(--vh-color-primary, #f26522);">10-15 <span class="stat-unit">часов</span></div>
             </div>
-            <p class="deck-card-text" style="color: var(--vh-color-muted);">Каждую неделю уходит на ручной скрининг, бесконечные переписки и встречи.</p>
+            <p class="deck-card-text">Каждую неделю уходит на<br>ручной скрининг, бесконечные<br>переписки и встречи.</p>
           </div>
-          <div class="deck-card" style="background: rgba(138, 43, 226, 0.04); border: 1px solid rgba(138, 43, 226, 0.1);">
-            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; color: var(--vh-color-ink);">Лотерея</h3>
-            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
-              <div class="deck-stat-value" style="color: var(--vh-color-primary); font-size: clamp(3.5rem, 5vw, 4.5rem); margin: 0; line-height: 0.9;"><span style="font-size: 1.5rem; letter-spacing: 0;">от</span> 30%</div>
+
+          <!-- Card 2 -->
+          <div class="deck-card">
+            <h3 class="deck-card-title">Лотерея</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value" style="color: var(--vh-color-primary, #f26522);"><span class="stat-prefix">от</span> 30%</div>
             </div>
-            <p class="deck-card-text" style="color: var(--vh-color-muted);">Кандидатов вообще не соответствует ожиданиям профиля.</p>
+            <p class="deck-card-text">Кандидатов вообще<br>не соответствует<br>ожиданиям профиля.</p>
           </div>
-          <div class="deck-card" style="background: rgba(242, 101, 34, 0.04); border: 1.5px solid var(--vh-color-primary);">
-            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; color: var(--vh-color-ink);">Ошибка найма</h3>
-            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
-              <div class="deck-stat-value" style="color: var(--vh-color-primary); font-size: clamp(3.5rem, 5vw, 4.5rem); margin: 0; line-height: 0.9;"><span style="font-size: 1.5rem; letter-spacing: 0;">всего</span> 1</div>
+
+          <!-- Card 3 (Highlighted with orange border) -->
+          <div class="deck-card card-border-orange">
+            <h3 class="deck-card-title">Ошибка найма</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value" style="color: var(--vh-color-primary, #f26522);"><span class="stat-prefix">всего</span> 1</div>
             </div>
-            <p class="deck-card-text" style="color: var(--vh-color-muted);">Токсичный сотрудник в команде может создать неприятности всему бизнесу.</p>
+            <p class="deck-card-text">Токсичный сотрудник в<br>команде может создать<br>неприятности всему бизнесу.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 3: COST 2 -->
+    <!-- =======================================================
+         SLIDE 3: COST OF ERROR
+         ======================================================= -->
     <section class="slide" id="slide-3">
       <div class="deck-topbar">
-        <div class="vh-logo" style="display: flex; align-items: baseline; gap: 0.75rem;">
-          <span class="vh-logo--split"><span class="vh-logo__vibe">VIBE</span><span class="vh-logo__hunt">HUNT</span></span>
-          <span style="font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
-        </div>
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
       </div>
-      <div class="slide-bg-blob slide-bg-blob--2" style="background: var(--vh-color-primary); bottom: 0; left: 0; opacity: 0.15;"></div>
-      
+
+      <div class="slide-bg-blob slide-bg-blob--purple" style="bottom: -15%; left: -10%;"></div>
+
       <div class="slide-inner">
-        <h2 class="huge-title" style="margin-bottom: 0.75rem; color: var(--vh-color-ink);">Реальная <span style="color: var(--vh-color-secondary);">цена</span> <span style="color: var(--vh-color-primary);">ошибки</span> найма</h2>
-        <p class="slide-lead" style="max-width: 800px; margin-bottom: 0;">Ошибка найма — это не просто потерянные деньги и время.<br>Это риск стабильности вашего бизнеса.</p>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: stretch; margin-top: 3.5rem;">
-          
-          <!-- Left column -->
+        <h2 class="huge-title">Реальная <span style="color: var(--vh-color-secondary, #6b4eff);">цена</span> <span style="color: var(--vh-color-primary, #f26522);">ошибки</span> найма</h2>
+        <p class="slide-lead">Ошибка найма — это не просто потерянные деньги и время.<br>Это риск стабильности вашего бизнеса.</p>
+
+        <div class="slide3-layout">
+          <!-- Left Column: Multipliers -->
           <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <div class="deck-card" style="min-height: auto; flex: 1; padding: 2rem; display: flex; flex-direction: row; align-items: center; gap: 1.5rem; background: rgba(138, 43, 226, 0.04); border: 1px solid rgba(138, 43, 226, 0.1);">
-              <div class="deck-stat-value" style="color: var(--vh-color-secondary); margin: 0; line-height: 1; flex-shrink: 0; font-size: clamp(2.5rem, 4vw, 3.5rem);">×2</div>
-              <h3 class="deck-card-title" style="margin: 0; line-height: 1.4; font-weight: 400; color: var(--vh-color-ink);">от расхода на повторный цикл подбора</h3>
+            <div class="deck-card deck-card--horiz">
+              <div class="deck-stat-value" style="color: var(--vh-color-secondary, #6b4eff);">×2</div>
+              <div class="horiz-card-text">от расхода на повторный<br>цикл подбора</div>
             </div>
-            
-            <div class="deck-card" style="min-height: auto; flex: 1; padding: 2rem; display: flex; flex-direction: row; align-items: center; gap: 1.5rem; background: rgba(138, 43, 226, 0.04); border: 1px solid rgba(138, 43, 226, 0.1);">
-              <div class="deck-stat-value" style="color: var(--vh-color-secondary); margin: 0; line-height: 1; flex-shrink: 0; font-size: clamp(2.5rem, 4vw, 3.5rem);">×3</div>
-              <h3 class="deck-card-title" style="margin: 0; line-height: 1.4; font-weight: 400; color: var(--vh-color-ink);">от оклада позиции за ошибку найма</h3>
+
+            <div class="deck-card deck-card--horiz">
+              <div class="deck-stat-value" style="color: var(--vh-color-secondary, #6b4eff);">×3</div>
+              <div class="horiz-card-text">от оклада позиции за<br>ошибку найма</div>
             </div>
           </div>
-          
-          <!-- Right column -->
-          <div class="deck-card" style="min-height: auto; padding: 3rem; display: flex; flex-direction: column; justify-content: center; transform: none; background: transparent; border: 1.5px solid var(--vh-color-secondary);">
-            <h3 class="deck-card-title" style="color: var(--vh-color-secondary); margin-bottom: 1.5rem;">Ключевые риски</h3>
-            <ul class="deck-list" style="margin: 0; color: var(--vh-color-muted);">
-              <li><span style="color: var(--vh-color-ink);">Потеря клиентской базы</span></li>
-              <li><span style="color: var(--vh-color-ink);">Утечка интеллектуальной собственности</span></li>
-              <li><span style="color: var(--vh-color-ink);">Репутационные риски бизнеса</span></li>
-              <li style="margin-bottom: 0;"><span style="color: var(--vh-color-ink);">Выгорание текущей команды из-за нагрузки</span></li>
+
+          <!-- Right Column: Key Risks Card -->
+          <div class="deck-card deck-card--risks">
+            <h3 class="risks-title">Ключевые риски</h3>
+            <ul class="risks-list">
+              <li>Потеря клиентской базы</li>
+              <li>Утечка интеллектуальной собственности</li>
+              <li>Репутационные риски бизнеса</li>
+              <li>Выгорание текущей команды из-за нагрузки</li>
             </ul>
           </div>
-          
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 4: PIPELINE -->
+    <!-- =======================================================
+         SLIDE 4: INTELLIGENT SYSTEM PIPELINE
+         ======================================================= -->
     <section class="slide" id="slide-4">
       <div class="deck-topbar">
-        <div class="vh-logo" style="display: flex; align-items: baseline; gap: 0.75rem;">
-          <span class="vh-logo--split"><span class="vh-logo__vibe">VIBE</span><span class="vh-logo__hunt">HUNT</span></span>
-          <span style="font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
-        </div>
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
       </div>
-      <div class="slide-bg-blob slide-bg-blob--1" style="background: var(--vh-color-secondary); top: 50%; left: 0; opacity: 0.15;"></div>
+
+      <div class="slide-bg-blob slide-bg-blob--purple" style="top: 40%; left: -10%;"></div>
+
       <div class="slide-inner">
-        <div style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; align-items: flex-start;">
-          
+        <div class="slide4-layout">
           <!-- Left Column -->
           <div>
-            <h2 class="huge-title" style="margin-bottom: 1.5rem;"><span style="color: var(--vh-color-secondary);">Интеллектуальная</span> система <span style="color: var(--vh-color-primary);">найма</span></h2>
+            <h2 class="huge-title"><span style="color: var(--vh-color-secondary, #6b4eff);">Интеллектуальная</span> система <span style="color: var(--vh-color-primary, #f26522);">найма</span></h2>
             <p class="slide-lead">Глубокий анализ совместимости кандидата с ролью, культурой компании и стилем руководителя по международным HR-методологиям и предиктивной AI-аналитике.</p>
           </div>
 
-          <!-- Right Column -->
-          <div style="position: relative; display: flex; flex-direction: column; gap: 1rem;">
-            <!-- Vertical line -->
-            <div style="position: absolute; top: 24px; bottom: 24px; left: 24px; width: 2px; background: var(--vh-color-secondary); opacity: 0.15; z-index: 1;"></div>
-            
-            <div style="display: flex; gap: 1.5rem; position: relative; z-index: 2;">
-              <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0; box-shadow: 0 4px 12px rgba(138,43,226,0.15);">1</div>
-              <div style="padding-top: 0.25rem;">
-                <h3 class="deck-card-title" style="font-size: 1.125rem; margin-bottom: 0.25rem; color: var(--vh-color-ink);">Архитектура роли</h3>
-                <p class="deck-card-text" style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted);">Создаем точный профиль идеального кандидата под ваш бизнес и стиль управления.</p>
+          <!-- Right Column: Vertical Timeline Steps -->
+          <div class="pipeline-container">
+            <div class="pipeline-line"></div>
+
+            <!-- Step 1 -->
+            <div class="pipeline-item">
+              <div class="pipeline-circle pipeline-circle--purple">1</div>
+              <div class="pipeline-content">
+                <h3 class="pipeline-title">Архитектура роли</h3>
+                <p class="pipeline-text">Создаем точный профиль идеального кандидата под ваш бизнес и стиль управления.</p>
               </div>
             </div>
-            
-            <div style="display: flex; gap: 1.5rem; position: relative; z-index: 2;">
-              <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-primary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-primary); flex-shrink: 0; box-shadow: 0 4px 12px rgba(242,101,34,0.15);">2</div>
-              <div style="padding-top: 0.25rem;">
-                <h3 class="deck-card-title" style="font-size: 1.125rem; margin-bottom: 0.25rem; color: var(--vh-color-ink);">Пре-скрининг</h3>
-                <p class="deck-card-text" style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted);">Анализируем паттерны кандидата — до вас доходят только те, кто совпадает с «Архитектурой роли».</p>
+
+            <!-- Step 2 -->
+            <div class="pipeline-item">
+              <div class="pipeline-circle pipeline-circle--orange">2</div>
+              <div class="pipeline-content">
+                <h3 class="pipeline-title">Пре-скрининг</h3>
+                <p class="pipeline-text">Анализируем паттерны кандидата — до вас доходят только те, кто совпадает с «Архитектурой роли».</p>
               </div>
             </div>
-            
-            <div style="display: flex; gap: 1.5rem; position: relative; z-index: 2;">
-              <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0; box-shadow: 0 4px 12px rgba(138,43,226,0.15);">3</div>
-              <div style="padding-top: 0.25rem;">
-                <h3 class="deck-card-title" style="font-size: 1.125rem; margin-bottom: 0.25rem; color: var(--vh-color-ink);">Автоматизация</h3>
-                <p class="deck-card-text" style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted);">Автоматизируем процессы организации встречи и подготовку к интервью.</p>
+
+            <!-- Step 3 -->
+            <div class="pipeline-item">
+              <div class="pipeline-circle pipeline-circle--purple">3</div>
+              <div class="pipeline-content">
+                <h3 class="pipeline-title">Автоматизация</h3>
+                <p class="pipeline-text">Автоматизируем процессы организации встречи и подготовку к интервью.</p>
               </div>
             </div>
-            
-            <div style="display: flex; gap: 1.5rem; position: relative; z-index: 2;">
-              <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-primary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-primary); flex-shrink: 0; box-shadow: 0 4px 12px rgba(242,101,34,0.15);">4</div>
-              <div style="padding-top: 0.25rem;">
-                <h3 class="deck-card-title" style="font-size: 1.125rem; margin-bottom: 0.25rem; color: var(--vh-color-ink);">Анализ соответствия</h3>
-                <p class="deck-card-text" style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted);">Подробный отчет: соответствие роли, драйверы, риски и совместимость с командой.</p>
+
+            <!-- Step 4 -->
+            <div class="pipeline-item">
+              <div class="pipeline-circle pipeline-circle--orange">4</div>
+              <div class="pipeline-content">
+                <h3 class="pipeline-title">Анализ соответствия</h3>
+                <p class="pipeline-text">Подробный отчет: соответствие роли, драйверы, риски и совместимость с командой.</p>
               </div>
             </div>
-            
-            <div style="display: flex; gap: 1.5rem; position: relative; z-index: 2;">
-              <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--vh-color-secondary); background: var(--vh-color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--vh-font-display); font-weight: 700; color: var(--vh-color-secondary); flex-shrink: 0; box-shadow: 0 4px 12px rgba(138,43,226,0.15);">5</div>
-              <div style="padding-top: 0.25rem;">
-                <h3 class="deck-card-title" style="font-size: 1.125rem; margin-bottom: 0.25rem; color: var(--vh-color-ink);">Оффер</h3>
-                <p class="deck-card-text" style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted);">Собираем оффер по мотиваторам кандидата и трек адаптации на 30–60–90 дней.</p>
+
+            <!-- Step 5 -->
+            <div class="pipeline-item">
+              <div class="pipeline-circle pipeline-circle--purple">5</div>
+              <div class="pipeline-content">
+                <h3 class="pipeline-title">Оффер</h3>
+                <p class="pipeline-text">Собираем оффер по мотиваторам кандидата и трек адаптации на 30–60–90 дней.</p>
               </div>
             </div>
-            
+
           </div>
         </div>
-</div>
+      </div>
     </section>
 
-    <!-- SLIDE 5: SYSTEM -->
+    <!-- =======================================================
+         SLIDE 5: SYSTEM PROVEN ON OURSELVES
+         ======================================================= -->
     <section class="slide" id="slide-5">
       <div class="deck-topbar">
-        <div class="vh-logo" style="display: flex; align-items: baseline; gap: 0.75rem;">
-          <span class="vh-logo--split"><span class="vh-logo__vibe">VIBE</span><span class="vh-logo__hunt">HUNT</span></span>
-          <span style="font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
-        </div>
+        <a href="#" class="topbar-logo">
+          <span><span class="logo-vibe">VIBE</span><span class="logo-hunt">HUNT</span></span>
+          <span class="topbar-tag">AI HIRING PLATFORM</span>
+        </a>
       </div>
-      <div class="slide-bg-blob slide-bg-blob--1" style="top: -10%; right: -10%; left: auto;"></div>
-      <div class="slide-bg-blob slide-bg-blob--2" style="bottom: -20%; left: -10%; right: auto;"></div>
+
+      <div class="slide-bg-blob slide-bg-blob--purple" style="top: -10%; right: -10%;"></div>
+      <div class="slide-bg-blob slide-bg-blob--orange" style="bottom: -15%; left: -10%;"></div>
+
       <div class="slide-inner">
-        <h2 class="huge-title">Система, проверенная <span style="color: var(--vh-color-secondary);">на себе</span></h2>
-        <p class="slide-lead" style="max-width: 800px;">Создано для масштабирования собственных проектов. Нанимаем и развиваем свою команду по этим алгоритмам.</p>
-        
+        <h2 class="huge-title">Система, проверенная <span style="color: var(--vh-color-secondary, #6b4eff);">на себе</span></h2>
+        <p class="slide-lead">Создано для масштабирования собственных проектов. Нанимаем и развиваем свою команду по этим алгоритмам.</p>
+
         <div class="deck-grid">
+          <!-- Card 1 -->
           <div class="deck-card">
-            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; min-height: 3.5rem;">Опыт HRD</h3>
-            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
-              <div class="deck-stat-value" style="margin: 0; line-height: 0.9; color: var(--vh-color-secondary);">01</div>
+            <h3 class="deck-card-title" style="min-height: 3rem;">Опыт HRD<br>от StartUp до Enterprise</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value" style="color: var(--vh-color-secondary, #6b4eff);">01</div>
             </div>
-            <p class="deck-card-text" style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted);">Практика управления подбором в структурах 2000+ сотрудников. Настройка систем от небольших команд до корпораций.</p>
+            <p class="deck-card-text">Практика управления подбором в структурах 2000+ сотрудников. Настройка систем от небольших команд до корпораций.</p>
           </div>
+
+          <!-- Card 2 -->
           <div class="deck-card">
-            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; min-height: 3.5rem;">Золотые мировые стандарты</h3>
-            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
-              <div class="deck-stat-value" style="margin: 0; line-height: 0.9; color: var(--vh-color-secondary);">02</div>
+            <h3 class="deck-card-title" style="min-height: 3rem;">Золотые мировые<br>стандарты</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value" style="color: var(--vh-color-secondary, #6b4eff);">02</div>
             </div>
-            <p class="deck-card-text" style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted);">Архитектура оценки построена сертифицированными экспертами по международным методологиям.</p>
+            <p class="deck-card-text">Архитектура оценки построена сертифицированными экспертами по международным методологиям.</p>
           </div>
+
+          <!-- Card 3 -->
           <div class="deck-card">
-            <h3 class="deck-card-title" style="margin-bottom: 0.5rem; min-height: 3.5rem;">Инженерия данных AI & ML</h3>
-            <div style="height: 70px; display: flex; align-items: flex-end; margin-bottom: 1.5rem;">
-              <div class="deck-stat-value" style="margin: 0; line-height: 0.9; color: var(--vh-color-secondary);">03</div>
+            <h3 class="deck-card-title" style="min-height: 3rem;">Инженерия данных<br>AI & ML</h3>
+            <div class="stat-wrapper">
+              <div class="deck-stat-value" style="color: var(--vh-color-secondary, #6b4eff);">03</div>
             </div>
-            <p class="deck-card-text" style="font-size: 0.95rem; line-height: 1.4; color: var(--vh-color-muted);">Собственный R&D отдел экспертов по машинному обучению, который создает баланс для точных прогнозов результата.</p>
+            <p class="deck-card-text">Собственный R&D отдел экспертов по машинному обучению, который создает баланс для точных прогнозов результата.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 6: CTA -->
-    <section class="slide" id="slide-6">
-      <div class="deck-topbar" style="display: none;">
-        <div class="vh-logo" style="display: flex; align-items: baseline; gap: 0.75rem;">
-          <span class="vh-logo--split"><span class="vh-logo__vibe">VIBE</span><span class="vh-logo__hunt">HUNT</span></span>
-          <span style="font-family: var(--vh-font-family); font-weight: 500; font-size: 0.75rem; color: var(--vh-color-muted); text-transform: uppercase; letter-spacing: 0.05em;">AI Hiring Platform</span>
-        </div>
-      </div>
-      
-      <div class="slide-bg-blob slide-bg-blob--1" style="background: var(--vh-color-secondary); top: 50%; left: 50%; transform: translate(-50%, -50%); filter: blur(150px); opacity: 0.2;"></div>
-      
-      <div class="slide-inner">
-        <!-- Full-width Title -->
-        <h2 class="huge-title" style="margin-bottom: 2rem; text-align: left; line-height: 1.1; max-width: 100%;">Забронируйте <span style="color: var(--vh-color-primary);">аудит</span> вашего найма</h2>
-        
-        <div style="display: grid; grid-template-columns: 1fr 320px; gap: 4rem; align-items: flex-end; height: 100%;">
-          
-          <!-- Left Column: Subtitle and List -->
-          <div style="padding-bottom: 2rem;">
-            <p class="slide-lead" style="margin-bottom: 3rem; text-align: left; max-width: 100%; font-size: 1.25rem;">За 15 минут HR специалист подскажет, где наиболее высокие зоны риска и их оптимизацию</p>
+    <!-- =======================================================
+         SLIDE 6: CTA AUDIT (DARK THEME)
+         ======================================================= -->
+    <section class="slide slide--dark" id="slide-6">
+      <div class="slide-bg-blob slide-bg-blob--purple" style="top: 50%; left: 50%; transform: translate(-50%, -50%); filter: blur(160px); opacity: 0.22;"></div>
 
-            <!-- Numbered List -->
-            <div style="display: flex; flex-direction: column; gap: 2rem;">
-              
-              <div style="display: flex; gap: 1.25rem; align-items: flex-start;">
-                <div style="font-family: var(--vh-font-display); font-weight: 700; font-size: 1.25rem; color: var(--vh-color-secondary); line-height: 1.2; flex-shrink: 0;">01</div>
-                <p style="color: var(--vh-color-ink); margin: 0; font-size: 1.125rem; line-height: 1.4;">Разберем вашу текущую воронку и найдем этапы, где вы теряете деньги и время.</p>
-              </div>
-              
-              <div style="display: flex; gap: 1.25rem; align-items: flex-start;">
-                <div style="font-family: var(--vh-font-display); font-weight: 700; font-size: 1.25rem; color: var(--vh-color-primary); line-height: 1.2; flex-shrink: 0;">02</div>
-                <p style="color: var(--vh-color-ink); margin: 0; font-size: 1.125rem; line-height: 1.4;">Сформируем «Архитектуру роли» для вашей самой проблемной вакансии.</p>
-              </div>
-              
-              <div style="display: flex; gap: 1.25rem; align-items: flex-start;">
-                <div style="font-family: var(--vh-font-display); font-weight: 700; font-size: 1.25rem; color: var(--vh-color-secondary); line-height: 1.2; flex-shrink: 0;">03</div>
-                <p style="color: var(--vh-color-ink); margin: 0; font-size: 1.125rem; line-height: 1.4;">Продемонстрируем, как работает система на реальных кейсах и метриках.</p>
-              </div>
-              
+      <div class="slide-inner">
+        <h2 class="huge-title" style="color: #ffffff;">Забронируйте <span style="color: var(--vh-color-primary, #f26522);">аудит</span> вашего найма</h2>
+        <p class="slide-lead">За 15 минут HR специалист подскажет, где наиболее высокие зоны риска и их оптимизацию</p>
+
+        <div class="slide6-content-grid">
+          <!-- Left: 3 steps in cards -->
+          <div class="slide6-cards-row">
+            <div class="deck-card--dark">
+              <div class="dark-card-num" style="color: #818cf8;">01</div>
+              <p class="dark-card-text">Разберем вашу текущую воронку и найдем этапы, где вы теряете деньги и время.</p>
+            </div>
+
+            <div class="deck-card--dark">
+              <div class="dark-card-num" style="color: var(--vh-color-primary, #f26522);">02</div>
+              <p class="dark-card-text">Сформируем «Архитектуру роли» для вашей самой проблемной вакансии.</p>
+            </div>
+
+            <div class="deck-card--dark">
+              <div class="dark-card-num" style="color: #818cf8;">03</div>
+              <p class="dark-card-text">Продемонстрируем, как работает система на реальных кейсах и метриках.</p>
             </div>
           </div>
 
-          <!-- Right Column (QR Code and Button) -->
-          <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 2rem;">
-            
-            <!-- QR Placeholder -->
-            <div style="width: 240px; height: 240px; background: white; border-radius: 24px; padding: 20px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 48px rgba(0,0,0,0.08);">
-              <div style="width: 100%; height: 100%; border: 2px dashed rgba(138, 43, 226, 0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: var(--vh-color-secondary); background: rgba(138, 43, 226, 0.02);">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 0.5rem;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><rect x="7" y="7" width="3" height="3"/><rect x="14" y="7" width="3" height="3"/><rect x="7" y="14" width="3" height="3"/><rect x="14" y="14" width="3" height="3"/></svg>
-                <span style="font-size: 0.875rem; font-family: var(--vh-font-family); font-weight: 500;">Ваш QR-код</span>
+          <!-- Right: QR card and Button -->
+          <div class="cta-action-col">
+            <div class="qr-card">
+              <div class="qr-inner">
+                <svg width="68" height="68" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- QR frame corners -->
+                  <rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="#6b4eff" stroke-width="3"/>
+                  <rect x="9" y="9" width="6" height="6" rx="1.5" fill="#6b4eff"/>
+                  <rect x="28" y="4" width="16" height="16" rx="4" fill="none" stroke="#6b4eff" stroke-width="3"/>
+                  <rect x="33" y="9" width="6" height="6" rx="1.5" fill="#6b4eff"/>
+                  <rect x="4" y="28" width="16" height="16" rx="4" fill="none" stroke="#6b4eff" stroke-width="3"/>
+                  <rect x="9" y="33" width="6" height="6" rx="1.5" fill="#6b4eff"/>
+                  <!-- Inner data dots pattern -->
+                  <rect x="24" y="24" width="4" height="4" rx="1" fill="#f26522"/>
+                  <rect x="32" y="24" width="4" height="4" rx="1" fill="#6b4eff"/>
+                  <rect x="24" y="32" width="4" height="4" rx="1" fill="#6b4eff"/>
+                  <rect x="40" y="24" width="4" height="4" rx="1" fill="#f26522"/>
+                  <rect x="24" y="40" width="4" height="4" rx="1" fill="#6b4eff"/>
+                  <rect x="32" y="32" width="4" height="4" rx="1" fill="#f26522"/>
+                  <rect x="40" y="32" width="4" height="4" rx="1" fill="#6b4eff"/>
+                  <rect x="32" y="40" width="4" height="4" rx="1" fill="#6b4eff"/>
+                  <rect x="40" y="40" width="4" height="4" rx="1" fill="#f26522"/>
+                </svg>
+                <span class="qr-label">Ваш QR-код</span>
               </div>
             </div>
-            
-            <!-- Hyperlink Button -->
-            <a href="#" style="display: inline-block; background: var(--vh-color-ink); color: white; text-decoration: none; padding: 0.75rem 2rem; border-radius: 100px; font-weight: 500; font-family: var(--vh-font-family); font-size: 1rem; transition: background 0.2s, opacity 0.2s; text-align: center; width: 100%; box-sizing: border-box; max-width: 240px;">
+
+            <a href="https://t.me/make_kzk" target="_blank" rel="noopener noreferrer" class="cta-button">
               ВЫБРАТЬ ВРЕМЯ
             </a>
-            
           </div>
-
         </div>
-</div>
+      </div>
     </section>
 
   </div>
 
   <script>
-    const deck = document.getElementById('deck');
-    const dots = document.querySelectorAll('.nav-dot');
+    (function() {
+      const deck = document.getElementById('deck');
+      const dotsNav = document.getElementById('dots');
+      const dots = document.querySelectorAll('.nav-dot');
+      const navHint = document.getElementById('nav-hint');
+      const slides = document.querySelectorAll('.slide');
+      let isScrolling = false;
 
-    deck.addEventListener('scroll', () => {
-      let index = Math.round(deck.scrollTop / window.innerHeight);
+      function updateActiveSlide() {
+        const scrollTop = deck.scrollTop;
+        const slideHeight = window.innerHeight;
+        const index = Math.min(Math.max(Math.round(scrollTop / slideHeight), 0), slides.length - 1);
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+
+        // Dark slide theme adjustment for nav dots and hint
+        const currentSlide = slides[index];
+        const isDark = currentSlide && currentSlide.classList.contains('slide--dark');
+        if (dotsNav) {
+          dotsNav.classList.toggle('on-dark', isDark);
+        }
+        if (navHint) {
+          navHint.classList.toggle('on-dark', isDark);
+        }
+      }
+
+      deck.addEventListener('scroll', () => {
+        if (!isScrolling) {
+          window.requestAnimationFrame(() => {
+            updateActiveSlide();
+            isScrolling = false;
+          });
+          isScrolling = true;
+        }
+      }, { passive: true });
+
+      // Click on dot navigation
       dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
+        dot.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = slides[i];
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
       });
-    });
+
+      // Keyboard arrow / space navigation
+      window.addEventListener('keydown', (e) => {
+        if (['ArrowDown', 'PageDown', 'Space'].includes(e.code) || e.key === 'ArrowRight') {
+          e.preventDefault();
+          const currentIndex = Math.round(deck.scrollTop / window.innerHeight);
+          if (currentIndex < slides.length - 1) {
+            slides[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+          }
+        } else if (['ArrowUp', 'PageUp'].includes(e.code) || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const currentIndex = Math.round(deck.scrollTop / window.innerHeight);
+          if (currentIndex > 0) {
+            slides[currentIndex - 1].scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+
+      // Initial state
+      updateActiveSlide();
+    })();
   </script>
 </body>
 </html>
