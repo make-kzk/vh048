@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398 418" width="398" height="418" style="background: #121319; border-radius: 20px;">
+  <defs>
+    <filter id="wob" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.8"/>
+    </filter>
+  </defs>
+  
+  <!-- Header Title & Subtitle -->
+  <g transform="translate(18, 24)">
+    <text font-family="'Caveat', cursive, sans-serif" font-size="32" font-weight="700" fill="#06b6d4">Оператор</text>
+    <text y="26" font-family="'Caveat', cursive, sans-serif" font-size="19" fill="#ffffff">Высокий C, низкий A, низкий B</text>
+  </g>
+  
+  <!-- Mascot SVG -->
+  <g transform="translate(24, 75)">
+    <svg viewBox="0 0 350 250" width="350" height="250" style="overflow: visible;">
+      
+      <defs>
+        <linearGradient id="g_oper" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#22d3ee"/>
+          <stop offset="100%" stop-color="#0891b2"/>
+        </linearGradient>
+      </defs>
+      <!-- Checklist items top left -->
+      <g transform="translate(18, 55)">
+        <rect x="0" y="0" width="14" height="14" rx="3" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+        <path d="M3 7 L6 11 L13 2" fill="none" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="0" y="22" width="14" height="14" rx="3" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+        <path d="M3 29 L6 33 L13 24" fill="none" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="0" y="44" width="14" height="14" rx="3" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+        <path d="M3 51 L6 55 L13 46" fill="none" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <!-- Left monologue text -->
+      <text x="16" y="145" font-family="Caveat, cursive" font-size="20" fill="#ffffff" letter-spacing="0.3px">
+        <tspan x="16" dy="0">стабильность</tspan>
+        <tspan x="16" dy="24">и порядок —</tspan>
+        <tspan x="16" dy="24">моя сила ☺</tspan>
+      </text>
+      <!-- Ground line -->
+      <line x1="160" y1="226" x2="265" y2="226" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <!-- Little stick feet -->
+      <path d="M190 205 L190 226 L180 226" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M225 205 L225 226 L235 226" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Blob Mascot -->
+      <g filter="url(#wob)">
+        <path d="M205 65 C245 60 262 105 258 155 C254 195 235 210 205 208 C175 206 156 195 152 155 C148 105 165 68 205 65 Z" fill="url(#g_oper)" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+      </g>
+      <!-- Face -->
+      <circle cx="192" cy="116" r="3.5" fill="#ffffff"/>
+      <circle cx="218" cy="116" r="3.5" fill="#ffffff"/>
+      <path d="M198 130 Q205 138 212 130" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+      <!-- Clipboard held in front -->
+      <g transform="translate(196, 135) rotate(-5)">
+        <rect x="0" y="0" width="34" height="44" rx="4" fill="#0f172a" stroke="#ffffff" stroke-width="1.8" filter="url(#wob)"/>
+        <rect x="8" y="-5" width="18" height="8" rx="2" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2"/>
+        <line x1="6" y1="10" x2="28" y2="10" stroke="#ffffff" stroke-width="1.5"/>
+        <line x1="6" y1="18" x2="24" y2="18" stroke="#ffffff" stroke-width="1.5"/>
+        <line x1="6" y1="26" x2="28" y2="26" stroke="#ffffff" stroke-width="1.5"/>
+        <line x1="6" y1="34" x2="20" y2="34" stroke="#ffffff" stroke-width="1.5"/>
+      </g>
+      <!-- Arms holding clipboard -->
+      <path d="M165 150 Q180 165 198 160" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+      <path d="M245 150 Q238 165 228 160" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+      <!-- Pen in right hand -->
+      <line x1="232" y1="150" x2="222" y2="165" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Wall Clock on right -->
+      <g transform="translate(262, 58)">
+        <circle cx="16" cy="16" r="15" fill="none" stroke="#ffffff" stroke-width="1.8" filter="url(#wob)"/>
+        <line x1="16" y1="16" x2="16" y2="6" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+        <line x1="16" y1="16" x2="23" y2="16" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+        <line x1="16" y1="2" x2="16" y2="4" stroke="#ffffff" stroke-width="1.5"/>
+        <line x1="30" y1="16" x2="28" y2="16" stroke="#ffffff" stroke-width="1.5"/>
+        <line x1="16" y1="30" x2="16" y2="28" stroke="#ffffff" stroke-width="1.5"/>
+        <line x1="2" y1="16" x2="4" y2="16" stroke="#ffffff" stroke-width="1.5"/>
+      </g>
+      <!-- Sparkle -->
+      <path d="M288 150 Q292 142 296 150 Q304 154 296 158 Q292 166 288 158 Q280 154 288 150 Z" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+    
+    </svg>
+  </g>
+  
+  <!-- Bottom Rhythm Words -->
+  <g transform="translate(18, 385)">
+    <text font-family="'Caveat', cursive, sans-serif" font-size="21" fill="rgba(255,255,255,0.85)">делаю. выполняю. довожу до конца. ☆</text>
+  </g>
+</svg>
