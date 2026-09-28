@@ -9,6 +9,7 @@
 - [Каталог мокапов](https://make-kzk.github.io/vh048/)
 - [**VibeHunt — дизайн-система**](https://make-kzk.github.io/vh048/design-system/vibehunt/) — токены и компоненты из мокапа
 - [**Альтернативная дизайн-система**](https://make-kzk.github.io/vh048/design-system/) — презентации Marketing & Reputation Day
+- [**VibeHunt для HRD и собственников (8 слайдов)**](https://make-kzk.github.io/vh048/mockups/vibe-hunt/team-vibe-deck.html) — точная диагностика командного вайба для компаний от 200 человек
 - [**AI Hiring Deck (Презентация для клиентов)**](https://make-kzk.github.io/vh048/mockups/vibe-hunt/ai-hire-deck.html) — клиентские слайды платформы (6 слайдов)
 - [**Investor Pitch Deck (Питч-дек для инвесторов)**](https://make-kzk.github.io/vh048/mockups/vibe-hunt/investor-pitch-deck.html) — 12-слайдовый питч-дек (Pre-seed, Алматы, 2026)
 - [**Investor Pitch Deck — New (Питч-дек new-pd)**](https://make-kzk.github.io/vh048/mockups/vibe-hunt/new-pd.html) — версия с карточками предиктивного фита на 1 экране (12 слайдов)

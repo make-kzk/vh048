@@ -1,6 +1,20 @@
 {
   "mockups": [
     {
+      "slug": "team-vibe-deck",
+      "title": "VibeHunt для HRD и собственников (от 200 человек)",
+      "summary": "Точная диагностика командного вайба: 9-box grid, граф связей, личный вайб, ИПР, воронка найма, конфиденциальность (8 интерактивных слайдов).",
+      "path": "mockups/vibe-hunt/team-vibe-deck.html",
+      "tags": [
+        "presentation",
+        "vibehunt",
+        "hrd",
+        "owner",
+        "team-vibe",
+        "ai"
+      ]
+    },
+    {
       "slug": "investor-pitch-deck",
       "title": "VibeHunt — Investor Pitch Deck (Pre-Seed)",
       "summary": "Инвесторский питч-дек: предиктивный AI-найм, 3 сегмента, бизнес-модель 140 000 ₸, трекшн и раунд $50k (12 слайдов).",
