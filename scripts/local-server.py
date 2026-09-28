@@ -29,6 +29,7 @@ WATCH_PATHS = (
     ROOT / "local",
     ROOT / "index.html",
     ROOT / "catalog.json",
+    ROOT / "presentation.html",
 )
 
 LIVERELOAD_SNIPPET = b'<script src="/__livereload.js"></script>'
